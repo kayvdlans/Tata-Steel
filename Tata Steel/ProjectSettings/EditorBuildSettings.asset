@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Tata Steel/Scenes/EntranceHall.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Tata Steel/Scenes/TrainingRooms/TrainingRoom1.unity
+    guid: 246737a78bce6e74cbc352cee8ada470
+  - enabled: 1
+    path: Assets/Tata Steel/Scenes/TrainingRooms/TrainingRoom2.unity
+    guid: 3da9eab044f471b40a0e9dcd3a526df9
   m_configObjects: {}

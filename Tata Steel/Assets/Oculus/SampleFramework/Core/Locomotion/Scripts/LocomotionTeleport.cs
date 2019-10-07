@@ -294,7 +294,7 @@ public class LocomotionTeleport : MonoBehaviour
 	{
 		var delta = end - start;
 		var distance = delta.magnitude;
-		var direction = delta / distance;
+        var direction = delta / distance;
 
 		switch (AimCollisionType)
 		{
@@ -781,10 +781,11 @@ public class LocomotionTeleport : MonoBehaviour
 			Teleported(characterTransform, destPosition, destRotation);
 		}
 
+
 		characterTransform.position = destPosition;
 		characterTransform.rotation = destRotation;
 
-		LocomotionController.PlayerController.Teleported = true;
+		//LocomotionController.PlayerController.Teleported = true;
 	}
 
 	/// <summary>

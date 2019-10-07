@@ -70,7 +70,7 @@ public class TeleportAimVisualLaser : TeleportSupport
 	}
 
 	private void UpdateAimData(LocomotionTeleport.AimData obj)
-	{
+	{        
 		_lineRenderer.sharedMaterial.color = obj.TargetValid ? Color.green : Color.red;
 
 		var points = obj.Points;

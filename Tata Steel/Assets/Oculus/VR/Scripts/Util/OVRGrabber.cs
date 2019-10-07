@@ -134,6 +134,7 @@ public class OVRGrabber : MonoBehaviour
         Quaternion handRot = OVRInput.GetLocalControllerRotation(m_controller);
         Vector3 destPos = m_parentTransform.TransformPoint(m_anchorOffsetPosition + handPos);
         Quaternion destRot = m_parentTransform.rotation * handRot * m_anchorOffsetRotation;
+
         GetComponent<Rigidbody>().MovePosition(destPos);
         GetComponent<Rigidbody>().MoveRotation(destRot);
 
@@ -306,15 +307,18 @@ public class OVRGrabber : MonoBehaviour
         Vector3 grabbablePosition = pos + rot * m_grabbedObjectPosOff;
         Quaternion grabbableRotation = rot * m_grabbedObjectRotOff;
 
+        float angle = (Mathf.Atan2(pos.z, pos.x) - Mathf.Atan2(grabbableRotation.z, grabbableRotation.x)) * Mathf.Rad2Deg;
+
+        //TODO: Try some stuff using Angular velocity instead of rotation
         if (forceTeleport)
         {
             grabbedRigidbody.transform.position = grabbablePosition;
-            grabbedRigidbody.transform.rotation = grabbableRotation;
+            grabbedRigidbody.transform.rotation = Quaternion.AngleAxis(angle, Vector3.right);
         }
         else
         {
             grabbedRigidbody.MovePosition(grabbablePosition);
-            grabbedRigidbody.MoveRotation(grabbableRotation);
+            grabbedRigidbody.MoveRotation(Quaternion.AngleAxis(angle, Vector3.right));
         }
     }
 

@@ -43,6 +43,7 @@ public class OVRScreenFade : MonoBehaviour
     private bool isFading = false;
 
     public float currentAlpha { get; private set; }
+    public bool IsFading { get { return isFading; } }
 
 	void Awake()
 	{

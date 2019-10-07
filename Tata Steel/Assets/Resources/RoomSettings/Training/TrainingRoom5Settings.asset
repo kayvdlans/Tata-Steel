@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3959157f2b76af94f8d049590277086b, type: 3}
+  m_Name: TrainingRoom5Settings
+  m_EditorClassIdentifier: 
+  openedDoors: {fileID: 11400000, guid: 32646fc291627334ebc81b811d90750e, type: 2}
+  doorsToOpen: 0c0000000d000000
+  onRoomCompleted:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 5b96f5061b616d74ab5b1b2f45ee11d8, type: 2}
+        m_MethodName: LoadScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: EntranceHall
+          m_BoolArgument: 0
+        m_CallState: 2

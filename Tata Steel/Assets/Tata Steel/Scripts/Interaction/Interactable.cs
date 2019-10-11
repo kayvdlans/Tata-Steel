@@ -89,7 +89,7 @@ public class Interactable : MonoBehaviour
                 closestHand = null;
             }
 
-            if (hands != null && hands.Count > 0)
+            if (hands != null && hands.Count > 0 && !isInteracting)
             {
                 float closestDistance = float.MaxValue;
 

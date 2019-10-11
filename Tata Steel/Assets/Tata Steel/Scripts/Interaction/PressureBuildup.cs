@@ -5,6 +5,7 @@ using UnityEngine;
 public class PressureBuildup : MonoBehaviour
 {
     [SerializeField] private InteractionRotate valve;
+    [SerializeField] private Openable gate;
     [SerializeField] private PressureMeter meter;
 
     [SerializeField] private Vector2 bounds;
@@ -12,11 +13,17 @@ public class PressureBuildup : MonoBehaviour
 
     private Interactable valveInteractable;
 
+    private void Start()
+    {
+        valveInteractable = valve.GetComponent<Interactable>();
+    }
+
     private void FixedUpdate()
     {
         if (valveInteractable.isInteracting)
         {
-            meter.UpdateAngle((currentValue - bounds.x) / (bounds.y - bounds.x));
+            gate.UpdateValue(valve.ActualAngle, ref currentValue);
+            meter.UpdateAngle(MathHelper.NormalizeValueBetweenBounds(currentValue, bounds));
         }
     }
 }

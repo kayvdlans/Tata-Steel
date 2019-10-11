@@ -26,10 +26,10 @@ public class PressureMeter : MonoBehaviour
 
         float multiplier = 1f;
         offset += Random.Range(offsetTickBounds.x * multiplier, offsetTickBounds.y * multiplier);
-        offset = HelperFunctions.ConfineToBounds(offset, offsetBounds);
+        offset = MathHelper.ConfineToBounds(offset, offsetBounds);
 
         combinedAngle = (angle == bounds.x) ? angle : angle + (offset * multiplier);
-        combinedAngle = HelperFunctions.ConfineToBounds(combinedAngle, bounds);
+        combinedAngle = MathHelper.ConfineToBounds(combinedAngle, bounds);
 
         meter.rotation = Quaternion.Euler(combinedAngle, 0, 0);
     }
@@ -38,6 +38,6 @@ public class PressureMeter : MonoBehaviour
 
     public void UpdateAngle(float normalizedValue)
     {
-
+        angle = MathHelper.GetValueBetweenBoundsFromNormalizedValue(normalizedValue, bounds);
     }
 }

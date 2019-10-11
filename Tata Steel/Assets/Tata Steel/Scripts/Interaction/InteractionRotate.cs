@@ -5,11 +5,9 @@ using UnityEngine;
 [RequireComponent(typeof(Interactable), typeof(Rigidbody))]
 public class InteractionRotate : MonoBehaviour
 {
-    [SerializeField]
-    private float maxAngularVelocity = 1f;
-
-    [SerializeField]
-    private uint rotationLock = 0;
+    [SerializeField] private float maxAngularVelocity = 1f;
+    [SerializeField] private uint rotationLock = 0;
+    [SerializeField] private float damping = 1f;
 
     private Interactable interactable = null;
     private Rigidbody rb = null;
@@ -20,10 +18,10 @@ public class InteractionRotate : MonoBehaviour
 
     private float currentAngle = 0;
     private float previousAngle = 0;
-    [SerializeField]
-    private float actualAngle = 0;
-    [SerializeField]
-    private int halfRotations = 0;
+
+    [SerializeField] private float actualAngle = 0;
+    [SerializeField] private int halfRotations = 0;
+
     private bool clockwise = true;
     private bool backwards = false;
 
@@ -39,24 +37,25 @@ public class InteractionRotate : MonoBehaviour
         if (interactable.isInteracting)
         {
             Vector3 positionDelta = (interactable.hand.transform.position - initialAttachPoint.position) * DELTA_MAGIC;
+            //positionDelta /= damping;
 
-            if (rb.angularVelocity.x < -0.01f && actualAngle <= 0)
-            {
-                rb.angularVelocity = Vector3.zero;
-                transform.rotation = Quaternion.identity;
-                halfRotations = 0;
-            }
-            else if (rb.angularVelocity.x > 0.01f && actualAngle >= (360 * rotationLock))
-            {
-                rb.angularVelocity = Vector3.zero;
-                halfRotations = (int)(rotationLock * 2);
-                actualAngle = 360 * rotationLock;
-                transform.rotation = Quaternion.Euler(actualAngle, 0, 0);
-            }
-            else
-            {
-                rb.AddForceAtPosition(positionDelta, initialAttachPoint.position, ForceMode.VelocityChange);
-            }
+            rb.AddForceAtPosition(positionDelta, initialAttachPoint.position, ForceMode.VelocityChange);
+        }
+
+        if (rb.angularVelocity.x < -0.01f && actualAngle <= 0)
+        {
+            rb.angularVelocity = Vector3.zero;
+            actualAngle = 0;
+            halfRotations = 0;
+            transform.rotation = Quaternion.identity;
+        }
+
+        if (rb.angularVelocity.x > 0.01f && actualAngle >= (360 * rotationLock))
+        {
+            rb.angularVelocity = Vector3.zero;
+            actualAngle = (360 * rotationLock);
+            halfRotations = (int)rotationLock;
+            transform.rotation = Quaternion.Euler(360 * rotationLock, 0, 0);
         }
 
         currentAngle = Quaternion.Angle(Quaternion.identity, transform.rotation);

@@ -80,6 +80,11 @@ public class Interactable : MonoBehaviour
         }
     }
 
+    //this will have to be replaced to a hand(s) script keeping track of objects instead of the other way around.
+    //if there are a lot of objects this will hit the performance quite a bit the way it is right now.
+    //even though it only gets called 10 times a second.
+    //This also does not account for different items being in reach of the hand which might become a problem in the future.
+    //We'll have to see though. I'm too depressed to change this right now.
     private IEnumerator CheckForClosestHand(float time)
     {
         while (true)

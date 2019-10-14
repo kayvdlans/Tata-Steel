@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PressureBuildup : MonoBehaviour
 {
@@ -22,7 +20,7 @@ public class PressureBuildup : MonoBehaviour
     {
         if (valveInteractable.isInteracting)
         {
-            gate.UpdateValue(valve.ActualAngle, ref currentValue);
+            gate.UpdateValue(valve.ActualAngle, bounds, ref currentValue);
             meter.UpdateAngle(MathHelper.NormalizeValueBetweenBounds(currentValue, bounds));
         }
     }

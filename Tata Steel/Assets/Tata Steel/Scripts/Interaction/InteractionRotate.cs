@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(Interactable), typeof(Rigidbody))]
 public class InteractionRotate : MonoBehaviour
@@ -24,7 +22,9 @@ public class InteractionRotate : MonoBehaviour
     private Rigidbody rb = null;
     private Transform initialAttachPoint = null;
 
-    private const float DELTA_MAGIC = 1f;  //in case we want to change some stuff
+    //Works as a replacement for mass since the force mode of our rotation is VelocityChange,
+    //which does not get affected by mass.
+    private const float DELTA_MAGIC = 1f;  
 
     private float currentAngle = 0;
     private float previousAngle = 0;
@@ -54,7 +54,8 @@ public class InteractionRotate : MonoBehaviour
     {
         if (interactable.isInteracting && interactable.closestHand)
         {
-            //Checks the change in position from the initial point the player started interacting with the object and the current position of the hand.
+            //Checks the change in position from the initial point the player started interacting 
+            //with the object and the current position of the hand.
             Vector3 positionDelta = (interactable.closestHand.transform.position - initialAttachPoint.position) * DELTA_MAGIC;
 
             //Add force based on the change of position.

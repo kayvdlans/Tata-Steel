@@ -18,6 +18,8 @@ public class InteractionRotate : MonoBehaviour
 
     [SerializeField] private float maxAngularVelocity = 1f;
 
+    [SerializeField] private bool inverseAngularVelocity = true;
+
     private Interactable interactable = null;
     private Rigidbody rb = null;
     private Transform initialAttachPoint = null;
@@ -33,6 +35,7 @@ public class InteractionRotate : MonoBehaviour
     private bool backwards = false;
 
     private RigidbodyConstraints rotationConstraints;
+    private Quaternion initialRotation;
 
     public float ActualAngle { get; private set; } = 0;
 
@@ -48,6 +51,8 @@ public class InteractionRotate : MonoBehaviour
             ? RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ : rotationAxis == MathHelper.Axis.Z 
             ? RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY : RigidbodyConstraints.FreezeRotation;
         rb.constraints = RigidbodyConstraints.FreezePosition | rotationConstraints;
+
+        initialRotation = transform.rotation;
     }
 
     private void FixedUpdate()
@@ -62,18 +67,21 @@ public class InteractionRotate : MonoBehaviour
             rb.AddForceAtPosition(positionDelta, initialAttachPoint.position, ForceMode.VelocityChange);
         }
 
+        float aV = rotationAxis == MathHelper.Axis.X ? rb.angularVelocity.x : rotationAxis == MathHelper.Axis.Y ? rb.angularVelocity.y : rb.angularVelocity.z;
+        float angularVelocity = inverseAngularVelocity ? -aV : aV;
+
         //If you're trying to rotate counter-clockwise while the angle is already at 0, 
         //it will keep resetting to prevent you from rotating it any further.
-        if (rb.angularVelocity.x < -0.01f && ActualAngle <= 0)
+        if (angularVelocity < -0.01f && ActualAngle <= 0)
         {
             rb.angularVelocity = Vector3.zero;
             ActualAngle = 0;
             halfRotations = 0;
-            transform.rotation = Quaternion.identity;
+            transform.rotation = initialRotation;
         }
 
         //Same like previous, but the other way around.
-        if (rb.angularVelocity.x > 0.01f && ActualAngle >= (360 * rotationLock))
+        if (angularVelocity > 0.01f && ActualAngle >= (360 * rotationLock))
         {
             rb.angularVelocity = Vector3.zero;
             ActualAngle = (360 * rotationLock);
@@ -81,14 +89,14 @@ public class InteractionRotate : MonoBehaviour
             transform.rotation = Quaternion.Euler(360 * rotationLock, 0, 0);
         }
 
-        currentAngle = Quaternion.Angle(Quaternion.identity, transform.rotation);
+        currentAngle = Quaternion.Angle(initialRotation, transform.rotation);
 
-        clockwise = rb.angularVelocity.x >= 0;
+        clockwise = angularVelocity >= 0;
 
         //If there is movement, check whether a half rotation should be added.
         //This is to make sure the actual rotation of the object is being documented,
         //Since normally the current angle only fluctuates between 0 and 180.
-        if (Mathf.Abs(rb.angularVelocity.x) > 0.01f)
+        if (Mathf.Abs(aV) > 0.01f)
         {
             if (clockwise && !backwards && previousAngle > currentAngle)
             {

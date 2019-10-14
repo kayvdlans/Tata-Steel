@@ -9,7 +9,7 @@ public static class MathHelper
 
     public static float NormalizeValueBetweenBounds(float value, Vector2 bounds)
     {
-        return (bounds.y - bounds.x) / (value - bounds.x);
+        return  (value - bounds.x) / (bounds.y - bounds.x);
     }
 
     public static float GetValueBetweenBoundsFromNormalizedValue(float normalizedValue, Vector2 bounds)

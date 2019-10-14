@@ -23,6 +23,7 @@ public class Openable : MonoBehaviour
     {
         float v = angle * effectivity / mass;
         v /= angleToFullyOpen;
+        v = MathHelper.ConfineToBounds(v, new Vector2(0, 1));
 
         float physicalValue = MathHelper.GetValueBetweenBoundsFromNormalizedValue(v, physicalBounds);
 

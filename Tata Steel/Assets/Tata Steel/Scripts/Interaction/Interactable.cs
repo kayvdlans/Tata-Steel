@@ -23,7 +23,7 @@ public class Interactable : MonoBehaviour
 
     [SerializeField] private List<Renderer> renderers;
 
-    private List<Material[]> originalMaterials;
+    private List<Material[]> originalMaterials = new List<Material[]>();
     private bool canInteract = false;
 
     public bool isInteracting { get; private set; }
@@ -123,8 +123,7 @@ public class Interactable : MonoBehaviour
             if (closestHand != null)
             {
                 foreach (Renderer r in renderers)
-                    for (int i = 0; i < r.materials.Length; i++)   
-                        r.materials[i] = outlineMaterial;
+                    r.material = outlineMaterial;
                 canInteract = true;
             }
             else

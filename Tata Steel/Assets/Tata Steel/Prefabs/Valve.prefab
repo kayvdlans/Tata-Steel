@@ -365,9 +365,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2866226138415691680}
   serializedVersion: 2
-  m_Mass: 125
-  m_Drag: 23
-  m_AngularDrag: 17
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -398,10 +398,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88f2b6720e0904f40850b4d059c75210, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotationAxis: 0
+  lockRotationOnInteractionEnd: 1
+  rotationLock: 3
   maxAngularVelocity: 2
-  rotationLock: 4
-  actualAngle: 0
-  halfRotations: 0
+  inverseAngularVelocity: 1
 --- !u!114 &6117872271504420524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -414,7 +415,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60c7fd26c8338c447b754fa35fefb408, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonToPress: 8192
+  buttonToPress: 2105344
   interactionType: 1
   onStartInteraction:
     m_PersistentCalls:
@@ -444,11 +445,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  material: {fileID: 5561349426305759274, guid: 9737d39859001de48bd3fb3fd0a52476,
-    type: 3}
+  continueOutOfRange: 0
   outlineMaterial: {fileID: 2100000, guid: 72bbc9b4c7f17b845a7c325593461a63, type: 2}
   renderers:
   - {fileID: 5307975130059734099}
+  - {fileID: 1749611302846894824}
+  - {fileID: 3944528560694436108}
+  - {fileID: 8947564995435759934}
+  - {fileID: 8883253384123755233}
+  - {fileID: 2299691010423335557}
+  - {fileID: 2782577308859102529}
+  - {fileID: 4132365778436506678}
+  - {fileID: 5495260442284310024}
+  - {fileID: 671849667376312888}
+  - {fileID: 5370589867811085749}
 --- !u!1 &3176161771733422860
 GameObject:
   m_ObjectHideFlags: 0

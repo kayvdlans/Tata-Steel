@@ -67,7 +67,9 @@ public class InteractionRotate : MonoBehaviour
             rb.AddForceAtPosition(positionDelta, initialAttachPoint.position, ForceMode.VelocityChange);
         }
 
-        float aV = rotationAxis == MathHelper.Axis.X ? rb.angularVelocity.x : rotationAxis == MathHelper.Axis.Y ? rb.angularVelocity.y : rb.angularVelocity.z;
+        float aV = rotationAxis == MathHelper.Axis.X 
+            ? rb.angularVelocity.x : rotationAxis == MathHelper.Axis.Y 
+            ? rb.angularVelocity.y : rb.angularVelocity.z;
         float angularVelocity = inverseAngularVelocity ? -aV : aV;
 
         //If you're trying to rotate counter-clockwise while the angle is already at 0, 

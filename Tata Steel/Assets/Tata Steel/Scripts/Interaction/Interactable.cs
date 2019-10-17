@@ -16,12 +16,14 @@ public class Interactable : MonoBehaviour
     [SerializeField] private InteractionType interactionType;
     [SerializeField] private UnityEvent onStartInteraction;
     [SerializeField] private UnityEvent onEndInteraction;
+    [SerializeField] private bool continueOutOfRange;
 
-    [SerializeField] private Material material;
+    //[SerializeField] private Material material;
     [SerializeField] private Material outlineMaterial;
 
     [SerializeField] private List<Renderer> renderers;
 
+    private List<Material[]> originalMaterials;
     private bool canInteract = false;
 
     public bool isInteracting { get; private set; }
@@ -32,6 +34,14 @@ public class Interactable : MonoBehaviour
 
     private void Start()
     {
+        if (renderers.Count != 0)
+        {
+            foreach (Renderer r in renderers)
+            {
+                originalMaterials.Add(r.materials);
+            }
+        }
+
         StartCoroutine(CheckForClosestHand(0.1f));
     }
 
@@ -72,7 +82,7 @@ public class Interactable : MonoBehaviour
         }
         else if (isInteracting)
         {
-            if (!OVRInput.Get(buttonToPress))
+            if (!continueOutOfRange || !OVRInput.Get(buttonToPress))
             {
                 isInteracting = false;
                 onEndInteraction.Invoke();
@@ -81,7 +91,7 @@ public class Interactable : MonoBehaviour
     }
 
     //this will have to be replaced to a hand(s) script keeping track of objects instead of the other way around.
-    //if there are a lot of objects this will hit the performance quite a bit the way it is right now.
+    //if there are a lot of objects this will hit the performance quite a bit the way it is right now,
     //even though it only gets called 10 times a second.
     //This also does not account for different items being in reach of the hand which might become a problem in the future.
     //We'll have to see though. I'm too depressed to change this right now.
@@ -109,16 +119,18 @@ public class Interactable : MonoBehaviour
                 }
             }
 
+            //:puke:
             if (closestHand != null)
             {
                 foreach (Renderer r in renderers)
-                    r.material = outlineMaterial;
+                    for (int i = 0; i < r.materials.Length; i++)   
+                        r.materials[i] = outlineMaterial;
                 canInteract = true;
             }
             else
             {
-                foreach (Renderer r in renderers)
-                    r.material = material;
+                for (int i = 0; i < renderers.Count; i++)
+                    renderers[i].materials = originalMaterials[i];
                 canInteract = false;
             }
 

@@ -2,7 +2,7 @@
 using System.Collections;
 
 /// <summary>
-/// Currently just use UpdateValue(bool) to turn the machine on or off using the Interactable script
+/// Currently just use Flip() to turn the machine on or off using the Interactable script
 /// </summary>
 [RequireComponent(typeof(Interactable), typeof(BoxCollider))]
 public class FlipSwitch : MonoBehaviour

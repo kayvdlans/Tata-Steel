@@ -296,14 +296,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7605513856756892431}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 246f3f7eae8a20948859c718121d1c69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   AimCollisionLayerMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 256
   NavMeshAreaMask: -1
 --- !u!114 &7605513856756892421
 MonoBehaviour:
@@ -331,7 +331,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7605513856756892431}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7d8fa3b51be1cb745a66b9f32a13f550, type: 3}
   m_Name: 

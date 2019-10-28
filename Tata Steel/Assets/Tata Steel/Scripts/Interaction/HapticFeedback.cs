@@ -2,7 +2,6 @@
 using System;
 using UnityEngine;
 
-
 public class HapticFeedback : MonoBehaviour
 {
     public enum FeedbackFrequency
@@ -31,7 +30,13 @@ public class HapticFeedback : MonoBehaviour
     [SerializeField] private bool fadeOutFeedback;
     [SerializeField] private float fadeTime;
 
-    public OVRInput.Controller Controller { get; set; } = OVRInput.Controller.None;
+    //Set the controller actually
+    public OVRInput.Controller Controller { get; private set; } = OVRInput.Controller.None;
+
+    public void SetController()
+    {
+        Controller = OVRInput.GetActiveController();
+    }
 
     public void AddFeedback(int strength)
     {
@@ -39,10 +44,10 @@ public class HapticFeedback : MonoBehaviour
             ? this.frequency.Low : strength == (int)FeedbackFrequency.Medium 
             ? this.frequency.Medium : this.frequency.High, new Vector2(160, 500));
 
-        OVRInput.SetControllerVibration(feedbackFrequency, amplitude, OVRInput.Controller.LTouch);
+        OVRInput.SetControllerVibration(feedbackFrequency, amplitude, Controller);
 
         if (fadeOutFeedback)
-            StartCoroutine(StartVibrationFade(fadeTime, feedbackFrequency, OVRInput.Controller.LTouch));
+            StartCoroutine(StartVibrationFade(fadeTime, feedbackFrequency, Controller));
     }
 
     private IEnumerator StartVibrationFade(float time, float frequency, OVRInput.Controller controller)

@@ -15,6 +15,7 @@ public class Interactable : MonoBehaviour
     [SerializeField] private OVRInput.Button buttonToPress;
     [SerializeField] private InteractionType interactionType;
     [SerializeField] private UnityEvent onStartInteraction;
+    [SerializeField] private UnityEvent whileInteracting;
     [SerializeField] private UnityEvent onEndInteraction;
     [SerializeField] private bool continueOutOfRange;
 
@@ -58,6 +59,8 @@ public class Interactable : MonoBehaviour
                         {
                             onStartInteraction.Invoke();
                         }
+
+                        whileInteracting.Invoke();
                         isInteracting = true;
                     }
                     else if (isInteracting)
@@ -82,6 +85,8 @@ public class Interactable : MonoBehaviour
         }
         else if (isInteracting)
         {
+            whileInteracting.Invoke();
+
             if (!continueOutOfRange || !OVRInput.Get(buttonToPress))
             {
                 isInteracting = false;

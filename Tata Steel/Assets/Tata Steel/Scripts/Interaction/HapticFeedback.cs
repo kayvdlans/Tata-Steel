@@ -30,30 +30,33 @@ public class HapticFeedback : MonoBehaviour
     [SerializeField] private bool fadeOutFeedback;
     [SerializeField] private float fadeTime;
 
-    //Set the controller actually
-    public OVRInput.Controller Controller { get; private set; } = OVRInput.Controller.None;
+    private Interactable interactable;
+    private OVRInput.Controller controller;
 
-    public void SetController()
+    private void Start()
     {
-        Controller = OVRInput.GetActiveController();
+        interactable = GetComponent<Interactable>();
     }
 
     public void AddFeedback(int strength)
     {
+        controller = interactable.controller;
+
         float feedbackFrequency = MathHelper.NormalizeValueBetweenBounds(strength == (int)FeedbackFrequency.Low 
             ? this.frequency.Low : strength == (int)FeedbackFrequency.Medium 
             ? this.frequency.Medium : this.frequency.High, new Vector2(160, 500));
 
-        OVRInput.SetControllerVibration(feedbackFrequency, amplitude, Controller);
+        OVRInput.SetControllerVibration(feedbackFrequency, amplitude, controller);
 
         if (fadeOutFeedback)
-            StartCoroutine(StartVibrationFade(fadeTime, feedbackFrequency, Controller));
+        {
+            StopAllCoroutines();
+            StartCoroutine(StartVibrationFade(fadeTime, feedbackFrequency));
+        }
     }
 
-    private IEnumerator StartVibrationFade(float time, float frequency, OVRInput.Controller controller)
+    private IEnumerator StartVibrationFade(float time, float frequency)
     {
-        StopAllCoroutines();
-
         float currentAmp = amplitude;
 
         while (currentAmp > 0)

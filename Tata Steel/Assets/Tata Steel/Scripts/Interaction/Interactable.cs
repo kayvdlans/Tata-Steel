@@ -47,8 +47,6 @@ public class Interactable : MonoBehaviour
             }
         }
 
-        Debug.LogError(buttonToPress.ToString());
-
         StartCoroutine(CheckForClosestHand(0.1f));
     }
 
@@ -90,17 +88,17 @@ public class Interactable : MonoBehaviour
         for (int i = 0; i < buttons.Count; i++)
             if (buttons[i].Substring(0, 1) == "L")
                 leftButtons.Add(buttons[i]);
+            else if (buttons[i] == "X" || buttons[i] == "Y")
+                leftButtons.Add(buttons[i]);
             else if (buttons[i].Substring(0, 1) == "R")
+                rightButtons.Add(buttons[i]);            
+            else if (buttons[i] == "A" || buttons[i] == "B")
                 rightButtons.Add(buttons[i]);
 
         if (controller == OVRInput.Controller.LTouch)
-        {
             return CheckForInputFromButtonNames(leftButtons);
-        }
         else if (controller == OVRInput.Controller.RTouch)
-        {
             return CheckForInputFromButtonNames(rightButtons);
-        }
 
         return false;   
     }
@@ -144,7 +142,7 @@ public class Interactable : MonoBehaviour
         return OVRInput.RawButton.None;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (canInteract)
         {
@@ -155,7 +153,8 @@ public class Interactable : MonoBehaviour
                     onStartInteraction.Invoke();
                 }
 
-                if (interactionType == InteractionType.OnHold)
+                //Make sure to not call while interacting in the first frame of interaction.
+                if (isInteracting && interactionType == InteractionType.OnHold)
                 {
                     whileInteracting.Invoke();
                 }

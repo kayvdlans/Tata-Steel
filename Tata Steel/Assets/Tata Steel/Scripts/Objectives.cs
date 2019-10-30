@@ -17,9 +17,6 @@ public class Objectives
     public bool IsReached()
     {
         return (currentAmount >= requiredAmount);
-        
-    }   
 
-
-    public ObjectGoal goal;
+    }
 }

@@ -325,6 +325,7 @@ GameObject:
   - component: {fileID: 6117872271504420515}
   - component: {fileID: 6117872271504420526}
   - component: {fileID: 6117872271504420524}
+  - component: {fileID: 586386763}
   m_Layer: 0
   m_Name: Valve
   m_TagString: Untagged
@@ -431,6 +432,31 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 586386763}
+        m_MethodName: SetController
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  whileInteracting:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 586386763}
+        m_MethodName: AddFeedback
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onEndInteraction:
     m_PersistentCalls:
       m_Calls:
@@ -459,6 +485,25 @@ MonoBehaviour:
   - {fileID: 5495260442284310024}
   - {fileID: 671849667376312888}
   - {fileID: 5370589867811085749}
+--- !u!114 &586386763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2866226138415691680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cb7df4ac590c1349ba69563f0adb8d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frequency:
+    low: 160
+    medium: 340
+    high: 500
+  amplitude: 0.2
+  fadeOutFeedback: 1
+  fadeTime: 0.2
 --- !u!1 &3176161771733422860
 GameObject:
   m_ObjectHideFlags: 0

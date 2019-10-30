@@ -37,6 +37,8 @@ public class Interactable : MonoBehaviour
 
     public OVRInput.Controller controller { get; private set; } = OVRInput.Controller.None;
 
+    private const float TIME_BETWEEN_HAND_CHECKS = 0.1f;
+
     private void Start()
     {
         if (renderers.Count != 0)
@@ -47,7 +49,7 @@ public class Interactable : MonoBehaviour
             }
         }
 
-        StartCoroutine(CheckForClosestHand(0.1f));
+        StartCoroutine(CheckForClosestHand(TIME_BETWEEN_HAND_CHECKS));
     }
 
     private bool InputValid()

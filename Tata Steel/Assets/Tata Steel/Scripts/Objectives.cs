@@ -8,7 +8,6 @@ public class Objectives
     public bool isActive;
 
     public string objective;
-    public string progress;
     public int reward;
 
     public int requiredAmount;

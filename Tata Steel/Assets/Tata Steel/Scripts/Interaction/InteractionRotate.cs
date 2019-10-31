@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(Interactable), typeof(Rigidbody))]
-public class InteractionRotate : MonoBehaviour
+public class InteractionRotate : Interaction
 {
     [Tooltip("Changing the axis the object rotates around in this script changes the rigidbody's " +
         "constraints for you, so you don't have to manually do it every time you change the axis " +
@@ -20,10 +20,6 @@ public class InteractionRotate : MonoBehaviour
 
     [SerializeField] private bool inverseAngularVelocity = true;
 
-    private Interactable interactable = null;
-    private Rigidbody rb = null;
-    private Transform initialAttachPoint = null;
-
     //Works as a replacement for mass since the force mode of our rotation is VelocityChange,
     //which does not get affected by mass.
     private const float DELTA_MAGIC = 1f;  
@@ -39,10 +35,8 @@ public class InteractionRotate : MonoBehaviour
 
     public float ActualAngle { get; private set; } = 0;
 
-    private void Start()
+    protected override void Initialize()
     {
-        interactable = GetComponent<Interactable>();
-        rb = GetComponent<Rigidbody>();
         rb.maxAngularVelocity = maxAngularVelocity;
 
         //Sets the constraints of the rigidbody based on the rotation axis.
@@ -57,7 +51,7 @@ public class InteractionRotate : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (interactable.isInteracting && interactable.closestHand)
+        if (isInteracting)
         {
             //Checks the change in position from the initial point the player started interacting 
             //with the object and the current position of the hand.
@@ -72,6 +66,27 @@ public class InteractionRotate : MonoBehaviour
             ? rb.angularVelocity.y : rb.angularVelocity.z;
         float angularVelocity = inverseAngularVelocity ? -aV : aV;
 
+        LockRotation(angularVelocity);
+
+        currentAngle = Quaternion.Angle(initialRotation, transform.rotation);
+
+        clockwise = angularVelocity >= 0;
+
+        //If there is movement, check whether a half rotation should be added.
+        //This is to make sure the actual rotation of the object is being documented,
+        //Since normally the current angle only fluctuates between 0 and 180.
+        if (Mathf.Abs(aV) > 0.01f)
+        {
+            UpdateHalfRotations();
+        }
+
+        //Calculate the actual angle based on half rotations and the current angle.
+        ActualAngle = halfRotations * 180 + (backwards ? (180 - currentAngle) : currentAngle);
+        previousAngle = currentAngle;
+    }
+
+    private void LockRotation(float angularVelocity)
+    {
         //If you're trying to rotate counter-clockwise while the angle is already at 0, 
         //it will keep resetting to prevent you from rotating it any further.
         if (angularVelocity < -0.01f && ActualAngle <= 0)
@@ -90,64 +105,43 @@ public class InteractionRotate : MonoBehaviour
             halfRotations = (int)rotationLock * 2;
             transform.rotation = Quaternion.Euler(360 * rotationLock, 0, 0);
         }
-
-        currentAngle = Quaternion.Angle(initialRotation, transform.rotation);
-
-        clockwise = angularVelocity >= 0;
-
-        //If there is movement, check whether a half rotation should be added.
-        //This is to make sure the actual rotation of the object is being documented,
-        //Since normally the current angle only fluctuates between 0 and 180.
-        if (Mathf.Abs(aV) > 0.01f)
-        {
-            if (clockwise && !backwards && previousAngle > currentAngle)
-            {
-                halfRotations++;
-                backwards = true;
-            }
-            else if (clockwise && backwards && currentAngle > previousAngle)
-            {
-                halfRotations++;
-                backwards = false;
-            }
-            else if (!clockwise && !backwards && currentAngle > previousAngle)
-            {
-                halfRotations--;
-                backwards = true;
-            }
-            else if (!clockwise && backwards && previousAngle > currentAngle)
-            {
-                halfRotations--;
-                backwards = false;
-            }
-        }
-
-        //Calculate the actual angle based on half rotations and the current angle.
-        ActualAngle = halfRotations * 180 + (backwards ? (180 - currentAngle) : currentAngle);
-        previousAngle = currentAngle;
     }
 
-    public void OnInteractionStart()
+    private void UpdateHalfRotations()
     {
-        //Create an empty object at the position of the hand as soon as you start interacting with the object.
-        //Used to calculate the distance traveled and calculate the rotation.
-        if (initialAttachPoint == null)
+        if (clockwise && !backwards && previousAngle > currentAngle)
         {
-            initialAttachPoint = new GameObject(string.Format("[{0}] InitialAttachPoint", this.gameObject.name)).transform;
-            initialAttachPoint.position = interactable.closestHand.transform.position;
-            initialAttachPoint.rotation = interactable.closestHand.transform.rotation;
-            initialAttachPoint.localScale = Vector3.one * 0.25f;
-            initialAttachPoint.parent = transform;
+            halfRotations++;
+            backwards = true;
         }
+        else if (clockwise && backwards && currentAngle > previousAngle)
+        {
+            halfRotations++;
+            backwards = false;
+        }
+        else if (!clockwise && !backwards && currentAngle > previousAngle)
+        {
+            halfRotations--;
+            backwards = true;
+        }
+        else if (!clockwise && backwards && previousAngle > currentAngle)
+        {
+            halfRotations--;
+            backwards = false;
+        }
+    }
+
+    public override void OnInteractionStart()
+    {
+        base.OnInteractionStart();
 
         if (lockRotationOnInteractionEnd)
             rb.constraints = RigidbodyConstraints.FreezePosition | rotationConstraints;
     }
 
-    public void OnInteractionEnd()
+    public override void OnInteractionEnd()
     {
-        if (initialAttachPoint != null)
-            Destroy(initialAttachPoint.gameObject);
+        base.OnInteractionEnd();
 
         if (lockRotationOnInteractionEnd)
             rb.constraints = RigidbodyConstraints.FreezeAll;

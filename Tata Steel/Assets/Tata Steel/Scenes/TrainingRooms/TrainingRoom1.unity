@@ -426,6 +426,85 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 172913544}
   m_CullTransparentMesh: 0
+--- !u!1001 &246102386
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2610618734885774911, guid: 3d4b4de2d34eb0546a75af48df1dcc56,
+        type: 3}
+      propertyPath: m_Name
+      value: Computer
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324513696823530540, guid: 3d4b4de2d34eb0546a75af48df1dcc56,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.005
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324513696823530540, guid: 3d4b4de2d34eb0546a75af48df1dcc56,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.144
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324513696823530540, guid: 3d4b4de2d34eb0546a75af48df1dcc56,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.761
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324513696823530540, guid: 3d4b4de2d34eb0546a75af48df1dcc56,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324513696823530540, guid: 3d4b4de2d34eb0546a75af48df1dcc56,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324513696823530540, guid: 3d4b4de2d34eb0546a75af48df1dcc56,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324513696823530540, guid: 3d4b4de2d34eb0546a75af48df1dcc56,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324513696823530540, guid: 3d4b4de2d34eb0546a75af48df1dcc56,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324513696823530540, guid: 3d4b4de2d34eb0546a75af48df1dcc56,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324513696823530540, guid: 3d4b4de2d34eb0546a75af48df1dcc56,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324513696823530540, guid: 3d4b4de2d34eb0546a75af48df1dcc56,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8116216626224677879, guid: 3d4b4de2d34eb0546a75af48df1dcc56,
+        type: 3}
+      propertyPath: hasMaxVisible
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8116216626224677879, guid: 3d4b4de2d34eb0546a75af48df1dcc56,
+        type: 3}
+      propertyPath: maxVisibleAmount
+      value: 25
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3d4b4de2d34eb0546a75af48df1dcc56, type: 3}
 --- !u!1 &509525323
 GameObject:
   m_ObjectHideFlags: 0
@@ -1232,20 +1311,12 @@ MonoBehaviour:
     reward: 25
     requiredAmount: 6
     currentAmount: 5
-    goal:
-      objectType: 0
-      requiredAmount: 0
-      currentAmount: 0
   - isActive: 0
     objective: keep doing
     progress: 1 out of a 100
     reward: 79
     requiredAmount: 8
     currentAmount: 6
-    goal:
-      objectType: 0
-      requiredAmount: 0
-      currentAmount: 0
   objectiveText:
   - {fileID: 856781802}
   - {fileID: 172913546}
@@ -1527,3 +1598,38 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2050411342}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2056957418 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8116216626224677877, guid: 3d4b4de2d34eb0546a75af48df1dcc56,
+    type: 3}
+  m_PrefabInstance: {fileID: 246102386}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2056957420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2056957418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ffb3f2b72ec6184ea2b916c62f4fa90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  temperatureGraph: {fileID: 2056957421}
+  graphUpdateInterval: 2
+  baseTemperature: 50
+  lockTemperatureBetweenBounds: 1
+  temperatureBounds: {x: 0, y: 100}
+--- !u!114 &2056957421 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8116216626224677879, guid: 3d4b4de2d34eb0546a75af48df1dcc56,
+    type: 3}
+  m_PrefabInstance: {fileID: 246102386}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2056957418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d0de66fe3e73f48b82a8b624f4635f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

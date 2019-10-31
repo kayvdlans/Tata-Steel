@@ -74,15 +74,15 @@ public class Window_Graph : MonoBehaviour {
         
         HideTooltip();
 
-        valueList = graphValues;
-        ShowGraph(valueList, barChartVisual, -1, (int _i) => "", (float _f) => Mathf.RoundToInt(_f) + " °C");
+        //valueList = graphValues;
+        //ShowGraph(valueList, barChartVisual, -1, (int _i) => "", (float _f) => Mathf.RoundToInt(_f) + " °C");
     }
 
-    private void Update()
+   /* private void Update()
     {
         if (graphValues.Count != 0) 
             SetGraphVisual((int)graphType == 0 ? barChartVisual : lineGraphVisual, hasMaxVisible ? valueList.Count <= maxVisibleAmount ? valueList.Count : maxVisibleAmount : valueList.Count);
-    }
+    }*/
 
     public static void ShowTooltip_Static(string tooltipText, Vector2 anchoredPosition) {
         instance.ShowTooltip(tooltipText, anchoredPosition);
@@ -135,6 +135,11 @@ public class Window_Graph : MonoBehaviour {
 
     private void SetGraphVisual(IGraphVisual graphVisual, int maxVisibleAmount) {
         ShowGraph(this.valueList, graphVisual, maxVisibleAmount, this.getAxisLabelX, this.getAxisLabelY);
+    }
+
+    public void SetGraphVisual()
+    {
+        ShowGraph(GraphValues, lineGraphVisual, hasMaxVisible ? GraphValues.Count <= maxVisibleAmount ? GraphValues.Count : maxVisibleAmount : GraphValues.Count, getAxisLabelX, getAxisLabelY);
     }
 
     private void ShowGraph(List<int> valueList, IGraphVisual graphVisual, int maxVisibleValueAmount = -1, Func<int, string> getAxisLabelX = null, Func<float, string> getAxisLabelY = null) {

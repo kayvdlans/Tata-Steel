@@ -53,16 +53,4 @@ public class ObjectiveDispencer : MonoBehaviour
             
         }
     }
-
-    public void CloseMenu()
-    {
-        for (int i = 0; i < objectives.Count; i++)
-        {
-            if (objectives[i].goal.IsReached())
-            {
-                objectives[i].isActive = false;
-            }
-        }
-    }
-
 }

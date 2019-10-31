@@ -7,6 +7,11 @@ public static class MathHelper
         return value < bounds.x ? bounds.x : value > bounds.y ? bounds.y : value;
     }
 
+    public static int ConfineToBounds (int value, Vector2Int bounds)
+    {
+        return value < bounds.x ? bounds.x : value > bounds.y ? bounds.y : value;
+    }
+
     public static float NormalizeValueBetweenBounds(float value, Vector2 bounds)
     {
         return  (value - bounds.x) / (bounds.y - bounds.x);

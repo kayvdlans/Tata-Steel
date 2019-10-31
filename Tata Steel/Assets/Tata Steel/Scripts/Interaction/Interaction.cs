@@ -5,9 +5,9 @@ using UnityEngine;
 [RequireComponent(typeof(Interactable), typeof(Rigidbody))]
 public abstract class Interaction : MonoBehaviour
 {
-    protected Interactable interactable;
-    protected Rigidbody rb;
-    protected Transform initialAttachPoint;
+    protected Interactable interactable { get; private set; } = null;
+    protected Rigidbody rb { get; private set; } = null;
+    protected Transform initialAttachPoint { get; private set; } = null;
 
     protected bool isInteracting
     {

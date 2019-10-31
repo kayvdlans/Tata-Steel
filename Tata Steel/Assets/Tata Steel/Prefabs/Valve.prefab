@@ -416,24 +416,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60c7fd26c8338c447b754fa35fefb408, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonToPress: 2105344
+  buttonToPress: 335544320
   interactionType: 1
   onStartInteraction:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6117872271504420526}
         m_MethodName: OnInteractionStart
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 586386763}
-        m_MethodName: SetController
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -471,7 +460,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  continueOutOfRange: 0
+  continueOutOfRange: 1
   outlineMaterial: {fileID: 2100000, guid: 72bbc9b4c7f17b845a7c325593461a63, type: 2}
   renderers:
   - {fileID: 5307975130059734099}

@@ -49,7 +49,7 @@ public class InteractionGrab : Interaction
             if (makeKinematicOnGrab)
                 transform.rotation = initialRotation;
             else
-                rb.constraints = RigidbodyConstraints.FreezeRotation; //TODO: more precision, freeze each axis instead.
+                rb.constraints = RigidbodyConstraints.FreezeRotation; //TODO: more precision, freeze per axis instead.
         }
 
     }
@@ -63,5 +63,11 @@ public class InteractionGrab : Interaction
         rb.isKinematic = initialKinematicState;
         rb.useGravity = initialGravity;
         rb.constraints = RigidbodyConstraints.None;
+
+        //TODO: calculate this yoruself because shitsucks
+        OVRPose localPose = new OVRPose { position = OVRInput.GetLocalControllerPosition(interactable.controller), orientation = OVRInput.GetLocalControllerRotation(interactable.controller) };
+        OVRPose trackingSpace = transform.ToOVRPose() * localPose.Inverse();
+        rb.velocity = trackingSpace.orientation * OVRInput.GetLocalControllerVelocity(interactable.controller);
+        rb.angularVelocity = trackingSpace.orientation * OVRInput.GetLocalControllerAngularVelocity(interactable.controller);
     }
 }

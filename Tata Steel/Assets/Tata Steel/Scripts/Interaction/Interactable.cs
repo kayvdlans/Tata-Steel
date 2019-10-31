@@ -227,7 +227,7 @@ public class Interactable : MonoBehaviour
                     renderers[i].materials = originalMaterials[i];
                 canInteract = false;
 
-                controller = OVRInput.Controller.None;
+                //controller = OVRInput.Controller.None;
             }
 
             yield return new WaitForSeconds(time);

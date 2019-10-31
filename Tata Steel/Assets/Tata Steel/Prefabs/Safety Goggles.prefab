@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 7674370178005968591}
   - component: {fileID: 7674370178005968588}
   - component: {fileID: 7674370178005968562}
+  - component: {fileID: 3505979490317469609}
+  - component: {fileID: 7201422667727528522}
   m_Layer: 0
   m_Name: Safety Goggles
   m_TagString: Untagged
@@ -81,12 +83,12 @@ MonoBehaviour:
   onStartInteraction:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: PickUp
-        m_Mode: 2
+      - m_Target: {fileID: 3505979490317469609}
+        m_MethodName: OnInteractionStart
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 7674370178005968562}
-          m_ObjectArgumentAssemblyTypeName: Interactable, Assembly-CSharp
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -97,12 +99,52 @@ MonoBehaviour:
       m_Calls: []
   onEndInteraction:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3505979490317469609}
+        m_MethodName: OnInteractionEnd
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   continueOutOfRange: 0
   outlineMaterial: {fileID: 2100000, guid: 72bbc9b4c7f17b845a7c325593461a63, type: 2}
   renderers:
   - {fileID: 8656483655752608760}
   - {fileID: 2116485449907658313}
+--- !u!114 &3505979490317469609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1846821171501971207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52227083dc2cade498fc72ee779aa9af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  makeKinematicOnGrab: 1
+  lockRotationOnGrab: 0
+  snapPosition: 0
+--- !u!114 &7201422667727528522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1846821171501971207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99bfd7c748807de4ab09a03fc779edd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gearCollider: {fileID: 0}
+  requirements: {fileID: 0}
 --- !u!1 &3864703911029586955
 GameObject:
   m_ObjectHideFlags: 0

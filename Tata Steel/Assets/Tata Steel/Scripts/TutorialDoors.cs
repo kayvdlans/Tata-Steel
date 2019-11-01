@@ -38,6 +38,11 @@ public class TutorialDoors : MonoBehaviour
         StartCoroutine(CheckIfDoorOpened());
     }
 
+    private void Update()
+    {
+        Opened = openedDoors.IsAdded(index);
+    }
+
     private IEnumerator CheckIfDoorOpened()
     {
         while (!Opened)
@@ -61,8 +66,11 @@ public class TutorialDoors : MonoBehaviour
     {
         if (opened)
         {
+            CharacterController c = player.GetComponent<CharacterController>();
             audioSource.PlayOneShot(openDoor, 0.7F);
+            c.enabled = false;
             player.transform.position = teleportlocation;
+            c.enabled = true;
         }
         else
         {

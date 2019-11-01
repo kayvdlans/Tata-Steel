@@ -11,6 +11,8 @@ public class PressureBuildup : MonoBehaviour
 
     private Interactable valveInteractable;
 
+    public float CurrentValue { get => currentValue; }
+
     private void Start()
     {
         valveInteractable = valve.GetComponent<Interactable>();

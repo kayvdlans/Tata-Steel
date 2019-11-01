@@ -7,7 +7,6 @@ public class ObjectiveDispencer : MonoBehaviour
 {
     [SerializeField] private OpenedDoors openedDoors = null;
     public List<Objectives> objectives = new List<Objectives>();
-    
     public List<Text> objectiveText = new List<Text>();
     public List<Text> progressText = new List<Text>();
     public List<Text> doneText = new List<Text>();
@@ -35,7 +34,7 @@ public class ObjectiveDispencer : MonoBehaviour
         {
             objectives[i].IsReached();
         }
-
+        if(score!=null)
         score.text = "behaalde score: " + reward.ToString() + "/" + maxReward;
     }
 
@@ -52,7 +51,6 @@ public class ObjectiveDispencer : MonoBehaviour
     public void UpdateMenu()
     {
         bool newBool = true;
-
 
         for (int i = 0; i < objectives.Count; i++)
         {
@@ -74,10 +72,11 @@ public class ObjectiveDispencer : MonoBehaviour
             }
          
         }
-
-        if (newBool) {
-            openedDoors.OpenDoorByIndex(doorIndex);
-            Debug.Log("checknewBool");
-        }
+            if (newBool)
+            {
+                openedDoors.OpenDoorByIndex(doorIndex);
+                Debug.Log("checknewBool");
+            }
+        
     }
 }

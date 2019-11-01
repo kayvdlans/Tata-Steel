@@ -33,6 +33,11 @@ public class Door : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
+    private void Update()
+    {
+        Opened = openedDoors.IsAdded(index);
+    }
+
     private void UpdateMaterial()
     {
         if (mat == null)

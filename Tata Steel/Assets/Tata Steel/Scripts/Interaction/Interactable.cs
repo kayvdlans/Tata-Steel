@@ -32,6 +32,7 @@ public class Interactable : MonoBehaviour
 
     //[SerializeField] private Material material;
     [SerializeField] private Material outlineMaterial;
+    [SerializeField] private bool useNewOutlineRenderer = false;
 
     [SerializeField] private List<Renderer> renderers;
 
@@ -155,6 +156,7 @@ public class Interactable : MonoBehaviour
 
     private void Update()
     {
+        if (useNewOutlineRenderer)
         UpdateHighlightRenderers();
     }
 
@@ -255,8 +257,11 @@ public class Interactable : MonoBehaviour
             if (!hands.Contains(other.transform))
                 hands.Add(other.transform);
 
-            CreateHighlightRenderers();
-            UpdateHighlightRenderers();
+            if (useNewOutlineRenderer)
+            {
+                CreateHighlightRenderers();
+                UpdateHighlightRenderers();
+            }
 
             StopAllCoroutines();
             StartCoroutine(CheckForClosestHand(0.1f));

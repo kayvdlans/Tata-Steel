@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 
-[RequireComponent(typeof(Interactable), typeof(Rigidbody))]
 public class InteractionRotate : Interaction
 {
     [Tooltip("Changing the axis the object rotates around in this script changes the rigidbody's " +

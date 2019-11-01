@@ -10,12 +10,14 @@ public class InteractionGrab : Interaction
 
     private Transform initialParent = null;
     private Quaternion initialRotation = Quaternion.identity;
+    private RigidbodyConstraints initialConstraints = RigidbodyConstraints.None;
     private bool initialKinematicState = false;
     private bool initialGravity = false;
 
     protected override void Initialize()
     {
         initialParent = transform.parent;
+        initialConstraints = rb.constraints;
         initialKinematicState = rb.isKinematic;
         initialGravity = rb.useGravity;
     }
@@ -62,11 +64,16 @@ public class InteractionGrab : Interaction
 
         rb.isKinematic = initialKinematicState;
         rb.useGravity = initialGravity;
-        rb.constraints = RigidbodyConstraints.None;
+        rb.constraints = initialConstraints;
 
-        //TODO: calculate this yoruself because shitsucks
-        OVRPose localPose = new OVRPose { position = OVRInput.GetLocalControllerPosition(interactable.controller), orientation = OVRInput.GetLocalControllerRotation(interactable.controller) };
+        //TODO: calculate velocity yourself instead of OVR, since it doesn't work too well.
+        OVRPose localPose = new OVRPose 
+        { 
+            position = OVRInput.GetLocalControllerPosition(interactable.controller), 
+            orientation = OVRInput.GetLocalControllerRotation(interactable.controller) 
+        };
         OVRPose trackingSpace = transform.ToOVRPose() * localPose.Inverse();
+        
         rb.velocity = trackingSpace.orientation * OVRInput.GetLocalControllerVelocity(interactable.controller);
         rb.angularVelocity = trackingSpace.orientation * OVRInput.GetLocalControllerAngularVelocity(interactable.controller);
     }

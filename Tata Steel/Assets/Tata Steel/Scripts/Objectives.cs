@@ -13,9 +13,16 @@ public class Objectives
     public int requiredAmount;
     public int currentAmount;
 
+
+
     public bool IsReached()
     {
         return (currentAmount >= requiredAmount);
 
+    }
+
+    public void AddCurrent()
+    {
+        currentAmount++;
     }
 }

@@ -17,6 +17,8 @@ public class TutorialDoors : MonoBehaviour
     [SerializeField] private AudioClip openDoor = null;
     [SerializeField] AudioSource audioSource;
 
+    public GameObject player;
+
     private Renderer mat = null;
     private bool opened = false;
     public bool Opened
@@ -60,7 +62,7 @@ public class TutorialDoors : MonoBehaviour
         if (opened)
         {
             audioSource.PlayOneShot(openDoor, 0.7F);
-            transform.position = teleportlocation;
+            player.transform.position = teleportlocation;
         }
         else
         {

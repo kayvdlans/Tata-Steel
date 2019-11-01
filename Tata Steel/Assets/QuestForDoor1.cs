@@ -11,12 +11,13 @@ public class QuestForDoor1 : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
         
     }
-    void PickUP()
+    public void PickUP()
     {
 
     }
+
 }

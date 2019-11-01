@@ -153,6 +153,11 @@ public class Interactable : MonoBehaviour
         return OVRInput.RawButton.None;
     }
 
+    private void Update()
+    {
+        UpdateHighlightRenderers();
+    }
+
     private void FixedUpdate()
     {
         if (canInteract)
@@ -249,6 +254,9 @@ public class Interactable : MonoBehaviour
         {
             if (!hands.Contains(other.transform))
                 hands.Add(other.transform);
+
+            CreateHighlightRenderers();
+            UpdateHighlightRenderers();
 
             StopAllCoroutines();
             StartCoroutine(CheckForClosestHand(0.1f));

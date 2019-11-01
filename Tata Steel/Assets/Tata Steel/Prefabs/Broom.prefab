@@ -104,6 +104,9 @@ GameObject:
   - component: {fileID: 2166759499172850788}
   - component: {fileID: 6587451815879444348}
   - component: {fileID: 6587451815879444337}
+  - component: {fileID: 739782582}
+  - component: {fileID: 739782580}
+  - component: {fileID: 739782581}
   m_Layer: 0
   m_Name: Broom
   m_TagString: Untagged
@@ -118,9 +121,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2903336938900577911}
-  m_LocalRotation: {x: -0.052972972, y: -0, z: -0, w: 0.99859595}
+  m_LocalRotation: {x: -0.052972067, y: 0, z: 0, w: 0.998596}
   m_LocalPosition: {x: 0, y: 0.50513136, z: 0.213}
-  m_LocalScale: {x: 20, y: 20, z: 20}
+  m_LocalScale: {x: 30, y: 30, z: 30}
   m_Children:
   - {fileID: 9222419649564166071}
   - {fileID: 3909359784555237224}
@@ -135,9 +138,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2903336938900577911}
   serializedVersion: 2
-  m_Mass: 5
+  m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 1
+  m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -155,19 +158,102 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60c7fd26c8338c447b754fa35fefb408, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonToPress: 0
-  interactionType: 0
+  buttonToPress: 335544320
+  interactionType: 1
   onStartInteraction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 739782581}
+        m_MethodName: OnInteractionStart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 739782580}
+        m_MethodName: AddFeedback
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  whileInteracting:
     m_PersistentCalls:
       m_Calls: []
   onEndInteraction:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 739782581}
+        m_MethodName: OnInteractionEnd
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   continueOutOfRange: 0
   outlineMaterial: {fileID: 2100000, guid: 72bbc9b4c7f17b845a7c325593461a63, type: 2}
   renderers:
   - {fileID: 5803238988528550581}
   - {fileID: 4121250227537021147}
+--- !u!65 &739782582
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2903336938900577911}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0011718239, y: 0.03204962, z: 0.0011485569}
+  m_Center: {x: 0.0014627719, y: 0.022977006, z: 0.00006599528}
+--- !u!114 &739782580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2903336938900577911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cb7df4ac590c1349ba69563f0adb8d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frequency:
+    low: 160
+    medium: 330
+    high: 500
+  amplitude: 0.2
+  fadeOutFeedback: 1
+  fadeTime: 0.5
+--- !u!114 &739782581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2903336938900577911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52227083dc2cade498fc72ee779aa9af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  makeKinematicOnGrab: 1
+  lockRotationOnGrab: 0
+  snapPosition: 0
 --- !u!1 &5428340858919056877
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,9 +5,9 @@ using UnityEngine;
 [RequireComponent(typeof(Interactable), typeof(Rigidbody))]
 public abstract class Interaction : MonoBehaviour
 {
-    protected Interactable interactable;
-    protected Rigidbody rb;
-    protected Transform initialAttachPoint;
+    protected Interactable interactable { get; private set; } = null;
+    protected Rigidbody rb { get; private set; } = null;
+    protected Transform initialAttachPoint { get; private set; } = null;
 
     protected bool isInteracting
     {
@@ -33,7 +33,7 @@ public abstract class Interaction : MonoBehaviour
     public virtual void OnInteractionStart()
     {
         //Create an empty object at the position of the hand as soon as you start interacting with the object.
-        //Used to calculate the distance traveled and calculate the rotation.
+        //Used to calculate the distance traveled and calculate the rotation as well as the offset while grabbing.
         if (initialAttachPoint == null)
         {
             initialAttachPoint = new GameObject(string.Format("[{0}] InitialAttachPoint", this.gameObject.name)).transform;

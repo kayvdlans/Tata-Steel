@@ -23,13 +23,13 @@ public class TemperatureControl : MonoBehaviour
         StartCoroutine(UpdateGraphVisual(graphUpdateInterval));
     }
 
-    private void Update()
+    /*private void Update()
     {
         if (Input.GetKeyDown(KeyCode.UpArrow))
             UpdateTemperature(1);
         if (Input.GetKeyDown(KeyCode.DownArrow))
             UpdateTemperature(-1);
-    }
+    }*/
 
     public void UpdateTemperature(int change) 
     {

@@ -8,15 +8,21 @@ public class Objectives
     public bool isActive;
 
     public string objective;
-    public string progress;
     public int reward;
 
     public int requiredAmount;
     public int currentAmount;
 
+
+
     public bool IsReached()
     {
         return (currentAmount >= requiredAmount);
 
+    }
+
+    public void AddCurrent()
+    {
+        currentAmount++;
     }
 }

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class QuestForDoor1 : MonoBehaviour
 {
+
+    public ObjectiveDispencer objectivesDis;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,8 +17,14 @@ public class QuestForDoor1 : MonoBehaviour
     {
         
     }
-    void PickUP()
+    public void PickUP()
     {
+        objectivesDis.objectives[0].AddCurrent();
+
+    }
+    public void Drop()
+    {
+        objectivesDis.objectives[1].AddCurrent();
 
     }
 }

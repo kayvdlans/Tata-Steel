@@ -67,14 +67,7 @@ public class InteractionGrab : Interaction
         rb.constraints = initialConstraints;
 
         //TODO: calculate velocity yourself instead of OVR, since it doesn't work too well.
-        OVRPose localPose = new OVRPose 
-        { 
-            position = OVRInput.GetLocalControllerPosition(interactable.controller), 
-            orientation = OVRInput.GetLocalControllerRotation(interactable.controller) 
-        };
-        OVRPose trackingSpace = transform.ToOVRPose() * localPose.Inverse();
-        
-        rb.velocity = trackingSpace.orientation * OVRInput.GetLocalControllerVelocity(interactable.controller);
-        rb.angularVelocity = trackingSpace.orientation * OVRInput.GetLocalControllerAngularVelocity(interactable.controller);
+        rb.velocity = OVRInput.GetLocalControllerVelocity(interactable.controller);
+        rb.angularVelocity = OVRInput.GetLocalControllerAngularVelocity(interactable.controller) *  Mathf.Deg2Rad;
     }
 }

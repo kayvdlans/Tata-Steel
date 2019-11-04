@@ -3568,7 +3568,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60c7fd26c8338c447b754fa35fefb408, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonToPress: 335544320
+  buttonToPress: 1007618827
   interactionType: 0
   onStartInteraction:
     m_PersistentCalls:
@@ -4793,6 +4793,11 @@ PrefabInstance:
       propertyPath: onRequirementsMet.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2134763806}
+    - target: {fileID: 6597958921523574874, guid: 24677abdc47b5e44a893be9f6e4afb9b,
+        type: 3}
+      propertyPath: onRequirementsMet.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_IntArgument
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 6597958921563121197, guid: 24677abdc47b5e44a893be9f6e4afb9b,
         type: 3}
       propertyPath: go

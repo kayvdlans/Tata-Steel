@@ -12,14 +12,11 @@ public class finalExamObjective : MonoBehaviour
 
     public void Update()
     {
-        if(pressure.currentValue>=pressure.bounds.y)
-        {
-            objectivesDis.objectives[1].AddCurrent();
-        }
-
+            objectivesDis.objectives[1].currentAmount = pressure.currentValue;
+     
         if (flip.CurrentlyTurnedOn == false)
         {
-            objectivesDis.objectives[2].AddCurrent();
+            objectivesDis.objectives[3].AddCurrent();
         }
             objectivesDis.objectives[2].currentAmount = tempCon.CurrentTemperature;
         

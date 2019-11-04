@@ -68,14 +68,12 @@ public class ObjectiveDispencer : MonoBehaviour
                 if(doneText.Count > 0)
                 doneText[i].text = "Af: Nee";
                 newBool = false;
-                Debug.Log(objectives[i].IsReached());
             }
          
         }
             if (newBool)
             {
                 openedDoors.OpenDoorByIndex(doorIndex);
-                Debug.Log("checknewBool");
             }
         
     }

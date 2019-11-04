@@ -43,15 +43,20 @@ public class Drainivalve : MonoBehaviour
 
     IEnumerator CheckIfTempPlus()
     {
-        while (CurrentlyTurnedOn)
-        {
-            yield return new WaitForSeconds (1);
-            AddTemp();
-        }
-        while (CurrentlyTurnedOn==false && tempCon.CurrentTemperature >= 15)
+        while (true)
         {
             yield return new WaitForSeconds(1);
-            LowerTemp();
+
+            if (CurrentlyTurnedOn)
+            {
+                AddTemp();
+                Debug.Log("Increasing");
+            }
+            if (CurrentlyTurnedOn == false && tempCon.CurrentTemperature >= 15)
+            {
+                LowerTemp();
+                Debug.Log("Decreasing");
+            }
         }
     }
 

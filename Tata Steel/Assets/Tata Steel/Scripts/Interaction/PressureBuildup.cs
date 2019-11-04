@@ -6,10 +6,10 @@ public class PressureBuildup : MonoBehaviour
     [SerializeField] private Openable gate;
     [SerializeField] private PressureMeter meter;
 
-    [SerializeField] private Vector2 bounds;
-    [SerializeField] private float currentValue;
+    [SerializeField] public Vector2 bounds;
+    [SerializeField] public float currentValue;
 
-    private Interactable valveInteractable;
+    private Interactable valveInteractable;    
 
     public float CurrentValue { get => currentValue; }
 

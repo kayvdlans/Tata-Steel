@@ -10,8 +10,8 @@ public class Objectives
     public string objective;
     public int reward;
 
-    public int requiredAmount;
-    public int currentAmount;
+    public float requiredAmount;
+    public float currentAmount;
 
 
 

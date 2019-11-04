@@ -7,17 +7,16 @@ public class TemperatureControl : MonoBehaviour
     [SerializeField] private Window_Graph temperatureGraph = null;
     [SerializeField] private float graphUpdateInterval = 1f;
     [Space]
-    [SerializeField] private int baseTemperature = 50;
+    [SerializeField] public float baseTemperature = 50;
     [SerializeField] private bool lockTemperatureBetweenBounds = false;
     [SerializeField] private Vector2Int temperatureBounds = new Vector2Int(0, 100);
-
-    public int BaseTemperature { get { return baseTemperature; } }
-    public int CurrentTemperature { get; private set; } = 0;
+    
+    public int CurrentTemperature { get;  set; } = 15;
 
     private void Start()
     {
         CurrentTemperature = lockTemperatureBetweenBounds ? 
-            MathHelper.ConfineToBounds(BaseTemperature, temperatureBounds) : BaseTemperature;
+            MathHelper.ConfineToBounds((int)baseTemperature, temperatureBounds) : (int)baseTemperature;
 
         temperatureGraph.GraphValues.Clear();
         StartCoroutine(UpdateGraphVisual(graphUpdateInterval));

@@ -79,7 +79,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonToPress: 335544320
-  interactionType: 0
+  interactionType: 1
   onStartInteraction:
     m_PersistentCalls:
       m_Calls:

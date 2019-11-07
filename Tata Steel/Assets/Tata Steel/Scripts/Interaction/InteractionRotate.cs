@@ -133,7 +133,7 @@ public class InteractionRotate : Interaction
         }
     }
 
-    public override void OnInteractionStart()
+    protected override void OnInteractionStart()
     {
         base.OnInteractionStart();
 
@@ -141,7 +141,7 @@ public class InteractionRotate : Interaction
             rb.constraints = RigidbodyConstraints.FreezePosition | rotationConstraints;
     }
 
-    public override void OnInteractionEnd()
+    protected override void OnInteractionEnd()
     {
         base.OnInteractionEnd();
 

@@ -23,6 +23,9 @@ public abstract class Interaction : MonoBehaviour
     protected void Start()
     {
         interactable = GetComponent<Interactable>();
+        interactable.OnStartInteraction.AddListener(OnInteractionStart);
+        interactable.OnEndInteraction.AddListener(OnInteractionEnd);
+
         rb = GetComponent<Rigidbody>();
 
         Initialize();
@@ -30,7 +33,7 @@ public abstract class Interaction : MonoBehaviour
 
     protected abstract void Initialize();
 
-    public virtual void OnInteractionStart()
+    protected virtual void OnInteractionStart()
     {
         //Create an empty object at the position of the hand as soon as you start interacting with the object.
         //Used to calculate the distance traveled and calculate the rotation as well as the offset while grabbing.
@@ -44,7 +47,7 @@ public abstract class Interaction : MonoBehaviour
         }
     }
 
-    public virtual void OnInteractionEnd()
+    protected virtual void OnInteractionEnd()
     {
         if (initialAttachPoint != null)
             Destroy(initialAttachPoint.gameObject);

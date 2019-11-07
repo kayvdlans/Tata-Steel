@@ -32,7 +32,7 @@ public class InteractionGrab : Interaction
         }
     }
 
-    public override void OnInteractionStart()
+    protected override void OnInteractionStart()
     {
         base.OnInteractionStart();
 
@@ -57,7 +57,7 @@ public class InteractionGrab : Interaction
 
     }
 
-    public override void OnInteractionEnd()
+    protected override void OnInteractionEnd()
     {
         transform.SetParent(initialParent);
 

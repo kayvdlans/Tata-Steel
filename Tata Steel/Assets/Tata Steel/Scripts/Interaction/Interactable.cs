@@ -7,10 +7,9 @@ using UnityEngine.Events;
 
 public class Interactable : MonoBehaviour
 {
-    [Serializable]
-    private struct InputButton
+    private struct ButtonCombination
     {
-        public InputButton(OVRInput.RawButton left, OVRInput.RawButton right)
+        public ButtonCombination(OVRInput.RawButton left, OVRInput.RawButton right)
         {
             Left = left;
             Right = right;
@@ -18,6 +17,13 @@ public class Interactable : MonoBehaviour
 
         public OVRInput.RawButton Left { get; private set; }
         public OVRInput.RawButton Right { get; private set; }
+    }
+
+    public enum HandMode
+    {
+        Both,
+        LeftOnly,
+        RightOnly
     }
 
     public enum InteractionType
@@ -40,6 +46,7 @@ public class Interactable : MonoBehaviour
     }
 
     [SerializeField] private SharedInputButton buttonToPress;
+    [SerializeField] private HandMode handMode;
     [SerializeField] private InteractionType interactionType;
     [SerializeField] private UnityEvent onStartInteraction;
     [SerializeField] private UnityEvent whileInteracting;
@@ -50,7 +57,9 @@ public class Interactable : MonoBehaviour
 
     private List<Material[]> originalMaterials = new List<Material[]>();  
     private int materialState = 0; //0 for not interacting, 1 for interacting
+    private List<string> buttonNames;
     private OVRInput.RawButton lastInput = OVRInput.RawButton.None;
+
 
     public bool CanInteract { get; set; } = false;
 
@@ -58,15 +67,19 @@ public class Interactable : MonoBehaviour
 
     public Hand ClosestHand { get; set; } = null;
 
+    public UnityEvent OnStartInteraction { get { return onStartInteraction; } }
+
+    public UnityEvent OnEndInteraction { get { return onEndInteraction; } }
+
     public OVRInput.Controller Controller { get; set; } = OVRInput.Controller.None;
 
-    private Dictionary<SharedInputButton, InputButton> sharedInputLinks = new Dictionary<SharedInputButton, InputButton>()
+    private Dictionary<SharedInputButton, ButtonCombination> sharedInputLinks = new Dictionary<SharedInputButton, ButtonCombination>()
     {
-        { SharedInputButton.AX, new InputButton(OVRInput.RawButton.A, OVRInput.RawButton.X) },
-        { SharedInputButton.BY, new InputButton(OVRInput.RawButton.B, OVRInput.RawButton.Y) },
-        { SharedInputButton.HandTriggers, new InputButton(OVRInput.RawButton.LHandTrigger, OVRInput.RawButton.RHandTrigger) },
-        { SharedInputButton.IndexTriggers, new InputButton(OVRInput.RawButton.LIndexTrigger, OVRInput.RawButton.RIndexTrigger) },
-        { SharedInputButton.Shoulders, new InputButton(OVRInput.RawButton.LShoulder, OVRInput.RawButton.RShoulder) }
+        { SharedInputButton.AX, new ButtonCombination(OVRInput.RawButton.A, OVRInput.RawButton.X) },
+        { SharedInputButton.BY, new ButtonCombination(OVRInput.RawButton.B, OVRInput.RawButton.Y) },
+        { SharedInputButton.HandTriggers, new ButtonCombination(OVRInput.RawButton.LHandTrigger, OVRInput.RawButton.RHandTrigger) },
+        { SharedInputButton.IndexTriggers, new ButtonCombination(OVRInput.RawButton.LIndexTrigger, OVRInput.RawButton.RIndexTrigger) },
+        { SharedInputButton.Shoulders, new ButtonCombination(OVRInput.RawButton.LShoulder, OVRInput.RawButton.RShoulder) }
     };
 
     private void Start()
@@ -77,37 +90,40 @@ public class Interactable : MonoBehaviour
 
     private bool InputValid()
     {
-        List<string> buttons = new List<string>();
-        char[] b = buttonToPress.ToString().ToCharArray();
-        int lastIndex = 0;
-
-        for (int i = 0; i < b.Length; i++)
+        if (buttonNames == null)
         {
-            if (b[i] == ',')
+            buttonNames = new List<string>();
+            char[] b = buttonToPress.ToString().ToCharArray();
+            int lastIndex = 0;
+
+            for (int i = 0; i < b.Length; i++)
             {
-                string s = "";
-                for (int j = lastIndex; j < i; j++)
+                if (b[i] == ',')
                 {
-                    s += b[j];
+                    string s = "";
+                    for (int j = lastIndex; j < i; j++)
+                    {
+                        s += b[j];
+                    }
+
+                    buttonNames.Add(s);
+
+                    lastIndex = i + 2;
                 }
-
-                buttons.Add(s);
-
-                lastIndex = i + 2;
             }
+
+            string last = "";
+            for (int i = lastIndex; i < b.Length; i++)
+            {
+                last += b[i];
+            }
+            buttonNames.Add(last);
         }
 
-        string last = "";
-        for (int i = lastIndex; i < b.Length; i++)
-        {
-            last += b[i];
-        }
-        buttons.Add(last);
-
-        if (Controller == OVRInput.Controller.LTouch)
-            return CheckForInputFromButtonNames(buttons, true);
-        else if (Controller == OVRInput.Controller.RTouch)
-            return CheckForInputFromButtonNames(buttons, false);
+        if (Controller == OVRInput.Controller.LTouch && handMode != HandMode.RightOnly)
+            return CheckForInputFromButtonNames(buttonNames, true);
+        else if (Controller == OVRInput.Controller.RTouch && handMode != HandMode.LeftOnly)
+            return CheckForInputFromButtonNames(buttonNames, false);
 
         return false;   
     }
@@ -116,7 +132,7 @@ public class Interactable : MonoBehaviour
     {
         for (int i = 0; i < buttons.Count; i++)
         {
-            InputButton input = sharedInputLinks[GetButtonByName(buttons[i])];
+            ButtonCombination input = sharedInputLinks[GetButtonByName(buttons[i])];
             OVRInput.RawButton button = left ? input.Left : input.Right;
 
             switch (interactionType)

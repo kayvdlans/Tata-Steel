@@ -5,7 +5,6 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
-[RequireComponent(typeof(MeshFilter), typeof(MeshRenderer))]
 public class Interactable : MonoBehaviour
 {
     public enum InteractionType
@@ -33,10 +32,10 @@ public class Interactable : MonoBehaviour
     [SerializeField] private UnityEvent onStartInteraction;
     [SerializeField] private UnityEvent whileInteracting;
     [SerializeField] private UnityEvent onEndInteraction;
+    [SerializeField] private List<Renderer> renderers;
     [SerializeField] private bool continueOutOfRange;
 
-    private Material[] originalMaterials;
-    private Renderer r;
+    private List<Material[]> originalMaterials = new List<Material[]>();  
     private int materialState = 0; //0 for not interacting, 1 for interacting
 
     public bool CanInteract { get; set; } = false;
@@ -49,24 +48,9 @@ public class Interactable : MonoBehaviour
 
     private void Start()
     {
-        MeshFilter[] children = transform.GetComponentsInChildren<MeshFilter>();
-        children = children.Where(val => val.CompareTag("SelectionMaterial")).ToArray();
-        CombineInstance[] combine = new CombineInstance[children.Length];
-
-        for (int i = 0; i < combine.Length; i++)
-        {
-            combine[i].mesh = children[i].sharedMesh;
-            combine[i].transform = children[i].transform.localToWorldMatrix;
-            children[i].gameObject.SetActive(false);
-        }
-
-        Mesh mesh = new Mesh();
-        mesh.CombineMeshes(combine);
-        GetComponent<MeshFilter>().mesh = mesh;
-
-        r = GetComponent<Renderer>();
-        //originalMaterials = new Material[r.sharedMaterials.Length];
-        originalMaterials = r.sharedMaterials;
+        for (int i = 0; i < renderers.Count; i++)
+            originalMaterials.Add(renderers[i].materials);
+        //originalMaterials = r.sharedMaterials;
     }
 
     private bool InputValid()
@@ -165,13 +149,17 @@ public class Interactable : MonoBehaviour
     {
         if (!CanInteract && materialState != 0)
         {
-            r.sharedMaterials = originalMaterials;
+            for (int i = 0; i < renderers.Count; i++)
+                renderers[i].materials = originalMaterials[i];
+
             materialState = 0;
         }
         else if (CanInteract && materialState != 1)
         {
-            for (int i = 0; i < r.sharedMaterials.Length; i++)
-                r.sharedMaterials[i] = ClosestHand.SelectionMaterial;
+            for (int i = 0; i < renderers.Count; i++)
+                for (int j = 0; j < renderers[i].materials.Length; j++)
+                    renderers[i].materials[j] = ClosestHand.SelectionMaterial;
+
             materialState = 1;
         }
     }

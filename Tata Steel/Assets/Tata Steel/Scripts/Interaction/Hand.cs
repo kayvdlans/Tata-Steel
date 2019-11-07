@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Hand : MonoBehaviour
 {
-    private float waitTime = 0.2f;
+    private const float kInteractableCheckTime = 0.2f;
 
     public OVRInput.Controller Controller { get; private set; }
     public bool IsInteracting { get; set; }
@@ -18,7 +18,7 @@ public class Hand : MonoBehaviour
         
         Controller = left ? OVRInput.Controller.LTouch : OVRInput.Controller.RTouch;
 
-        Rigidbody rb =gameObject.AddComponent<Rigidbody>();
+        Rigidbody rb = gameObject.AddComponent<Rigidbody>();
         rb.useGravity = false;
 
         Collider c = GetComponent<Collider>();
@@ -30,7 +30,7 @@ public class Hand : MonoBehaviour
         (c as BoxCollider).center = new Vector3(0, 0, 0);
         (c as BoxCollider).size = new Vector3(0.1f, 0.1f, 0.1f);
 
-        StartCoroutine(CheckForClosestInteractable(waitTime));
+        StartCoroutine(CheckForClosestInteractable(kInteractableCheckTime));
     }
 
     private IEnumerator CheckForClosestInteractable(float waitTime)
@@ -74,7 +74,7 @@ public class Hand : MonoBehaviour
         { 
             interactable.CanInteract = false;
             interactable.ClosestHand = this;
-            interactable.Controller = OVRInput.Controller.LTouch;
+            interactable.Controller = Controller;
 
             interactables.Add(interactable);
         }

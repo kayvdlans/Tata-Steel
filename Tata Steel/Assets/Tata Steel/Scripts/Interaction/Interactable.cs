@@ -27,6 +27,7 @@ public class Interactable : MonoBehaviour
         OnRelease
     }
 
+    [Flags]
     public enum SharedInputButton
     {
         None = 0,

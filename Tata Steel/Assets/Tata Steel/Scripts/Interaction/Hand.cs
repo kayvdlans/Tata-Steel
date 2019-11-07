@@ -4,29 +4,31 @@ using UnityEngine;
 
 public class Hand : MonoBehaviour
 {
-    [SerializeField] private Material selectionMaterial;
-    [SerializeField] private float waitTime;
+    private float waitTime = 0.2f;
 
     public OVRInput.Controller Controller { get; private set; }
     public bool IsInteracting { get; set; }
-    public Material SelectionMaterial { get { return selectionMaterial; } }
 
     private List<Interactable> interactables = new List<Interactable>();
     private Interactable closestInteractable = null;
 
-    private void Awake()
+    private void Start ()
     {
         bool left = GetComponent<OvrAvatarHand>().isLeftHand;
         
         Controller = left ? OVRInput.Controller.LTouch : OVRInput.Controller.RTouch;
 
+        Rigidbody rb =gameObject.AddComponent<Rigidbody>();
+        rb.useGravity = false;
+
         Collider c = GetComponent<Collider>();
         if (c) DestroyImmediate(c);
 
         c = gameObject.AddComponent<BoxCollider>();
+        c.isTrigger = true;
 
-        (c as BoxCollider).center = new Vector3(-0.025f, -0.025f, -0.025f);
-        (c as BoxCollider).size = new Vector3(0.05f, 0.05f, 0.05f);
+        (c as BoxCollider).center = new Vector3(0, 0, 0);
+        (c as BoxCollider).size = new Vector3(0.1f, 0.1f, 0.1f);
 
         StartCoroutine(CheckForClosestInteractable(waitTime));
     }
@@ -67,7 +69,7 @@ public class Hand : MonoBehaviour
     {
         Interactable interactable = other.GetComponent<Interactable>();
 
-        if (interactable &&
+        if (interactable != null &&
             !interactables.Contains(interactable))
         { 
             interactable.CanInteract = false;
@@ -82,7 +84,7 @@ public class Hand : MonoBehaviour
     {
         Interactable interactable = other.GetComponent<Interactable>();
 
-        if (interactable &&
+        if (interactable != null &&
             interactables.Contains(interactable))
         {
             if (interactable.Controller.Equals(Controller))

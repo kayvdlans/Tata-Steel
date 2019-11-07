@@ -4370,8 +4370,13 @@ PrefabInstance:
     - target: {fileID: 2329083878802884878, guid: 8dc319cd5913a19498221e1bac0d7ef6,
         type: 3}
       propertyPath: buttonToPress
-      value: -1136719093
+      value: 335544320
       objectReference: {fileID: 0}
+    - target: {fileID: 2329083878802884878, guid: 8dc319cd5913a19498221e1bac0d7ef6,
+        type: 3}
+      propertyPath: selectionMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 72bbc9b4c7f17b845a7c325593461a63, type: 2}
     - target: {fileID: 7753530302756172487, guid: 8dc319cd5913a19498221e1bac0d7ef6,
         type: 3}
       propertyPath: m_StaticEditorFlags

@@ -14,26 +14,15 @@ public class Interactable : MonoBehaviour
         OnRelease
     }
 
-    public enum InputButtons
-    {
-        None = 0,
-        AX = OVRInput.RawButton.A | OVRInput.RawButton.X,
-        BY = OVRInput.RawButton.B | OVRInput.RawButton.Y,
-        Shoulders = OVRInput.RawButton.LShoulder | OVRInput.RawButton.RShoulder,
-        IndexTriggers = OVRInput.RawButton.LIndexTrigger | OVRInput.RawButton.RIndexTrigger,
-        HandTriggers = OVRInput.RawButton.LHandTrigger | OVRInput.RawButton.RHandTrigger,
-        Thumbsticks = OVRInput.RawButton.LThumbstick | OVRInput.RawButton.RThumbstick,
-        Any = ~None
-    }
-
     //Dont use mixed, since it doesnt work well in this scenario, just use different instances
-    [SerializeField] private InputButtons buttonToPress;
+    [SerializeField] private OVRInput.RawButton buttonToPress;
     [SerializeField] private InteractionType interactionType;
     [SerializeField] private UnityEvent onStartInteraction;
     [SerializeField] private UnityEvent whileInteracting;
     [SerializeField] private UnityEvent onEndInteraction;
     [SerializeField] private List<Renderer> renderers;
     [SerializeField] private bool continueOutOfRange;
+    [SerializeField] private Material selectionMaterial;
 
     private List<Material[]> originalMaterials = new List<Material[]>();  
     private int materialState = 0; //0 for not interacting, 1 for interacting
@@ -113,15 +102,15 @@ public class Interactable : MonoBehaviour
             switch (interactionType)
             {
                 case InteractionType.OnHold:
-                    if (OVRInput.Get((OVRInput.RawButton)GetButtonByName(buttons[i])))
+                    if (OVRInput.Get(GetButtonByName(buttons[i])))
                         return true;
                     break;
                 case InteractionType.OnPress:
-                    if (OVRInput.GetDown((OVRInput.RawButton)GetButtonByName(buttons[i])))
+                    if (OVRInput.GetDown(GetButtonByName(buttons[i])))
                         return true;
                     break;
                 case InteractionType.OnRelease:
-                    if (OVRInput.GetUp((OVRInput.RawButton)GetButtonByName(buttons[i])))
+                    if (OVRInput.GetUp(GetButtonByName(buttons[i])))
                         return true;
                     break;
             }
@@ -130,19 +119,19 @@ public class Interactable : MonoBehaviour
         return false;
     }
 
-    private InputButtons GetButtonByName(string name)
+    private OVRInput.RawButton GetButtonByName(string name)
     {
-        Array t = Enum.GetValues(typeof(InputButtons));
+        Array t = Enum.GetValues(typeof(OVRInput.RawButton));
 
         for (int i = 0; i < t.Length; i++)
         {
             if (t.GetValue(i).ToString().Equals(name))
             {
-                return (InputButtons) t.GetValue(i);
+                return (OVRInput.RawButton) t.GetValue(i);
             }
         }
 
-        return InputButtons.None;
+        return OVRInput.RawButton.None;
     }
 
     private void Update()
@@ -157,8 +146,7 @@ public class Interactable : MonoBehaviour
         else if (CanInteract && materialState != 1)
         {
             for (int i = 0; i < renderers.Count; i++)
-                for (int j = 0; j < renderers[i].materials.Length; j++)
-                    renderers[i].materials[j] = ClosestHand.SelectionMaterial;
+                renderers[i].material = selectionMaterial;
 
             materialState = 1;
         }
@@ -182,12 +170,16 @@ public class Interactable : MonoBehaviour
                 }
 
                 IsInteracting = true;
-                ClosestHand.IsInteracting = true;
+
+                if (ClosestHand)
+                    ClosestHand.IsInteracting = true;
             }
             else if (IsInteracting)
             {
                 IsInteracting = false;
-                ClosestHand.IsInteracting = false;
+
+                if (ClosestHand)
+                    ClosestHand.IsInteracting = false;
                 onEndInteraction.Invoke();
             }
         }
@@ -198,10 +190,12 @@ public class Interactable : MonoBehaviour
                 whileInteracting.Invoke();
             }
 
-            if (!continueOutOfRange || !OVRInput.Get((OVRInput.RawButton)buttonToPress))
+            if (!continueOutOfRange || !OVRInput.Get(buttonToPress))
             {
                 IsInteracting = false;
-                ClosestHand.IsInteracting = false;
+                
+                if (ClosestHand)
+                    ClosestHand.IsInteracting = false;
                 onEndInteraction.Invoke();
             }
         }

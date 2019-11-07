@@ -40,7 +40,7 @@ public class InteractionGrab : Interaction
 
         initialRotation = transform.rotation;
 
-        transform.SetParent(interactable.closestHand);
+        transform.SetParent(interactable.ClosestHand.transform);
         transform.localPosition = Vector3.zero;
 
         if (!snapPosition)
@@ -67,7 +67,7 @@ public class InteractionGrab : Interaction
         rb.constraints = initialConstraints;
 
         //TODO: calculate velocity yourself instead of OVR, since it doesn't work too well.
-        rb.velocity = OVRInput.GetLocalControllerVelocity(interactable.controller);
-        rb.angularVelocity = OVRInput.GetLocalControllerAngularVelocity(interactable.controller) *  Mathf.Deg2Rad;
+        rb.velocity = OVRInput.GetLocalControllerVelocity(interactable.Controller);
+        rb.angularVelocity = OVRInput.GetLocalControllerAngularVelocity(interactable.Controller) *  Mathf.Deg2Rad;
     }
 }

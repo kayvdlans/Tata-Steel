@@ -16,7 +16,7 @@ public abstract class Interaction : MonoBehaviour
             if (!interactable)
                 return false;
 
-            return interactable.isInteracting && interactable.closestHand;
+            return interactable.IsInteracting && interactable.ClosestHand;
         }
     }
 
@@ -37,8 +37,8 @@ public abstract class Interaction : MonoBehaviour
         if (initialAttachPoint == null)
         {
             initialAttachPoint = new GameObject(string.Format("[{0}] InitialAttachPoint", this.gameObject.name)).transform;
-            initialAttachPoint.position = interactable.closestHand.transform.position;
-            initialAttachPoint.rotation = interactable.closestHand.transform.rotation;
+            initialAttachPoint.position = interactable.ClosestHand.transform.position;
+            initialAttachPoint.rotation = interactable.ClosestHand.transform.rotation;
             initialAttachPoint.localScale = Vector3.one * 0.25f;
             initialAttachPoint.parent = transform;
         }

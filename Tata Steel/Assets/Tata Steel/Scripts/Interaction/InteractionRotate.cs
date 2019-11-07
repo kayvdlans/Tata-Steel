@@ -54,7 +54,7 @@ public class InteractionRotate : Interaction
         {
             //Checks the change in position from the initial point the player started interacting 
             //with the object and the current position of the hand.
-            Vector3 positionDelta = (interactable.closestHand.transform.position - initialAttachPoint.position) * DELTA_MAGIC;
+            Vector3 positionDelta = (interactable.ClosestHand.transform.position - initialAttachPoint.position) * DELTA_MAGIC;
 
             //Add force based on the change of position.
             rb.AddForceAtPosition(positionDelta, initialAttachPoint.position, ForceMode.VelocityChange);

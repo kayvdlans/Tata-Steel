@@ -40,7 +40,7 @@ public class HapticFeedback : MonoBehaviour
 
     public void AddFeedback(int strength)
     {
-        controller = interactable.controller;
+        controller = interactable.Controller;
 
         float feedbackFrequency = MathHelper.NormalizeValueBetweenBounds(strength == (int)FeedbackFrequency.Low 
             ? this.frequency.Low : strength == (int)FeedbackFrequency.Medium 

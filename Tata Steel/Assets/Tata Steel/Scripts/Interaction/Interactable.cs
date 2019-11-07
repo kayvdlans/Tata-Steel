@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
+[RequireComponent(typeof(MeshFilter), typeof(MeshRenderer))]
 public class Interactable : MonoBehaviour
 {
     public enum InteractionType
@@ -13,43 +15,58 @@ public class Interactable : MonoBehaviour
         OnRelease
     }
 
+    public enum InputButtons
+    {
+        None = 0,
+        AX = OVRInput.RawButton.A | OVRInput.RawButton.X,
+        BY = OVRInput.RawButton.B | OVRInput.RawButton.Y,
+        Shoulders = OVRInput.RawButton.LShoulder | OVRInput.RawButton.RShoulder,
+        IndexTriggers = OVRInput.RawButton.LIndexTrigger | OVRInput.RawButton.RIndexTrigger,
+        HandTriggers = OVRInput.RawButton.LHandTrigger | OVRInput.RawButton.RHandTrigger,
+        Thumbsticks = OVRInput.RawButton.LThumbstick | OVRInput.RawButton.RThumbstick,
+        Any = ~None
+    }
+
     //Dont use mixed, since it doesnt work well in this scenario, just use different instances
-    [SerializeField] private OVRInput.RawButton buttonToPress;
+    [SerializeField] private InputButtons buttonToPress;
     [SerializeField] private InteractionType interactionType;
     [SerializeField] private UnityEvent onStartInteraction;
     [SerializeField] private UnityEvent whileInteracting;
     [SerializeField] private UnityEvent onEndInteraction;
     [SerializeField] private bool continueOutOfRange;
 
-    //[SerializeField] private Material material;
-    [SerializeField] private Material outlineMaterial;
+    private Material[] originalMaterials;
+    private Renderer r;
+    private int materialState = 0; //0 for not interacting, 1 for interacting
 
-    [SerializeField] private List<Renderer> renderers;
+    public bool CanInteract { get; set; } = false;
 
-    private List<Material[]> originalMaterials = new List<Material[]>();
-    private bool canInteract = false;
+    public bool IsInteracting { get; private set; }
 
-    public bool isInteracting { get; private set; }
+    public Hand ClosestHand { get; set; } = null;
 
-    public List<Transform> hands { get; private set; } = new List<Transform>();
-
-    public Transform closestHand { get; private set; } = null;
-
-    public OVRInput.Controller controller { get; private set; } = OVRInput.Controller.None;
-
-    private const float TIME_BETWEEN_HAND_CHECKS = 0.1f;
+    public OVRInput.Controller Controller { get; set; } = OVRInput.Controller.None;
 
     private void Start()
     {
-        if (renderers.Count != 0)
+        MeshFilter[] children = transform.GetComponentsInChildren<MeshFilter>();
+        children = children.Where(val => val.CompareTag("SelectionMaterial")).ToArray();
+        CombineInstance[] combine = new CombineInstance[children.Length];
+
+        for (int i = 0; i < combine.Length; i++)
         {
-            foreach (Renderer r in renderers)
-            {
-                originalMaterials.Add(r.materials);
-            }
+            combine[i].mesh = children[i].sharedMesh;
+            combine[i].transform = children[i].transform.localToWorldMatrix;
+            children[i].gameObject.SetActive(false);
         }
 
-        StartCoroutine(CheckForClosestHand(TIME_BETWEEN_HAND_CHECKS));
+        Mesh mesh = new Mesh();
+        mesh.CombineMeshes(combine);
+        GetComponent<MeshFilter>().mesh = mesh;
+
+        r = GetComponent<Renderer>();
+        //originalMaterials = new Material[r.sharedMaterials.Length];
+        originalMaterials = r.sharedMaterials;
     }
 
     private bool InputValid()
@@ -97,9 +114,9 @@ public class Interactable : MonoBehaviour
             else if (buttons[i] == "A" || buttons[i] == "B")
                 rightButtons.Add(buttons[i]);
 
-        if (controller == OVRInput.Controller.LTouch)
+        if (Controller == OVRInput.Controller.LTouch)
             return CheckForInputFromButtonNames(leftButtons);
-        else if (controller == OVRInput.Controller.RTouch)
+        else if (Controller == OVRInput.Controller.RTouch)
             return CheckForInputFromButtonNames(rightButtons);
 
         return false;   
@@ -112,15 +129,15 @@ public class Interactable : MonoBehaviour
             switch (interactionType)
             {
                 case InteractionType.OnHold:
-                    if (OVRInput.Get(GetButtonByName(buttons[i])))
+                    if (OVRInput.Get((OVRInput.RawButton)GetButtonByName(buttons[i])))
                         return true;
                     break;
                 case InteractionType.OnPress:
-                    if (OVRInput.GetDown(GetButtonByName(buttons[i])))
+                    if (OVRInput.GetDown((OVRInput.RawButton)GetButtonByName(buttons[i])))
                         return true;
                     break;
                 case InteractionType.OnRelease:
-                    if (OVRInput.GetUp(GetButtonByName(buttons[i])))
+                    if (OVRInput.GetUp((OVRInput.RawButton)GetButtonByName(buttons[i])))
                         return true;
                     break;
             }
@@ -129,132 +146,76 @@ public class Interactable : MonoBehaviour
         return false;
     }
 
-    private OVRInput.RawButton GetButtonByName(string name)
+    private InputButtons GetButtonByName(string name)
     {
-        Array t = Enum.GetValues(typeof(OVRInput.RawButton));
+        Array t = Enum.GetValues(typeof(InputButtons));
 
         for (int i = 0; i < t.Length; i++)
         {
             if (t.GetValue(i).ToString().Equals(name))
             {
-                return (OVRInput.RawButton) t.GetValue(i);
+                return (InputButtons) t.GetValue(i);
             }
         }
 
-        return OVRInput.RawButton.None;
+        return InputButtons.None;
+    }
+
+    private void Update()
+    {
+        if (!CanInteract && materialState != 0)
+        {
+            r.sharedMaterials = originalMaterials;
+            materialState = 0;
+        }
+        else if (CanInteract && materialState != 1)
+        {
+            for (int i = 0; i < r.sharedMaterials.Length; i++)
+                r.sharedMaterials[i] = ClosestHand.SelectionMaterial;
+            materialState = 1;
+        }
     }
 
     private void FixedUpdate()
     {
-        if (canInteract)
+        if (CanInteract)
         {
             if (InputValid())
             {
-                if (!isInteracting)
+                if (!IsInteracting)
                 {
                     onStartInteraction.Invoke();
                 }
 
                 //Make sure to not call while interacting in the first frame of interaction.
-                if (isInteracting && interactionType == InteractionType.OnHold)
+                if (IsInteracting && interactionType == InteractionType.OnHold)
                 {
                     whileInteracting.Invoke();
                 }
 
-                isInteracting = true;
+                IsInteracting = true;
+                ClosestHand.IsInteracting = true;
             }
-            else if (isInteracting)
+            else if (IsInteracting)
             {
-                isInteracting = false;
+                IsInteracting = false;
+                ClosestHand.IsInteracting = false;
                 onEndInteraction.Invoke();
             }
         }
-        else if (isInteracting)
+        else if (IsInteracting)
         {
             if (interactionType == InteractionType.OnHold)
             {
                 whileInteracting.Invoke();
             }
 
-            if (!continueOutOfRange || !OVRInput.Get(buttonToPress))
+            if (!continueOutOfRange || !OVRInput.Get((OVRInput.RawButton)buttonToPress))
             {
-                isInteracting = false;
+                IsInteracting = false;
+                ClosestHand.IsInteracting = false;
                 onEndInteraction.Invoke();
             }
-        }
-    }
-
-    //this will have to be replaced to a hand(s) script keeping track of objects instead of the other way around.
-    //if there are a lot of objects this will hit the performance quite a bit the way it is right now,
-    //even though it only gets called 10 times a second.
-    //This also does not account for different items being in reach of the hand which might become a problem in the future.
-    //We'll have to see though. I'm too depressed to change this right now.
-    private IEnumerator CheckForClosestHand(float time)
-    {
-        while (true)
-        {
-            if (hands == null || hands.Count == 0 || (!isInteracting && !canInteract))
-            {
-                closestHand = null;
-            }
-
-            if (hands != null && hands.Count > 0 && !isInteracting)
-            {
-                float closestDistance = float.MaxValue;
-
-                foreach (Transform hand in hands)
-                {
-                    float distance = Vector3.Distance(transform.position, hand.position);
-                    if (distance < closestDistance)
-                    {
-                        closestDistance = distance;
-                        closestHand = hand;
-                    }
-                }
-            }
-
-            if (closestHand != null)
-            {
-                foreach (Renderer r in renderers)
-                    r.material = outlineMaterial;
-                canInteract = true;
-
-                controller = closestHand.name == "LeftHand" ? OVRInput.Controller.LTouch : OVRInput.Controller.RTouch;
-            }
-            else
-            {
-                for (int i = 0; i < renderers.Count; i++)
-                    renderers[i].materials = originalMaterials[i];
-                canInteract = false;
-
-                //controller = OVRInput.Controller.None;
-            }
-
-            yield return new WaitForSeconds(time);
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("PlayerController"))
-        {
-            if (!hands.Contains(other.transform))
-                hands.Add(other.transform);
-
-            StopAllCoroutines();
-            StartCoroutine(CheckForClosestHand(0.1f));
-        }
-    }  
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("PlayerController"))
-        {
-            if (hands.Contains(other.transform))
-                hands.Remove(other.transform);
-
-            StopAllCoroutines();
-            StartCoroutine(CheckForClosestHand(0.1f));
         }
     }
 }

@@ -20,7 +20,7 @@ public class PressureBuildup : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (valveInteractable.isInteracting)
+        if (valveInteractable.IsInteracting)
         {
             gate.UpdateValue(valve.ActualAngle, bounds, ref currentValue);
             meter.UpdateAngle(MathHelper.NormalizeValueBetweenBounds(currentValue, bounds));

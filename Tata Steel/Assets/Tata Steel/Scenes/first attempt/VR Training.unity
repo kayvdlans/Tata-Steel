@@ -2010,6 +2010,25 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &1177293508 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7408886491102647126, guid: bac7460b005101a4b893885bd5839c83,
+    type: 3}
+  m_PrefabInstance: {fileID: 2098844430}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1177293515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1177293508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c70d9bdd1d94214faf0afe686ada8fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationAmount: 33.3
 --- !u!1001 &1215932887
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2679,7 +2698,7 @@ PrefabInstance:
     - target: {fileID: 7605513858158756699, guid: 463f6d1e0fb02804c8515495c8354507,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -43.79
+      value: -40.25
       objectReference: {fileID: 0}
     - target: {fileID: 7605513858158756699, guid: 463f6d1e0fb02804c8515495c8354507,
         type: 3}
@@ -3928,6 +3947,26 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 1.201
       objectReference: {fileID: 0}
+    - target: {fileID: 1580844919324559960, guid: bac7460b005101a4b893885bd5839c83,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1580844919324559962, guid: bac7460b005101a4b893885bd5839c83,
+        type: 3}
+      propertyPath: onStartInteraction.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1580844919324559962, guid: bac7460b005101a4b893885bd5839c83,
+        type: 3}
+      propertyPath: onEndInteraction.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1580844919324559962, guid: bac7460b005101a4b893885bd5839c83,
+        type: 3}
+      propertyPath: selectionMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 72bbc9b4c7f17b845a7c325593461a63, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bac7460b005101a4b893885bd5839c83, type: 3}
 --- !u!1001 &2102786803

@@ -159,13 +159,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonToPress: 335544320
+  handMode: 0
   interactionType: 1
   onStartInteraction:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 739782581}
-        m_MethodName: OnInteractionStart
-        m_Mode: 1
+      - m_Target: {fileID: 739782580}
+        m_MethodName: AddFeedback
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -174,9 +175,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 739782580}
-        m_MethodName: AddFeedback
-        m_Mode: 3
+      - m_Target: {fileID: 0}
+        m_MethodName: PickUP
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -191,8 +192,8 @@ MonoBehaviour:
   onEndInteraction:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 739782581}
-        m_MethodName: OnInteractionEnd
+      - m_Target: {fileID: 0}
+        m_MethodName: Drop
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -202,11 +203,11 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  continueOutOfRange: 0
-  outlineMaterial: {fileID: 2100000, guid: 72bbc9b4c7f17b845a7c325593461a63, type: 2}
   renderers:
   - {fileID: 5803238988528550581}
   - {fileID: 4121250227537021147}
+  selectionMaterial: {fileID: 2100000, guid: 72bbc9b4c7f17b845a7c325593461a63, type: 2}
+  continueOutOfRange: 0
 --- !u!65 &739782582
 BoxCollider:
   m_ObjectHideFlags: 0

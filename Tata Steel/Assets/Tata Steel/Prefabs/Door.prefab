@@ -47,9 +47,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cc5a393a7821154e88a5b24f5fe4496, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  openedDoors: {fileID: 11400000, guid: 32646fc291627334ebc81b811d90750e, type: 2}
-  index: 0
-  sceneName: TrainingRoom1
+  openedDoors: {fileID: 11400000, guid: 73e16e94645243d4297ce67b1fe60061, type: 2}
+  index: 4
+  sceneName: EntranceHall
   matClosed: {fileID: 2100000, guid: 39d0e2f3a134c3e4bb7055aded8c1434, type: 2}
   matOpen: {fileID: 2100000, guid: 84c2baf35777e5941a92737515e8a58e, type: 2}
   matObject: {fileID: 2606014329329574405}
@@ -68,6 +68,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonToPress: 335544320
+  handMode: 0
   interactionType: 0
   onStartInteraction:
     m_PersistentCalls:
@@ -90,13 +91,13 @@ MonoBehaviour:
   onEndInteraction:
     m_PersistentCalls:
       m_Calls: []
-  continueOutOfRange: 0
-  outlineMaterial: {fileID: 2100000, guid: 72bbc9b4c7f17b845a7c325593461a63, type: 2}
   renderers:
   - {fileID: 1640568677447266217}
   - {fileID: 4052783794040724557}
   - {fileID: 8263969277103174783}
   - {fileID: 9024257498907628364}
+  selectionMaterial: {fileID: 2100000, guid: 72bbc9b4c7f17b845a7c325593461a63, type: 2}
+  continueOutOfRange: 0
 --- !u!135 &6513518814621475162
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -122,7 +123,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24300002, guid: ec12f7772c03e4c4c9e4c2f1643595ad,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: c787a0d1f9b1b5547a0321d675e28911, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

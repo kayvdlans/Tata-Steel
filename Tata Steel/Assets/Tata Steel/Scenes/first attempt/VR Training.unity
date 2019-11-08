@@ -1672,8 +1672,13 @@ PrefabInstance:
     - target: {fileID: 2329083878802884878, guid: 8dc319cd5913a19498221e1bac0d7ef6,
         type: 3}
       propertyPath: buttonToPress
-      value: -1136719093
+      value: 335544320
       objectReference: {fileID: 0}
+    - target: {fileID: 2329083878802884878, guid: 8dc319cd5913a19498221e1bac0d7ef6,
+        type: 3}
+      propertyPath: selectionMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 72bbc9b4c7f17b845a7c325593461a63, type: 2}
     - target: {fileID: 7753530302756172487, guid: 8dc319cd5913a19498221e1bac0d7ef6,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -2225,64 +2230,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6587451815879444337, guid: 87173adf1545c0840be230842298ca56,
         type: 3}
-      propertyPath: onStartInteraction.m_PersistentCalls.m_Calls.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6587451815879444337, guid: 87173adf1545c0840be230842298ca56,
-        type: 3}
-      propertyPath: onEndInteraction.m_PersistentCalls.m_Calls.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6587451815879444337, guid: 87173adf1545c0840be230842298ca56,
-        type: 3}
-      propertyPath: onStartInteraction.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6587451815879444337, guid: 87173adf1545c0840be230842298ca56,
-        type: 3}
-      propertyPath: onStartInteraction.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6587451815879444337, guid: 87173adf1545c0840be230842298ca56,
-        type: 3}
-      propertyPath: onStartInteraction.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      propertyPath: onStartInteraction.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 107307197}
     - target: {fileID: 6587451815879444337, guid: 87173adf1545c0840be230842298ca56,
         type: 3}
-      propertyPath: onStartInteraction.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
-      value: PickUP
-      objectReference: {fileID: 0}
-    - target: {fileID: 6587451815879444337, guid: 87173adf1545c0840be230842298ca56,
-        type: 3}
-      propertyPath: onStartInteraction.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 6587451815879444337, guid: 87173adf1545c0840be230842298ca56,
-        type: 3}
-      propertyPath: onEndInteraction.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6587451815879444337, guid: 87173adf1545c0840be230842298ca56,
-        type: 3}
-      propertyPath: onEndInteraction.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6587451815879444337, guid: 87173adf1545c0840be230842298ca56,
-        type: 3}
-      propertyPath: onEndInteraction.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      propertyPath: onEndInteraction.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 107307197}
-    - target: {fileID: 6587451815879444337, guid: 87173adf1545c0840be230842298ca56,
-        type: 3}
-      propertyPath: onEndInteraction.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: Drop
-      objectReference: {fileID: 0}
-    - target: {fileID: 6587451815879444337, guid: 87173adf1545c0840be230842298ca56,
-        type: 3}
-      propertyPath: onEndInteraction.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87173adf1545c0840be230842298ca56, type: 3}
 --- !u!1 &1390022163
@@ -3987,22 +3942,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: DoorToStartArea
       objectReference: {fileID: 0}
-    - target: {fileID: 6513518814621475156, guid: d89735309f49a3543b5692a5413a6570,
-        type: 3}
-      propertyPath: index
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6513518814621475156, guid: d89735309f49a3543b5692a5413a6570,
-        type: 3}
-      propertyPath: openedDoors
-      value: 
-      objectReference: {fileID: 11400000, guid: 73e16e94645243d4297ce67b1fe60061,
-        type: 2}
-    - target: {fileID: 6513518814621475156, guid: d89735309f49a3543b5692a5413a6570,
-        type: 3}
-      propertyPath: sceneName
-      value: EntranceHall
-      objectReference: {fileID: 0}
     - target: {fileID: 6513518814621475159, guid: d89735309f49a3543b5692a5413a6570,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4057,15 +3996,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1053482678, guid: d89735309f49a3543b5692a5413a6570, type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6513518814621475157, guid: d89735309f49a3543b5692a5413a6570,
-        type: 3}
-      propertyPath: buttonToPress
-      value: -1136719093
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d89735309f49a3543b5692a5413a6570, type: 3}
@@ -4195,8 +4125,13 @@ PrefabInstance:
     - target: {fileID: 2329083878802884878, guid: 8dc319cd5913a19498221e1bac0d7ef6,
         type: 3}
       propertyPath: buttonToPress
-      value: -1136719093
+      value: 335544320
       objectReference: {fileID: 0}
+    - target: {fileID: 2329083878802884878, guid: 8dc319cd5913a19498221e1bac0d7ef6,
+        type: 3}
+      propertyPath: selectionMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 72bbc9b4c7f17b845a7c325593461a63, type: 2}
     - target: {fileID: 8368804253240456661, guid: 8dc319cd5913a19498221e1bac0d7ef6,
         type: 3}
       propertyPath: m_StaticEditorFlags

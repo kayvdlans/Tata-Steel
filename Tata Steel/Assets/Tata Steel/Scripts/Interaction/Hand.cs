@@ -28,7 +28,7 @@ public class Hand : MonoBehaviour
         c.isTrigger = true;
 
         (c as BoxCollider).center = new Vector3(0, 0, 0);
-        (c as BoxCollider).size = new Vector3(0.1f, 0.1f, 0.1f);
+        (c as BoxCollider).size = new Vector3(0.2f, 0.2f, 0.2f);
 
         StartCoroutine(CheckForClosestInteractable(kInteractableCheckTime));
     }

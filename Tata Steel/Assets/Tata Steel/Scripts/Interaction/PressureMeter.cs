@@ -22,8 +22,6 @@ public class PressureMeter : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //just do the random offset part here instead of everything, handle angle update from pressurebuildup script
-
         float multiplier = 1f; //update multiplier at some point
         offset += Random.Range(offsetTickBounds.x * multiplier, offsetTickBounds.y * multiplier);
         offset = MathHelper.ConfineToBounds(offset, offsetBounds);

@@ -2,27 +2,35 @@
 
 public class PressureBuildup : MonoBehaviour
 {
-    [SerializeField] private InteractionRotate valve;
-    [SerializeField] private Openable gate;
+    [Header("References")]
+    [SerializeField] private InteractionInstantRotation valve;
     [SerializeField] private PressureMeter meter;
 
-    [SerializeField] public Vector2 bounds;
-    [SerializeField] public float currentValue;
+    [Header("Angle Variables")]
+    [SerializeField] private float angleToOpen;
+    [SerializeField] private float angleToLock;
+
+    [Space]
+    [SerializeField] private Vector2 bounds;
+    private float currentValue;
 
     private Interactable valveInteractable;    
 
     public float CurrentValue { get => currentValue; }
+    public float AngleToLock { get => angleToLock; }
 
-    private void Start()
+    private void Awake()
     {
+        valve.Buildup = this;
         valveInteractable = valve.GetComponent<Interactable>();
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         if (valveInteractable.IsInteracting)
         {
-            gate.UpdateValue(valve.ActualAngle, bounds, ref currentValue);
+            float v = MathHelper.ConfineToBounds(valve.CurrentAngle / angleToOpen, new Vector2(0, 1));
+            currentValue = MathHelper.GetValueBetweenBoundsFromNormalizedValue(v, bounds);
             meter.UpdateAngle(MathHelper.NormalizeValueBetweenBounds(currentValue, bounds));
         }
     }

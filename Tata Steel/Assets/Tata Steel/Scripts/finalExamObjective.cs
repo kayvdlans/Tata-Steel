@@ -12,7 +12,7 @@ public class finalExamObjective : MonoBehaviour
 
     public void Update()
     {
-            objectivesDis.objectives[1].currentAmount = pressure.currentValue;
+            objectivesDis.objectives[1].currentAmount = pressure.CurrentValue;
      
         if (flip.CurrentlyTurnedOn == false)
         {

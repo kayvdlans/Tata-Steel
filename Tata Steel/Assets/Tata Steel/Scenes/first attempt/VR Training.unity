@@ -2028,7 +2028,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c70d9bdd1d94214faf0afe686ada8fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationAmount: 33.3
+  rotationAmount: 10
+  axis: 0
 --- !u!1001 &1215932887
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3867,6 +3868,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: PressureMechanism
       objectReference: {fileID: 0}
+    - target: {fileID: 4690295048070555617, guid: bac7460b005101a4b893885bd5839c83,
+        type: 3}
+      propertyPath: valve
+      value: 
+      objectReference: {fileID: 1177293515}
+    - target: {fileID: 4690295048070555617, guid: bac7460b005101a4b893885bd5839c83,
+        type: 3}
+      propertyPath: angleToOpen
+      value: 240
+      objectReference: {fileID: 0}
+    - target: {fileID: 4690295048070555617, guid: bac7460b005101a4b893885bd5839c83,
+        type: 3}
+      propertyPath: angleToLock
+      value: 360
+      objectReference: {fileID: 0}
     - target: {fileID: 4690295048070555622, guid: bac7460b005101a4b893885bd5839c83,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3947,6 +3963,41 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 1.201
       objectReference: {fileID: 0}
+    - target: {fileID: 5803731284573020485, guid: bac7460b005101a4b893885bd5839c83,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5803731284573020485, guid: bac7460b005101a4b893885bd5839c83,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5803731284573020485, guid: bac7460b005101a4b893885bd5839c83,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5803731284573020485, guid: bac7460b005101a4b893885bd5839c83,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5803731284573020485, guid: bac7460b005101a4b893885bd5839c83,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5803731284573020485, guid: bac7460b005101a4b893885bd5839c83,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5803731284573020485, guid: bac7460b005101a4b893885bd5839c83,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1580844919324559960, guid: bac7460b005101a4b893885bd5839c83,
         type: 3}
       propertyPath: m_Enabled
@@ -3967,6 +4018,11 @@ PrefabInstance:
       propertyPath: selectionMaterial
       value: 
       objectReference: {fileID: 2100000, guid: 72bbc9b4c7f17b845a7c325593461a63, type: 2}
+    - target: {fileID: 1580844919324559962, guid: bac7460b005101a4b893885bd5839c83,
+        type: 3}
+      propertyPath: interactionType
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bac7460b005101a4b893885bd5839c83, type: 3}
 --- !u!1001 &2102786803

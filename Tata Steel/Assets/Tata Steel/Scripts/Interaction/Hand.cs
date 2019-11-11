@@ -54,9 +54,10 @@ public class Hand : MonoBehaviour
             if (Interactables.Count == 0)
                 closestInteractable = null;
 
+            float closestDistance = float.MaxValue;
+
             if (Interactables.Count > 0 && !IsInteracting)
             {
-                float closestDistance = float.MaxValue;
 
                 foreach(Interactable interactable in Interactables)
                 {
@@ -69,9 +70,11 @@ public class Hand : MonoBehaviour
                 }
             }
 
-            if (closestInteractable != null)
+            if (closestInteractable != null && closestDistance < Vector3.Distance(closestInteractable.transform.position, otherHand.transform.position))
             {
+
                 closestInteractable.CanInteract = true;
+                closestInteractable.ClosestHand = this;
                 closestInteractable.Controller = Controller;
             }
 

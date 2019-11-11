@@ -1,13 +1,12 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AssignHands : MonoBehaviour
 {
-    [SerializeField] Transform localAvatar;
+    [SerializeField] private Transform localAvatar;
 
-    Transform leftHand = null;
-    Transform rightHand = null;
+    private Transform leftHand = null;
+    private Transform rightHand = null;
 
     private void Start()
     {
@@ -26,5 +25,7 @@ public class AssignHands : MonoBehaviour
 
         leftHand.gameObject.AddComponent<Hand>();
         rightHand.gameObject.AddComponent<Hand>();
+
+        Destroy(this);
     }
 }

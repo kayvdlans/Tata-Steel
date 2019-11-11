@@ -8,8 +8,9 @@ public class Hand : MonoBehaviour
 
     public OVRInput.Controller Controller { get; private set; }
     public bool IsInteracting { get; set; }
+    public List<Interactable> Interactables { get; private set; } = new List<Interactable>();
 
-    private List<Interactable> interactables = new List<Interactable>();
+    private Hand otherHand = null;
     private Interactable closestInteractable = null;
 
     private void Start ()
@@ -28,23 +29,37 @@ public class Hand : MonoBehaviour
         c.isTrigger = true;
 
         (c as BoxCollider).center = new Vector3(0, 0, 0);
-        (c as BoxCollider).size = new Vector3(0.1f, 0.1f, 0.1f);
+        (c as BoxCollider).size = new Vector3(0.2f, 0.2f, 0.2f);
 
         StartCoroutine(CheckForClosestInteractable(kInteractableCheckTime));
+        StartCoroutine(FindOtherHand(0.1f));
+    }
+
+    private IEnumerator FindOtherHand(float waitTime)
+    {
+        while (otherHand == null)
+        {
+            yield return new WaitForSeconds(waitTime);
+            Hand[] hands = FindObjectsOfType<Hand>();
+
+            if (hands.Length > 1)
+                otherHand = hands[0] == this ? hands[1] : hands[0];
+        }
     }
 
     private IEnumerator CheckForClosestInteractable(float waitTime)
     {
         while (true)
         {
-            if (interactables.Count == 0)
+            if (Interactables.Count == 0)
                 closestInteractable = null;
 
-            if (interactables.Count > 0 && !IsInteracting)
-            {
-                float closestDistance = float.MaxValue;
+            float closestDistance = float.MaxValue;
 
-                foreach(Interactable interactable in interactables)
+            if (Interactables.Count > 0 && !IsInteracting)
+            {
+
+                foreach(Interactable interactable in Interactables)
                 {
                     float distance = Vector3.Distance(transform.position, interactable.transform.position);
                     if (distance < closestDistance)
@@ -55,9 +70,11 @@ public class Hand : MonoBehaviour
                 }
             }
 
-            if (closestInteractable != null)
+            if (closestInteractable != null && closestDistance < Vector3.Distance(closestInteractable.transform.position, otherHand.transform.position))
             {
+
                 closestInteractable.CanInteract = true;
+                closestInteractable.ClosestHand = this;
                 closestInteractable.Controller = Controller;
             }
 
@@ -70,13 +87,13 @@ public class Hand : MonoBehaviour
         Interactable interactable = other.GetComponent<Interactable>();
 
         if (interactable != null &&
-            !interactables.Contains(interactable))
+            !Interactables.Contains(interactable))
         { 
             interactable.CanInteract = false;
             interactable.ClosestHand = this;
             interactable.Controller = Controller;
 
-            interactables.Add(interactable);
+            Interactables.Add(interactable);
         }
     }
 
@@ -85,16 +102,16 @@ public class Hand : MonoBehaviour
         Interactable interactable = other.GetComponent<Interactable>();
 
         if (interactable != null &&
-            interactables.Contains(interactable))
+            Interactables.Contains(interactable))
         {
-            if (interactable.Controller.Equals(Controller))
+            if (!otherHand.Interactables.Contains(interactable))
             {
                 interactable.CanInteract = false;
                 interactable.ClosestHand = null;
                 interactable.Controller = OVRInput.Controller.None;
             }
 
-            interactables.Remove(interactable);
+            Interactables.Remove(interactable);
         }
     }
 }

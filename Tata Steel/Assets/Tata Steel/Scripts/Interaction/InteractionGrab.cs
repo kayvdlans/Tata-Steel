@@ -66,7 +66,7 @@ public class InteractionGrab : Interaction
         rb.isKinematic = initialKinematicState;
         rb.useGravity = initialGravity;
         rb.constraints = initialConstraints;
-
+    
         //TODO: calculate velocity yourself instead of OVR, since it doesn't work too well.
         rb.velocity = OVRInput.GetLocalControllerVelocity(interactable.Controller);
         rb.angularVelocity = OVRInput.GetLocalControllerAngularVelocity(interactable.Controller) *  Mathf.Deg2Rad;

@@ -13,12 +13,13 @@ public class finalExamObjective : MonoBehaviour
     public void Update()
     {
             objectivesDis.objectives[1].currentAmount = pressure.currentValue;
-     
+            objectivesDis.objectives[2].currentAmount = tempCon.CurrentTemperature;
+
+
         if (flip.CurrentlyTurnedOn == false)
         {
             objectivesDis.objectives[3].AddCurrent();
         }
-            objectivesDis.objectives[2].currentAmount = tempCon.CurrentTemperature;
         
     }
 }

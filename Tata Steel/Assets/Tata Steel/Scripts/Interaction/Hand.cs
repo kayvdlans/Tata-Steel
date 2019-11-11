@@ -22,7 +22,7 @@ public class Hand : MonoBehaviour
         rb.useGravity = false;
 
         Collider c = GetComponent<Collider>();
-        if (c) DestroyImmediate(c);
+        if (c) Destroy(c);
 
         c = gameObject.AddComponent<BoxCollider>();
         c.isTrigger = true;

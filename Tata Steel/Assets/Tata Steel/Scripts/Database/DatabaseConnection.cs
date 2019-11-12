@@ -21,6 +21,7 @@ public class DatabaseConnection : MonoBehaviour
         public uint TotalTime { get; set; }
         public uint TotalPoints { get; set; }
         public uint TotalMistakes { get; set; }
+        public uint TotalAttempts { get; set; } //== amount of sessions
     }
 
     public struct SessionInfo
@@ -68,6 +69,13 @@ public class DatabaseConnection : MonoBehaviour
         }
     }
 
+    private async Task ExecuteCommand(string command, MySqlConnection connection)
+    {
+        MySqlCommand cmd = new MySqlCommand(command, connection);
+        await cmd.ExecuteReaderAsync();
+        cmd.Dispose();
+    }
+
     private async Task DBReadQuery(string dbName, uint userID, DataTable table = null)
     {
         MySqlConnection conn = new MySqlConnection(CONN_STRING);
@@ -92,7 +100,6 @@ public class DatabaseConnection : MonoBehaviour
     public async Task DBUserUpdateQuery(UserInfo user)
     {
         MySqlConnection conn = new MySqlConnection(CONN_STRING);
-
         await conn.OpenAsync();
 
         UserInfo updatedInfo = new UserInfo()
@@ -116,39 +123,50 @@ public class DatabaseConnection : MonoBehaviour
             }
         }
 
-        string cmdString = "UPDATE user SET "
-            + " id = " + updatedInfo.ID
-            + ", training_finished = " + (updatedInfo.TrainingFinished ? "1" : "0")
-            + ", time_spent_total = " + updatedInfo.TotalTime
-            + ", points_total = " + updatedInfo.TotalPoints
-            + ", mistakes_total = " + updatedInfo.TotalMistakes
-            + " WHERE id = " + updatedInfo.ID;
+        string command = 
+            "UPDATE user SET "
+           + " id = " + updatedInfo.ID
+           + ", training_finished = " + (updatedInfo.TrainingFinished ? "1" : "0")
+           + ", time_spent_total = " + updatedInfo.TotalTime
+           + ", points_total = " + updatedInfo.TotalPoints
+           + ", mistakes_total = " + updatedInfo.TotalMistakes
+           + " WHERE id = " + updatedInfo.ID;
 
-        MySqlCommand cmd = new MySqlCommand(cmdString, conn);
-        await cmd.ExecuteReaderAsync();
-        cmd.Dispose();
+        await ExecuteCommand(command, conn);
+        conn.Close();
+    }
 
+    public async Task DBUserInsertQuery(UserInfo user)
+    {
+        string command =
+              "INSERT INTO user(id, training_finished, time_spent_total, points_total, mistakes_total, attempts_total) "
+              + "VALUES(" + user.ID
+              + ", " + user.TrainingFinished
+              + ", " + user.TotalTime
+              + ", " + user.TotalPoints
+              + ", " + user.TotalMistakes
+              + ", " + user.TotalAttempts;
+
+        MySqlConnection conn = new MySqlConnection(CONN_STRING);
+        await conn.OpenAsync();
+        await ExecuteCommand(command, conn);
         conn.Close();
     }
 
     public async Task DBSessionInsertQuery(SessionInfo session)
     {
+        string command =
+               "INSERT INTO session(session_id, level_id, time_spent, points, mistakes, user_id) "
+               + "VALUES(" + session.SessionID
+               + ", " + session.LevelID
+               + ", " + session.Time
+               + ", " + session.Points
+               + ", " + session.Mistakes
+               + ", " + session.UserID + ");";
+
         MySqlConnection conn = new MySqlConnection(CONN_STRING);
-
-        await conn.OpenAsync();
-
-        string cmdString = "INSERT INTO session(session_id, level_id, time_spent, points, mistakes, user_id) " 
-            + "VALUES(" + session.SessionID 
-            + ", " + session.LevelID 
-            + ", " + session.Time
-            + ", " + session.Points
-            + ", " + session.Mistakes
-            + ", " + session.UserID + ");";
-
-        MySqlCommand cmd = new MySqlCommand(cmdString, conn);
-        await cmd.ExecuteReaderAsync();
-        cmd.Dispose();
-
+        await conn.OpenAsync();      
+        await ExecuteCommand(command, conn);
         conn.Close();
     }
 }

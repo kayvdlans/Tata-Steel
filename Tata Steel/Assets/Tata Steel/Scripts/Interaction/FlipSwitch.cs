@@ -15,6 +15,7 @@ public class FlipSwitch : MonoBehaviour
     private Vector3 originalEulers = Vector3.zero;
     private float currentAngle = 0;
 
+    public GameObject pc;
     public bool CurrentlyTurnedOn { get; private set; } = false;
 
     private void Start()
@@ -26,6 +27,7 @@ public class FlipSwitch : MonoBehaviour
     public void Flip()
     {
         UpdateValue(!CurrentlyTurnedOn);
+        pc.SetActive(!pc.activeSelf);
     }
 
     private void UpdateValue(bool on)
@@ -39,4 +41,6 @@ public class FlipSwitch : MonoBehaviour
             (int)axis == 1 ? currentAngle : originalEulers.y,
             (int)axis == 2 ? currentAngle : originalEulers.z);
     }
+
+
 }

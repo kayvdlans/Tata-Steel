@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb2ba50f9b748da4f8662c243190b44b, type: 3}
+  m_Name: UserData
+  m_EditorClassIdentifier: 
+  user:
+    id: 0
+    trainingFinished: 0
+    totalTime: 0
+    totalPoints: 0
+    totalMistakes: 0
+    totalAttempts: 0
+  sessions:
+  - sessionID: 0
+    levelID: 0
+    time: 0
+    points: 0
+    mistakes: 0
+    userID: 0

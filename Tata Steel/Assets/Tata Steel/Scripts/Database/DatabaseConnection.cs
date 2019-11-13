@@ -1,93 +1,21 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using UnityEngine;
 using System.Data;
 using MySql.Data.MySqlClient;
 
-public class DatabaseConnection : MonoBehaviour
+public static class DatabaseConnection 
 {
-    [SerializeField] private uint userID;
-    [SerializeField] private int trainingLevelID;
-
+    //TODO: UPDATE THIS STRING ONCE THE DATABASE GOES ONLINE. (also maybe get the database on test pc haha!!!111!!1)
     private const string CONN_STRING = @"Server=127.0.0.1;Database=tatasteeldb;User=root;Password=WeLoveTataSteel;CharSet=utf8";
 
-    private DataTable userTable = new DataTable();
-    private DataTable sessionTable = new DataTable();
-
-    public struct UserInfo
-    {
-        public uint ID { get; set; }
-        public bool TrainingFinished { get; set; }
-        public uint TotalTime { get; set; }
-        public uint TotalPoints { get; set; }
-        public uint TotalMistakes { get; set; }
-        public uint TotalAttempts { get; set; } //== amount of sessions
-    }
-
-    public struct SessionInfo
-    {
-        public uint SessionID { get; set; }
-        public uint LevelID { get; set; }
-        public uint Time { get; set; }
-        public uint Points { get; set; }
-        public uint Mistakes { get; set; }
-        public uint UserID { get; set; }
-    }
-
-    public struct LevelInfo
-    {
-        public uint UserID { get; set; }
-        public uint LevelID { get; set; }
-        public uint BestTime { get; set; }
-        public uint HighestPoints { get; set; }
-        public uint LowestMistakeCount { get; set; }
-        public uint Attempts { get; set; }
-    }
-
-    private UserInfo user = new UserInfo(); 
-    private List<SessionInfo> sessions = new List<SessionInfo>();
-
-    private void Start()
-    {
-        InitializeUser(userID);
-    }
-
-    public async void InitializeUser(uint id)
-    {
-        await DBReadQuery("user", id, userTable);
-        user = new UserInfo()
-        {
-            ID                  = (uint)userTable.Rows[0]["id"],
-            TrainingFinished    = (byte)userTable.Rows[0]["training_finished"] > 0,
-            TotalTime           = (uint)userTable.Rows[0]["time_spent_total"],
-            TotalPoints         = (uint)userTable.Rows[0]["points_total"],
-            TotalMistakes       = (uint)userTable.Rows[0]["mistakes_total"],
-            TotalAttempts       = (uint)userTable.Rows[0]["attempts_total"]
-        };
-
-        await DBReadQuery("session", id, sessionTable);
-        foreach (DataRow row in sessionTable.Rows)
-        {
-            sessions.Add(new SessionInfo()
-            {
-                SessionID   = (uint)row["session_id"],
-                LevelID     = (uint)row["level_id"],
-                Time        = (uint)row["time_spent"],
-                Points      = (uint)row["points"],
-                Mistakes    = (uint)row["mistakes"],
-                UserID      = (uint)row["user_id"]
-            });
-        }
-    }
-
-    private async Task ExecuteCommand(string command, MySqlConnection connection)
+    private static async Task ExecuteCommand(string command, MySqlConnection connection)
     {
         MySqlCommand cmd = new MySqlCommand(command, connection);
         await cmd.ExecuteReaderAsync();
         cmd.Dispose();
     }
 
-    private async Task DBReadQuery(string dbName, uint userID, DataTable table = null)
+    public static async Task DBReadQuery(string dbName, uint userID, DataTable table = null)
     {
         MySqlConnection conn = new MySqlConnection(CONN_STRING);
 
@@ -108,7 +36,7 @@ public class DatabaseConnection : MonoBehaviour
         conn.Close();
     }
 
-    public async Task DBUserUpdateQuery(UserInfo user)
+    public static async Task DBUserUpdateQuery(UserInfo user, List<SessionInfo> sessions)
     {
         MySqlConnection conn = new MySqlConnection(CONN_STRING);
         await conn.OpenAsync();
@@ -119,12 +47,13 @@ public class DatabaseConnection : MonoBehaviour
             TrainingFinished    = false,
             TotalTime           = 0,
             TotalPoints         = 0,
-            TotalMistakes       = 0
+            TotalMistakes       = 0,
+            TotalAttempts       = 0
         };
 
         for (int j = 0; j < sessions.Count; j++)
         {
-            if (sessions[j].LevelID == trainingLevelID)
+            if (sessions[j].LevelID == 0) //The assumption is made the training level's ID is 0, so make sure this is the case.
                 updatedInfo.TrainingFinished = true;
             else
             {
@@ -149,7 +78,7 @@ public class DatabaseConnection : MonoBehaviour
         conn.Close();
     }
 
-    public async Task DBUserInsertQuery(UserInfo user)
+    public static async Task DBUserInsertQuery(UserInfo user)
     {
         string command =
               "INSERT INTO user(id, training_finished, time_spent_total, points_total, mistakes_total, attempts_total) "
@@ -166,7 +95,7 @@ public class DatabaseConnection : MonoBehaviour
         conn.Close();
     }
 
-    public async Task DBSessionInsertQuery(SessionInfo session)
+    public static async Task DBSessionInsertQuery(SessionInfo session)
     {
         string command =
                "INSERT INTO session(session_id, level_id, time_spent, points, mistakes, user_id) "

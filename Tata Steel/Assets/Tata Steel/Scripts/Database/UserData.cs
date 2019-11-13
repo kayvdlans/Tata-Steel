@@ -13,10 +13,6 @@ public class UserData : ScriptableObject
     [SerializeField] private UserInfo user = new UserInfo();
     [SerializeField] private List<SessionInfo> sessions = new List<SessionInfo>();
     [SerializeField] private List<LevelInfo> highscores = new List<LevelInfo>();
-    
-    public UserInfo User { get => user; }
-    public List<SessionInfo> Sessions { get => sessions; }
-    public List<LevelInfo> Highscores { get => highscores; }
 
     private DataTable userTable = new DataTable();
     private DataTable sessionTable = new DataTable();
@@ -26,7 +22,7 @@ public class UserData : ScriptableObject
         //0 is training room and we dont want to add that to the highscores.
         for (uint i = 1; i < lastRoom.RoomID; i++)
         {
-            List<SessionInfo> relevantSessions = Sessions.Where(s => s.LevelID == i) as List<SessionInfo>;
+            List<SessionInfo> relevantSessions = sessions.Where(s => s.LevelID == i) as List<SessionInfo>;
 
             LevelInfo highscore = new LevelInfo()
             {
@@ -70,6 +66,15 @@ public class UserData : ScriptableObject
                 }
             }
         }
+    }
+
+    public async void AddSession(SessionInfo session)
+    {
+        if (sessions.Contains(session))
+            return;
+
+        sessions.Add(session);
+        await DatabaseConnection.DBSessionInsertQuery(session);
     }
 
     public async void InitializeUser(uint id)

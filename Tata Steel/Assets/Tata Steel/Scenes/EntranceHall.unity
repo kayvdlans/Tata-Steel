@@ -1384,8 +1384,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   openedDoors: {fileID: 11400000, guid: 32646fc291627334ebc81b811d90750e, type: 2}
-  index: 5
-  sceneName: TrainingRoom3
+  room: {fileID: 11400000, guid: 34ef190af5fd7cd47a889935c804aaf3, type: 2}
   matClosed: {fileID: 2100000, guid: 39d0e2f3a134c3e4bb7055aded8c1434, type: 2}
   matOpen: {fileID: 2100000, guid: 84c2baf35777e5941a92737515e8a58e, type: 2}
   matObject: {fileID: 2016494659}
@@ -1404,8 +1403,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   openedDoors: {fileID: 11400000, guid: 32646fc291627334ebc81b811d90750e, type: 2}
-  index: 4
-  sceneName: TrainingRoom3
+  room: {fileID: 11400000, guid: 34ef190af5fd7cd47a889935c804aaf3, type: 2}
   matClosed: {fileID: 2100000, guid: 39d0e2f3a134c3e4bb7055aded8c1434, type: 2}
   matOpen: {fileID: 2100000, guid: 84c2baf35777e5941a92737515e8a58e, type: 2}
   matObject: {fileID: 2145906331}
@@ -1437,6 +1435,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonToPress: 335544320
+  handMode: 0
   interactionType: 0
   onStartInteraction:
     m_PersistentCalls:
@@ -1459,8 +1458,6 @@ MonoBehaviour:
   onEndInteraction:
     m_PersistentCalls:
       m_Calls: []
-  continueOutOfRange: 0
-  outlineMaterial: {fileID: 2100000, guid: 72bbc9b4c7f17b845a7c325593461a63, type: 2}
   renderers:
   - {fileID: 1334999392}
   - {fileID: 362599010}
@@ -1470,6 +1467,8 @@ MonoBehaviour:
   - {fileID: 667977306}
   - {fileID: 397489871}
   - {fileID: 671786616}
+  selectionMaterial: {fileID: 0}
+  continueOutOfRange: 0
 --- !u!23 &667977306 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 7087200961041043365, guid: b91d0ae44b6bef4419c9d5001377594f,
@@ -1685,7 +1684,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: -1.287421e-27, z: 3.4510547e+19, w: -4.444315e-30}
+  m_BoundingSphereOverride: {x: 8.085e-42, y: 6e-44, z: 0, w: 1.3e-44}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -1922,8 +1921,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   openedDoors: {fileID: 11400000, guid: 32646fc291627334ebc81b811d90750e, type: 2}
-  index: 14
-  sceneName: ThirdExamRoom
+  room: {fileID: 11400000, guid: 312643529c6984446b89f06f0ed867d3, type: 2}
   matClosed: {fileID: 2100000, guid: 39d0e2f3a134c3e4bb7055aded8c1434, type: 2}
   matOpen: {fileID: 2100000, guid: 84c2baf35777e5941a92737515e8a58e, type: 2}
   matObject: {fileID: 759343987}
@@ -1955,6 +1953,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonToPress: 335544320
+  handMode: 0
   interactionType: 0
   onStartInteraction:
     m_PersistentCalls:
@@ -1977,13 +1976,13 @@ MonoBehaviour:
   onEndInteraction:
     m_PersistentCalls:
       m_Calls: []
-  continueOutOfRange: 0
-  outlineMaterial: {fileID: 2100000, guid: 72bbc9b4c7f17b845a7c325593461a63, type: 2}
   renderers:
   - {fileID: 150126187}
   - {fileID: 169534824}
   - {fileID: 503309715}
   - {fileID: 1744293579}
+  selectionMaterial: {fileID: 0}
+  continueOutOfRange: 0
 --- !u!1001 &852236845
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2133,8 +2132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   openedDoors: {fileID: 11400000, guid: 32646fc291627334ebc81b811d90750e, type: 2}
-  index: 3
-  sceneName: FirstExamRoom
+  room: {fileID: 11400000, guid: 07b6d57d90f78fc4796883ce6899c7bb, type: 2}
   matClosed: {fileID: 2100000, guid: 39d0e2f3a134c3e4bb7055aded8c1434, type: 2}
   matOpen: {fileID: 2100000, guid: 84c2baf35777e5941a92737515e8a58e, type: 2}
   matObject: {fileID: 1017102448}
@@ -2153,8 +2151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   openedDoors: {fileID: 11400000, guid: 32646fc291627334ebc81b811d90750e, type: 2}
-  index: 2
-  sceneName: FirstExamRoom
+  room: {fileID: 11400000, guid: 07b6d57d90f78fc4796883ce6899c7bb, type: 2}
   matClosed: {fileID: 2100000, guid: 39d0e2f3a134c3e4bb7055aded8c1434, type: 2}
   matOpen: {fileID: 2100000, guid: 84c2baf35777e5941a92737515e8a58e, type: 2}
   matObject: {fileID: 1934367196}
@@ -2186,6 +2183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonToPress: 335544320
+  handMode: 0
   interactionType: 0
   onStartInteraction:
     m_PersistentCalls:
@@ -2208,8 +2206,6 @@ MonoBehaviour:
   onEndInteraction:
     m_PersistentCalls:
       m_Calls: []
-  continueOutOfRange: 0
-  outlineMaterial: {fileID: 2100000, guid: 72bbc9b4c7f17b845a7c325593461a63, type: 2}
   renderers:
   - {fileID: 1624146122}
   - {fileID: 1495141241}
@@ -2219,6 +2215,8 @@ MonoBehaviour:
   - {fileID: 1234641341}
   - {fileID: 290225371}
   - {fileID: 1229888297}
+  selectionMaterial: {fileID: 0}
+  continueOutOfRange: 0
 --- !u!4 &903077175 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: b91d0ae44b6bef4419c9d5001377594f,
@@ -2445,8 +2443,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   openedDoors: {fileID: 11400000, guid: 32646fc291627334ebc81b811d90750e, type: 2}
-  index: 1
-  sceneName: TrainingRoom2
+  room: {fileID: 11400000, guid: 914de1b52abcffe4db5623f8bcbafdc6, type: 2}
   matClosed: {fileID: 2100000, guid: 39d0e2f3a134c3e4bb7055aded8c1434, type: 2}
   matOpen: {fileID: 2100000, guid: 84c2baf35777e5941a92737515e8a58e, type: 2}
   matObject: {fileID: 771265636}
@@ -2465,6 +2462,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonToPress: 335544320
+  handMode: 0
   interactionType: 0
   onStartInteraction:
     m_PersistentCalls:
@@ -2487,13 +2485,13 @@ MonoBehaviour:
   onEndInteraction:
     m_PersistentCalls:
       m_Calls: []
-  continueOutOfRange: 0
-  outlineMaterial: {fileID: 2100000, guid: 72bbc9b4c7f17b845a7c325593461a63, type: 2}
   renderers:
   - {fileID: 701217413}
   - {fileID: 1283759928}
   - {fileID: 1594682874}
   - {fileID: 42578823}
+  selectionMaterial: {fileID: 0}
+  continueOutOfRange: 0
 --- !u!135 &948403347
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2804,8 +2802,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   openedDoors: {fileID: 11400000, guid: 32646fc291627334ebc81b811d90750e, type: 2}
-  index: 11
-  sceneName: TrainingRoom5
+  room: {fileID: 11400000, guid: 80cbdf5d97ff2c941a7e39d9442140d7, type: 2}
   matClosed: {fileID: 2100000, guid: 39d0e2f3a134c3e4bb7055aded8c1434, type: 2}
   matOpen: {fileID: 2100000, guid: 84c2baf35777e5941a92737515e8a58e, type: 2}
   matObject: {fileID: 2131674637}
@@ -2824,8 +2821,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   openedDoors: {fileID: 11400000, guid: 32646fc291627334ebc81b811d90750e, type: 2}
-  index: 10
-  sceneName: TrainingRoom5
+  room: {fileID: 11400000, guid: 80cbdf5d97ff2c941a7e39d9442140d7, type: 2}
   matClosed: {fileID: 2100000, guid: 39d0e2f3a134c3e4bb7055aded8c1434, type: 2}
   matOpen: {fileID: 2100000, guid: 84c2baf35777e5941a92737515e8a58e, type: 2}
   matObject: {fileID: 1096413387}
@@ -2857,6 +2853,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonToPress: 335544320
+  handMode: 0
   interactionType: 0
   onStartInteraction:
     m_PersistentCalls:
@@ -2879,8 +2876,6 @@ MonoBehaviour:
   onEndInteraction:
     m_PersistentCalls:
       m_Calls: []
-  continueOutOfRange: 0
-  outlineMaterial: {fileID: 2100000, guid: 72bbc9b4c7f17b845a7c325593461a63, type: 2}
   renderers:
   - {fileID: 1978185957}
   - {fileID: 1717733754}
@@ -2890,6 +2885,8 @@ MonoBehaviour:
   - {fileID: 1665104860}
   - {fileID: 422654331}
   - {fileID: 818328695}
+  selectionMaterial: {fileID: 0}
+  continueOutOfRange: 0
 --- !u!1 &1227648954
 GameObject:
   m_ObjectHideFlags: 0
@@ -3186,8 +3183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   openedDoors: {fileID: 11400000, guid: 32646fc291627334ebc81b811d90750e, type: 2}
-  index: 7
-  sceneName: TrainingRoom4
+  room: {fileID: 11400000, guid: d5c834c57213ffd4fa12db830d2edb16, type: 2}
   matClosed: {fileID: 2100000, guid: 39d0e2f3a134c3e4bb7055aded8c1434, type: 2}
   matOpen: {fileID: 2100000, guid: 84c2baf35777e5941a92737515e8a58e, type: 2}
   matObject: {fileID: 1124661519}
@@ -3206,8 +3202,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   openedDoors: {fileID: 11400000, guid: 32646fc291627334ebc81b811d90750e, type: 2}
-  index: 6
-  sceneName: TrainingRoom4
+  room: {fileID: 11400000, guid: d5c834c57213ffd4fa12db830d2edb16, type: 2}
   matClosed: {fileID: 2100000, guid: 39d0e2f3a134c3e4bb7055aded8c1434, type: 2}
   matOpen: {fileID: 2100000, guid: 84c2baf35777e5941a92737515e8a58e, type: 2}
   matObject: {fileID: 833090059}
@@ -3239,6 +3234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonToPress: 335544320
+  handMode: 0
   interactionType: 0
   onStartInteraction:
     m_PersistentCalls:
@@ -3261,8 +3257,6 @@ MonoBehaviour:
   onEndInteraction:
     m_PersistentCalls:
       m_Calls: []
-  continueOutOfRange: 0
-  outlineMaterial: {fileID: 2100000, guid: 72bbc9b4c7f17b845a7c325593461a63, type: 2}
   renderers:
   - {fileID: 1318227069}
   - {fileID: 1834509490}
@@ -3272,6 +3266,8 @@ MonoBehaviour:
   - {fileID: 424581442}
   - {fileID: 1975020251}
   - {fileID: 715044257}
+  selectionMaterial: {fileID: 0}
+  continueOutOfRange: 0
 --- !u!23 &1495141241 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 7087200961041043365, guid: b91d0ae44b6bef4419c9d5001377594f,
@@ -3536,8 +3532,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   openedDoors: {fileID: 11400000, guid: 32646fc291627334ebc81b811d90750e, type: 2}
-  index: 15
-  sceneName: FinalExamRoom
+  room: {fileID: 11400000, guid: 9a5d86dcac301d54694a7ad0f5cc07dd, type: 2}
   matClosed: {fileID: 2100000, guid: 39d0e2f3a134c3e4bb7055aded8c1434, type: 2}
   matOpen: {fileID: 2100000, guid: 84c2baf35777e5941a92737515e8a58e, type: 2}
   matObject: {fileID: 16182984}
@@ -3569,6 +3564,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonToPress: 1007618827
+  handMode: 0
   interactionType: 0
   onStartInteraction:
     m_PersistentCalls:
@@ -3591,13 +3587,13 @@ MonoBehaviour:
   onEndInteraction:
     m_PersistentCalls:
       m_Calls: []
-  continueOutOfRange: 0
-  outlineMaterial: {fileID: 2100000, guid: 72bbc9b4c7f17b845a7c325593461a63, type: 2}
   renderers:
   - {fileID: 2114128130}
   - {fileID: 460998467}
   - {fileID: 989611263}
   - {fileID: 2079441361}
+  selectionMaterial: {fileID: 0}
+  continueOutOfRange: 0
 --- !u!23 &1665104860 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 7087200961041043365, guid: b91d0ae44b6bef4419c9d5001377594f,
@@ -3893,8 +3889,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   openedDoors: {fileID: 11400000, guid: 32646fc291627334ebc81b811d90750e, type: 2}
-  index: 13
-  sceneName: TrainingRoom6
+  room: {fileID: 11400000, guid: 951d0e6b89dd64341bb5bf1887a6942c, type: 2}
   matClosed: {fileID: 2100000, guid: 39d0e2f3a134c3e4bb7055aded8c1434, type: 2}
   matOpen: {fileID: 2100000, guid: 84c2baf35777e5941a92737515e8a58e, type: 2}
   matObject: {fileID: 854494320}
@@ -3913,8 +3908,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   openedDoors: {fileID: 11400000, guid: 32646fc291627334ebc81b811d90750e, type: 2}
-  index: 12
-  sceneName: TrainingRoom6
+  room: {fileID: 11400000, guid: 951d0e6b89dd64341bb5bf1887a6942c, type: 2}
   matClosed: {fileID: 2100000, guid: 39d0e2f3a134c3e4bb7055aded8c1434, type: 2}
   matOpen: {fileID: 2100000, guid: 84c2baf35777e5941a92737515e8a58e, type: 2}
   matObject: {fileID: 1049150225}
@@ -3946,6 +3940,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonToPress: 335544320
+  handMode: 0
   interactionType: 0
   onStartInteraction:
     m_PersistentCalls:
@@ -3968,8 +3963,6 @@ MonoBehaviour:
   onEndInteraction:
     m_PersistentCalls:
       m_Calls: []
-  continueOutOfRange: 0
-  outlineMaterial: {fileID: 2100000, guid: 72bbc9b4c7f17b845a7c325593461a63, type: 2}
   renderers:
   - {fileID: 2126965002}
   - {fileID: 406472132}
@@ -3979,6 +3972,8 @@ MonoBehaviour:
   - {fileID: 1130271976}
   - {fileID: 1704615390}
   - {fileID: 2135192008}
+  selectionMaterial: {fileID: 0}
+  continueOutOfRange: 0
 --- !u!4 &1858219478 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: b91d0ae44b6bef4419c9d5001377594f,
@@ -4202,8 +4197,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   openedDoors: {fileID: 11400000, guid: 32646fc291627334ebc81b811d90750e, type: 2}
-  index: 9
-  sceneName: SecondExamRoom
+  room: {fileID: 11400000, guid: 7029d151c6f62b34ca0188800c82116a, type: 2}
   matClosed: {fileID: 2100000, guid: 39d0e2f3a134c3e4bb7055aded8c1434, type: 2}
   matOpen: {fileID: 2100000, guid: 84c2baf35777e5941a92737515e8a58e, type: 2}
   matObject: {fileID: 709940844}
@@ -4222,8 +4216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   openedDoors: {fileID: 11400000, guid: 32646fc291627334ebc81b811d90750e, type: 2}
-  index: 8
-  sceneName: SecondExamRoom
+  room: {fileID: 11400000, guid: 7029d151c6f62b34ca0188800c82116a, type: 2}
   matClosed: {fileID: 2100000, guid: 39d0e2f3a134c3e4bb7055aded8c1434, type: 2}
   matOpen: {fileID: 2100000, guid: 84c2baf35777e5941a92737515e8a58e, type: 2}
   matObject: {fileID: 165058171}
@@ -4255,6 +4248,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonToPress: 335544320
+  handMode: 0
   interactionType: 0
   onStartInteraction:
     m_PersistentCalls:
@@ -4277,8 +4271,6 @@ MonoBehaviour:
   onEndInteraction:
     m_PersistentCalls:
       m_Calls: []
-  continueOutOfRange: 0
-  outlineMaterial: {fileID: 2100000, guid: 72bbc9b4c7f17b845a7c325593461a63, type: 2}
   renderers:
   - {fileID: 1379283048}
   - {fileID: 293857240}
@@ -4288,6 +4280,8 @@ MonoBehaviour:
   - {fileID: 577740710}
   - {fileID: 739896842}
   - {fileID: 20870481}
+  selectionMaterial: {fileID: 0}
+  continueOutOfRange: 0
 --- !u!23 &1929277684 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: -6283877591383234665, guid: b91d0ae44b6bef4419c9d5001377594f,
@@ -4553,18 +4547,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 36179554}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2134763806 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6513518814621475156, guid: d89735309f49a3543b5692a5413a6570,
-    type: 3}
-  m_PrefabInstance: {fileID: 6513518816439549042}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3cc5a393a7821154e88a5b24f5fe4496, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &2134763807 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6513518814621475159, guid: d89735309f49a3543b5692a5413a6570,
@@ -4788,91 +4770,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6597958921523574874, guid: 24677abdc47b5e44a893be9f6e4afb9b,
-        type: 3}
-      propertyPath: onRequirementsMet.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 2134763806}
-    - target: {fileID: 6597958921523574874, guid: 24677abdc47b5e44a893be9f6e4afb9b,
-        type: 3}
-      propertyPath: onRequirementsMet.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_IntArgument
-      value: 15
-      objectReference: {fileID: 0}
     - target: {fileID: 6597958921563121197, guid: 24677abdc47b5e44a893be9f6e4afb9b,
         type: 3}
       propertyPath: go
       value: 
       objectReference: {fileID: 1795512127}
-    - target: {fileID: 6597958923493110293, guid: 24677abdc47b5e44a893be9f6e4afb9b,
-        type: 3}
-      propertyPath: interactionType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1025941354310095957, guid: 24677abdc47b5e44a893be9f6e4afb9b,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1025941354310095957, guid: 24677abdc47b5e44a893be9f6e4afb9b,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1025941354310095957, guid: 24677abdc47b5e44a893be9f6e4afb9b,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1025941354310095957, guid: 24677abdc47b5e44a893be9f6e4afb9b,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.465
-      objectReference: {fileID: 0}
-    - target: {fileID: 2919050598955558747, guid: 24677abdc47b5e44a893be9f6e4afb9b,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2919050598955558747, guid: 24677abdc47b5e44a893be9f6e4afb9b,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2919050598955558747, guid: 24677abdc47b5e44a893be9f6e4afb9b,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2919050598955558747, guid: 24677abdc47b5e44a893be9f6e4afb9b,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.143
-      objectReference: {fileID: 0}
     - target: {fileID: 3552994501150319778, guid: 24677abdc47b5e44a893be9f6e4afb9b,
         type: 3}
       propertyPath: gearCollider
       value: 
       objectReference: {fileID: 125959237}
-    - target: {fileID: 3274598538507638087, guid: 24677abdc47b5e44a893be9f6e4afb9b,
-        type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6597958923493110379, guid: 24677abdc47b5e44a893be9f6e4afb9b,
-        type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5972028639952320237, guid: 24677abdc47b5e44a893be9f6e4afb9b,
         type: 3}
       propertyPath: gearCollider
       value: 
       objectReference: {fileID: 125959237}
-    - target: {fileID: 4769355238715324735, guid: 24677abdc47b5e44a893be9f6e4afb9b,
-        type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1731986983348683806, guid: 24677abdc47b5e44a893be9f6e4afb9b,
         type: 3}
       propertyPath: gearCollider

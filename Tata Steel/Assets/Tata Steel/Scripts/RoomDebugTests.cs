@@ -35,6 +35,6 @@ public class RoomDebugTests : MonoBehaviour
         roomSettings[currentIndex++].RoomCompleted();
         Door[] doords = FindObjectsOfType(typeof(Door)) as Door[];
         foreach (Door door in doords)
-            door.Opened = openedDoors.IsAdded(door.Index);
+            door.Opened = openedDoors.IsAdded(door.Room.RoomID);
     }
 }

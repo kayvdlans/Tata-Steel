@@ -10,6 +10,22 @@ public class SceneLoader : ScriptableObject
 
     private OVRScreenFade fadeEvent;
 
+    public void LoadScene(RoomSettings room)
+    {
+        fadeEvent = Camera.main.GetComponent<OVRScreenFade>();
+
+        if (!fadeEvent)
+        {
+            SceneManager.LoadScene(room.SceneName, LoadSceneMode.Single);
+            Debug.LogWarning("Failed to find FadeEvent, so skipping it");
+            return;
+        }
+
+        fadeEvent.fadeTime = transitionTime;
+        fadeEvent.FadeOut();
+        fadeEvent.StartCoroutine(Transition(room.SceneName));
+    }
+
     public void LoadScene(string sceneName)
     {
         fadeEvent = Camera.main.GetComponent<OVRScreenFade>();

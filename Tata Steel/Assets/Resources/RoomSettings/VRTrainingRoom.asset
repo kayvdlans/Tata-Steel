@@ -10,14 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3959157f2b76af94f8d049590277086b, type: 3}
-  m_Name: TrainingRoom4Settings
+  m_Name: VRTrainingRoom
   m_EditorClassIdentifier: 
-  roomID: 5
-  sceneName: TrainingRoom4
+  roomID: 0
+  sceneName: VR Training
   sceneLoader: {fileID: 11400000, guid: 5b96f5061b616d74ab5b1b2f45ee11d8, type: 2}
   openedDoors: {fileID: 11400000, guid: 32646fc291627334ebc81b811d90750e, type: 2}
-  doorsToOpen:
-  - {fileID: 11400000, guid: 7029d151c6f62b34ca0188800c82116a, type: 2}
+  doorsToOpen: []
   onRoomCompleted:
     m_PersistentCalls:
       m_Calls: []

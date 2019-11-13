@@ -47,9 +47,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cc5a393a7821154e88a5b24f5fe4496, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  openedDoors: {fileID: 11400000, guid: 73e16e94645243d4297ce67b1fe60061, type: 2}
-  index: 4
-  sceneName: EntranceHall
+  openedDoors: {fileID: 11400000, guid: 32646fc291627334ebc81b811d90750e, type: 2}
+  room: {fileID: 11400000, guid: 5b9cdc9160916f44189ba5a4fcb477f4, type: 2}
   matClosed: {fileID: 2100000, guid: 39d0e2f3a134c3e4bb7055aded8c1434, type: 2}
   matOpen: {fileID: 2100000, guid: 84c2baf35777e5941a92737515e8a58e, type: 2}
   matObject: {fileID: 2606014329329574405}

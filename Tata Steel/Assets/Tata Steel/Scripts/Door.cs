@@ -3,10 +3,8 @@
 public class Door : MonoBehaviour
 {
     [SerializeField] private OpenedDoors openedDoors = null;
-    [SerializeField] private int index = 0;
-    public int Index { get { return index; } }
-
-    [SerializeField] private string sceneName = "";
+    [SerializeField] private RoomSettings room;
+    public RoomSettings Room { get { return room; } }
 
     [SerializeField] private Material matClosed = null;
     [SerializeField] private Material matOpen = null;
@@ -29,13 +27,13 @@ public class Door : MonoBehaviour
 
     private void Start()
     {
-        Opened = openedDoors.IsAdded(index);
+        Opened = openedDoors.IsAdded(room.RoomID);
         audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
     {
-        Opened = openedDoors.IsAdded(index);
+        Opened = openedDoors.IsAdded(room.RoomID);
     }
 
     private void UpdateMaterial()
@@ -51,11 +49,11 @@ public class Door : MonoBehaviour
         if (opened)
         {
             audioSource.PlayOneShot(openDoor, 0.7F);
-            sceneLoader.LoadScene(sceneName);
+            sceneLoader.LoadScene(room);
         }
         else
         {
-            Debug.Log("Can't open door to room: " + sceneName + ", since the door hasn't been activated yet.");
+            Debug.Log("Can't open door to room: " + room.SceneName + ", since the door hasn't been activated yet.");
             //do something else?
         }
     }

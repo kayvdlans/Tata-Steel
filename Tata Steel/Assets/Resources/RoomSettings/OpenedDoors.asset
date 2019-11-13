@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ba2ef70bc3e5524fa48d652a7823405, type: 3}
   m_Name: OpenedDoors
   m_EditorClassIdentifier: 
+  firstDoor: {fileID: 11400000, guid: 5b9cdc9160916f44189ba5a4fcb477f4, type: 2}
   openedDoorsByIndex: 

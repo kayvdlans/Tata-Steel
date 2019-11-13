@@ -9,10 +9,10 @@ public class WorkGearRequirements : MonoBehaviour
     private OpenedDoors openedDoors;
 
     [SerializeField]
-    private List<Interactable> workgear;
+    private RoomSettings roomToOpen;
 
     [SerializeField]
-    private UnityEvent onRequirementsMet;
+    private List<Interactable> workgear;
 
     private void Awake()
     {
@@ -23,8 +23,10 @@ public class WorkGearRequirements : MonoBehaviour
     public void PickUp(Interactable gear)
     {
         workgear.Remove(gear);
+
         if (workgear.Count == 0)
-            onRequirementsMet.Invoke();
+            openedDoors.OpenDoorByIndex(roomToOpen.RoomID);
+
         Destroy(gear.gameObject);
     }
 }

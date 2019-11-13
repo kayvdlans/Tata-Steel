@@ -34,6 +34,16 @@ public class DatabaseConnection : MonoBehaviour
         public uint UserID { get; set; }
     }
 
+    public struct LevelInfo
+    {
+        public uint UserID { get; set; }
+        public uint LevelID { get; set; }
+        public uint BestTime { get; set; }
+        public uint HighestPoints { get; set; }
+        public uint LowestMistakeCount { get; set; }
+        public uint Attempts { get; set; }
+    }
+
     private UserInfo user = new UserInfo(); 
     private List<SessionInfo> sessions = new List<SessionInfo>();
 
@@ -51,7 +61,8 @@ public class DatabaseConnection : MonoBehaviour
             TrainingFinished    = (byte)userTable.Rows[0]["training_finished"] > 0,
             TotalTime           = (uint)userTable.Rows[0]["time_spent_total"],
             TotalPoints         = (uint)userTable.Rows[0]["points_total"],
-            TotalMistakes       = (uint)userTable.Rows[0]["mistakes_total"]
+            TotalMistakes       = (uint)userTable.Rows[0]["mistakes_total"],
+            TotalAttempts       = (uint)userTable.Rows[0]["attempts_total"]
         };
 
         await DBReadQuery("session", id, sessionTable);
@@ -104,11 +115,11 @@ public class DatabaseConnection : MonoBehaviour
 
         UserInfo updatedInfo = new UserInfo()
         {
-            ID = user.ID,
-            TrainingFinished = false,
-            TotalTime = 0,
-            TotalPoints = 0,
-            TotalMistakes = 0
+            ID                  = user.ID,
+            TrainingFinished    = false,
+            TotalTime           = 0,
+            TotalPoints         = 0,
+            TotalMistakes       = 0
         };
 
         for (int j = 0; j < sessions.Count; j++)
@@ -117,20 +128,22 @@ public class DatabaseConnection : MonoBehaviour
                 updatedInfo.TrainingFinished = true;
             else
             {
-                updatedInfo.TotalTime += sessions[j].Time;
-                updatedInfo.TotalPoints += sessions[j].Points;
-                updatedInfo.TotalMistakes += sessions[j].Mistakes;
+                updatedInfo.TotalTime       += sessions[j].Time;
+                updatedInfo.TotalPoints     += sessions[j].Points;
+                updatedInfo.TotalMistakes   += sessions[j].Mistakes;
+                updatedInfo.TotalAttempts   ++;
             }
         }
 
         string command = 
             "UPDATE user SET "
-           + " id = " + updatedInfo.ID
-           + ", training_finished = " + (updatedInfo.TrainingFinished ? "1" : "0")
-           + ", time_spent_total = " + updatedInfo.TotalTime
-           + ", points_total = " + updatedInfo.TotalPoints
-           + ", mistakes_total = " + updatedInfo.TotalMistakes
-           + " WHERE id = " + updatedInfo.ID;
+           + " id = "                   + updatedInfo.ID
+           + ", training_finished = "   + (updatedInfo.TrainingFinished ? "1" : "0")
+           + ", time_spent_total = "    + updatedInfo.TotalTime
+           + ", points_total = "        + updatedInfo.TotalPoints
+           + ", mistakes_total = "      + updatedInfo.TotalMistakes
+           + ", attempts_total = "      + updatedInfo.TotalAttempts
+           + " WHERE id = "             + updatedInfo.ID;
 
         await ExecuteCommand(command, conn);
         conn.Close();
@@ -140,12 +153,12 @@ public class DatabaseConnection : MonoBehaviour
     {
         string command =
               "INSERT INTO user(id, training_finished, time_spent_total, points_total, mistakes_total, attempts_total) "
-              + "VALUES(" + user.ID
-              + ", " + user.TrainingFinished
-              + ", " + user.TotalTime
-              + ", " + user.TotalPoints
-              + ", " + user.TotalMistakes
-              + ", " + user.TotalAttempts;
+              + "VALUES("   + user.ID
+              + ", "        + user.TrainingFinished
+              + ", "        + user.TotalTime
+              + ", "        + user.TotalPoints
+              + ", "        + user.TotalMistakes
+              + ", "        + user.TotalAttempts;
 
         MySqlConnection conn = new MySqlConnection(CONN_STRING);
         await conn.OpenAsync();
@@ -157,12 +170,13 @@ public class DatabaseConnection : MonoBehaviour
     {
         string command =
                "INSERT INTO session(session_id, level_id, time_spent, points, mistakes, user_id) "
-               + "VALUES(" + session.SessionID
-               + ", " + session.LevelID
-               + ", " + session.Time
-               + ", " + session.Points
-               + ", " + session.Mistakes
-               + ", " + session.UserID + ");";
+               + "VALUES("  + session.SessionID
+               + ", "       + session.LevelID
+               + ", "       + session.Time
+               + ", "       + session.Points
+               + ", "       + session.Mistakes
+               + ", "       + session.UserID 
+               + ");";
 
         MySqlConnection conn = new MySqlConnection(CONN_STRING);
         await conn.OpenAsync();      

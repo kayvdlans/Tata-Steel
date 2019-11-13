@@ -6,21 +6,34 @@ using UnityEngine.Events;
 public class RoomSettings : ScriptableObject
 {
     [SerializeField]
+    private int roomID;
+    public int RoomID { get { return roomID; } }
+
+    [SerializeField]
+    private string sceneName;
+    public string SceneName { get { return sceneName; } }
+
+    [SerializeField]
+    private SceneLoader sceneLoader;
+
+    [SerializeField]
     private OpenedDoors openedDoors;
 
     [SerializeField]
-    private List<int> doorsToOpen;
+    private List<RoomSettings> doorsToOpen;
 
     [SerializeField]
     private UnityEvent onRoomCompleted;
 
     public void RoomCompleted()
     {
-        foreach (int door in doorsToOpen)
+        foreach (RoomSettings door in doorsToOpen)
         {
-            openedDoors.OpenDoorByIndex(door);
+            openedDoors.OpenDoorByIndex(door.RoomID);
         }
 
         onRoomCompleted.Invoke();
+
+        sceneLoader.LoadScene("Entrance Hall");
     }
 }

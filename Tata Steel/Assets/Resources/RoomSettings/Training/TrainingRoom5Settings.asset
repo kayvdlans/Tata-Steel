@@ -12,19 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3959157f2b76af94f8d049590277086b, type: 3}
   m_Name: TrainingRoom5Settings
   m_EditorClassIdentifier: 
+  roomID: 7
+  sceneName: TrainingRoom5
+  sceneLoader: {fileID: 11400000, guid: 5b96f5061b616d74ab5b1b2f45ee11d8, type: 2}
   openedDoors: {fileID: 11400000, guid: 32646fc291627334ebc81b811d90750e, type: 2}
-  doorsToOpen: 0c0000000d000000
+  doorsToOpen:
+  - {fileID: 11400000, guid: 951d0e6b89dd64341bb5bf1887a6942c, type: 2}
   onRoomCompleted:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11400000, guid: 5b96f5061b616d74ab5b1b2f45ee11d8, type: 2}
-        m_MethodName: LoadScene
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: EntranceHall
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []

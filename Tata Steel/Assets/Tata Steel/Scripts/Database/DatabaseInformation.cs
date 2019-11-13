@@ -48,11 +48,11 @@ public struct UserInfo
 public struct SessionInfo
 {
     [SerializeField] private uint sessionID;
+    [SerializeField] private uint userID;
     [SerializeField] private uint levelID;
     [SerializeField] private uint time;
     [SerializeField] private uint points;
     [SerializeField] private uint mistakes;
-    [SerializeField] private uint userID;
 
     public uint SessionID 
     {

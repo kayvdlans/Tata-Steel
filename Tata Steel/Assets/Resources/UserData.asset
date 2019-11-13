@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb2ba50f9b748da4f8662c243190b44b, type: 3}
   m_Name: UserData
   m_EditorClassIdentifier: 
+  lastRoom: {fileID: 11400000, guid: 9a5d86dcac301d54694a7ad0f5cc07dd, type: 2}
   user:
     id: 0
     trainingFinished: 0
@@ -19,10 +20,5 @@ MonoBehaviour:
     totalPoints: 0
     totalMistakes: 0
     totalAttempts: 0
-  sessions:
-  - sessionID: 0
-    levelID: 0
-    time: 0
-    points: 0
-    mistakes: 0
-    userID: 0
+  sessions: []
+  highscores: []

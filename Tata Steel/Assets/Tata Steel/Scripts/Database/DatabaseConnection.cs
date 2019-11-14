@@ -99,12 +99,13 @@ public static class DatabaseConnection
     public static async Task DBSessionInsertQuery(SessionInfo session)
     {
         string command =
-               "INSERT INTO session(session_id, level_id, time_spent, points, mistakes, user_id) "
+               "INSERT INTO session(session_id, level_id, time_spent, points, mistakes, passed, user_id) "
                + "VALUES("  + session.SessionID
                + ", "       + session.LevelID
                + ", "       + session.Time
                + ", "       + session.Points
                + ", "       + session.Mistakes
+               + ", "       + (session.Passed ? "1" : "0")
                + ", "       + session.UserID 
                + ");";
 

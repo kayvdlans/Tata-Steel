@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InterfaceDataType : MonoBehaviour
+public class InterfaceData : MonoBehaviour
 {
     public enum Type
     {

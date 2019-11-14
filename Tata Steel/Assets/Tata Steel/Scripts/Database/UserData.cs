@@ -128,6 +128,7 @@ public class UserData : ScriptableObject
                 Time        = (uint)row["time_spent"],
                 Points      = (uint)row["points"],
                 Mistakes    = (uint)row["mistakes"],
+                Passed      = (byte)row["passed"] > 0,
                 UserID      = (uint)row["user_id"]
             });
         }

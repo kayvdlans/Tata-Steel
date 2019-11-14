@@ -18,7 +18,7 @@ public class RoomSettings : ScriptableObject
     public int RoomID { get => roomID; }
     public string SceneName { get => sceneName; }
 
-    public void SetSessionInfo(float time, int points, int mistakes)
+    public void SetSessionInfo(float time, int points, int mistakes, bool passed)
     {
         sessionInfo = new SessionInfo()
         {
@@ -27,6 +27,7 @@ public class RoomSettings : ScriptableObject
             Time        = (uint)time,
             Points      = (uint)points,
             Mistakes    = (uint)mistakes,
+            Passed      = passed,
             UserID      = userData.ID
         };
     }

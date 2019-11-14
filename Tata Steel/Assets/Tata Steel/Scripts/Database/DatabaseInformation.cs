@@ -53,6 +53,7 @@ public struct SessionInfo
     [SerializeField] private uint time;
     [SerializeField] private uint points;
     [SerializeField] private uint mistakes;
+    [SerializeField] private bool passed;
 
     public uint SessionID 
     {
@@ -78,6 +79,11 @@ public struct SessionInfo
     {
         get => mistakes;
         set => mistakes = value;
+    }
+    public bool Passed
+    {
+        get => passed;
+        set => passed = value;
     }
     public uint UserID
     {

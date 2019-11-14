@@ -5,8 +5,8 @@ using MySql.Data.MySqlClient;
 
 public static class DatabaseConnection 
 {
-    //TODO: UPDATE THIS STRING ONCE THE DATABASE GOES ONLINE. (also maybe get the database on test pc haha!!!111!!1)
-    private const string CONN_STRING = @"Server=127.0.0.1;Database=tatasteeldb;User=root;Password=WeLoveTataSteel;CharSet=utf8";
+    //TODO: UPDATE THIS STRING ONCE THE DATABASE GOES ONLINE. 
+    private const string CONN_STRING = @"Server=127.0.0.1;Database=tatasteeldb;User=root;Password=WeLoveTataSteel-1;CharSet=utf8";
 
     private static async Task ExecuteCommand(string command, MySqlConnection connection)
     {
@@ -83,11 +83,12 @@ public static class DatabaseConnection
         string command =
               "INSERT INTO user(id, training_finished, time_spent_total, points_total, mistakes_total, attempts_total) "
               + "VALUES("   + user.ID
-              + ", "        + user.TrainingFinished
+              + ", "        + (user.TrainingFinished ? "1" : "0")
               + ", "        + user.TotalTime
               + ", "        + user.TotalPoints
               + ", "        + user.TotalMistakes
-              + ", "        + user.TotalAttempts;
+              + ", "        + user.TotalAttempts
+              + ");";
 
         MySqlConnection conn = new MySqlConnection(CONN_STRING);
         await conn.OpenAsync();

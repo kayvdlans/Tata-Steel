@@ -783,6 +783,26 @@ MeshRenderer:
     type: 3}
   m_PrefabInstance: {fileID: 429338747}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &309593249 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6597958921523574872, guid: 24677abdc47b5e44a893be9f6e4afb9b,
+    type: 3}
+  m_PrefabInstance: {fileID: 6597958923091117269}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &309593250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 309593249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd74b23f925429a4689478889bc775ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  user: {fileID: 11400000, guid: e1a0fcf29eb9543418379789f5616a2c, type: 2}
+  id: 1
 --- !u!1001 &323127136
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1581,36 +1601,6 @@ MeshRenderer:
     type: 3}
   m_PrefabInstance: {fileID: 852236845}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &702217835
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 702217836}
-  m_Layer: 0
-  m_Name: CleaningStuff
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &702217836
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 702217835}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 15
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -4770,11 +4760,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6597958921563121197, guid: 24677abdc47b5e44a893be9f6e4afb9b,
-        type: 3}
-      propertyPath: go
-      value: 
-      objectReference: {fileID: 1795512127}
     - target: {fileID: 3552994501150319778, guid: 24677abdc47b5e44a893be9f6e4afb9b,
         type: 3}
       propertyPath: gearCollider
@@ -4790,5 +4775,10 @@ PrefabInstance:
       propertyPath: gearCollider
       value: 
       objectReference: {fileID: 125959237}
+    - target: {fileID: 6597958921563121197, guid: 24677abdc47b5e44a893be9f6e4afb9b,
+        type: 3}
+      propertyPath: go
+      value: 
+      objectReference: {fileID: 1795512127}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24677abdc47b5e44a893be9f6e4afb9b, type: 3}

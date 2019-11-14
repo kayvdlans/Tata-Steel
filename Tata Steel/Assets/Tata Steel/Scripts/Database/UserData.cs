@@ -6,14 +6,13 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "UserData", menuName = "ScriptableObjects/UserData")]
 public class UserData : ScriptableObject
 {
-    public uint ID { get; set; }
-
     [SerializeField] private RoomSettings lastRoom;
     [Space]
     [SerializeField] private UserInfo user = new UserInfo();
     [SerializeField] private List<SessionInfo> sessions = new List<SessionInfo>();
     [SerializeField] private List<LevelInfo> highscores = new List<LevelInfo>();
 
+    public uint ID { get; private set; }
     public int SessionsAmount { get => sessions.Count; }
 
     private DataTable userTable = new DataTable();
@@ -21,23 +20,27 @@ public class UserData : ScriptableObject
 
     public void UpdateHighscores()
     {
+        if (sessions.Count == 0)
+            return;
+
         //0 is training room and we dont want to add that to the highscores.
-        for (uint i = 1; i < lastRoom.RoomID; i++)
+        for (uint i = 1; i <= lastRoom.RoomID; i++)
         {
-            List<SessionInfo> relevantSessions = sessions.Where(s => s.LevelID == i) as List<SessionInfo>;
+            List<SessionInfo> relevantSessions = new List<SessionInfo>();
+            relevantSessions.AddRange(sessions.Where(s => s.LevelID == i));
 
-            LevelInfo highscore = new LevelInfo()
-            {
-                UserID = ID,
-                LevelID = i,
-                BestTime = uint.MaxValue,
-                HighestPoints = 0,
-                LowestMistakes = uint.MaxValue,
-                TotalAttempts = (uint)relevantSessions.Count             
-            };
+            if (relevantSessions != null && relevantSessions.Count > 0)
+            { 
+                LevelInfo highscore = new LevelInfo()
+                {
+                    UserID          = ID,
+                    LevelID         = i,
+                    BestTime        = uint.MaxValue,
+                    HighestPoints   = 0,
+                    LowestMistakes  = uint.MaxValue,
+                    TotalAttempts   = (uint)relevantSessions.Count             
+                };
 
-            if (relevantSessions.Count > 0)
-            {
                 for (int j = 0; j < relevantSessions.Count; j++)
                 {
                     if (relevantSessions[j].Time < highscore.BestTime)
@@ -88,24 +91,25 @@ public class UserData : ScriptableObject
         if (userTable.Rows.Count == 0)
             await DatabaseConnection.DBUserInsertQuery(user = new UserInfo()
             {
-                ID = ID,
-                TrainingFinished = false,
-                TotalTime = 0,
-                TotalPoints = 0,
-                TotalMistakes = 0,
-                TotalAttempts = 0
+                ID                  = ID,
+                TrainingFinished    = false,
+                TotalTime           = 0,
+                TotalPoints         = 0,
+                TotalMistakes       = 0,
+                TotalAttempts       = 0
             });
         else
             user = new UserInfo()
             {
-                ID = (uint)userTable.Rows[0]["id"],
-                TrainingFinished = (byte)userTable.Rows[0]["training_finished"] > 0,
-                TotalTime = (uint)userTable.Rows[0]["time_spent_total"],
-                TotalPoints = (uint)userTable.Rows[0]["points_total"],
-                TotalMistakes = (uint)userTable.Rows[0]["mistakes_total"],
-                TotalAttempts = (uint)userTable.Rows[0]["attempts_total"]
+                ID                  = (uint)userTable.Rows[0]["id"],
+                TrainingFinished    = (byte)userTable.Rows[0]["training_finished"] > 0,
+                TotalTime           = (uint)userTable.Rows[0]["time_spent_total"],
+                TotalPoints         = (uint)userTable.Rows[0]["points_total"],
+                TotalMistakes       = (uint)userTable.Rows[0]["mistakes_total"],
+                TotalAttempts       = (uint)userTable.Rows[0]["attempts_total"]
             };
 
+        sessions.Clear();
         await DatabaseConnection.DBReadQuery("session", ID, sessionTable);
         foreach (DataRow row in sessionTable.Rows)
         {
@@ -119,5 +123,8 @@ public class UserData : ScriptableObject
                 UserID      = (uint)row["user_id"]
             });
         }
+
+        highscores.Clear();
+        UpdateHighscores();
     }
 }

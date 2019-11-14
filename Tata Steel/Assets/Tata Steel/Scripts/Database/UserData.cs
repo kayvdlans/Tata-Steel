@@ -2,6 +2,7 @@
 using System.Data;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 [CreateAssetMenu(fileName = "UserData", menuName = "ScriptableObjects/UserData")]
 public class UserData : ScriptableObject
@@ -12,6 +13,10 @@ public class UserData : ScriptableObject
     [SerializeField] private List<SessionInfo> sessions = new List<SessionInfo>();
     [SerializeField] private List<LevelInfo> highscores = new List<LevelInfo>();
 
+    public UserInfo User { get => user; }
+    public List<SessionInfo> Sessions { get => sessions; }
+    public List<LevelInfo> Highscores { get => highscores; }
+    public UnityAction OnUpdateHighscores { get; set; }
     public uint ID { get; private set; }
     public int SessionsAmount { get => sessions.Count; }
 
@@ -71,6 +76,9 @@ public class UserData : ScriptableObject
                 }
             }
         }
+
+        if (OnUpdateHighscores != null)
+            OnUpdateHighscores.Invoke();
     }
 
     public async void AddSession(SessionInfo session)

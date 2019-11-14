@@ -5,25 +5,31 @@ using UnityEngine.Events;
 [CreateAssetMenu(fileName = "new RoomSettings", menuName = "ScriptableObjects/RoomSettings")]
 public class RoomSettings : ScriptableObject
 {
-    [SerializeField]
-    private int roomID;
-    public int RoomID { get { return roomID; } }
+    [SerializeField] private int roomID;
+    [SerializeField] private string sceneName;   
+    [SerializeField] private SceneLoader sceneLoader;
+    [SerializeField] private OpenedDoors openedDoors;
+    [SerializeField] private List<RoomSettings> doorsToOpen;
+    [SerializeField] private UnityEvent onRoomCompleted;
+    [SerializeField] private UserData userData;
 
-    [SerializeField]
-    private string sceneName;
-    public string SceneName { get { return sceneName; } }
+    private SessionInfo sessionInfo;
 
-    [SerializeField]
-    private SceneLoader sceneLoader;
+    public int RoomID { get => roomID; }
+    public string SceneName { get => sceneName; }
 
-    [SerializeField]
-    private OpenedDoors openedDoors;
-
-    [SerializeField]
-    private List<RoomSettings> doorsToOpen;
-
-    [SerializeField]
-    private UnityEvent onRoomCompleted;
+    public void SetSessionInfo(float time, int points, int mistakes)
+    {
+        sessionInfo = new SessionInfo()
+        {
+            SessionID   = (uint)userData.SessionsAmount,
+            LevelID     = (uint)roomID,
+            Time        = (uint)time,
+            Points      = (uint)points,
+            Mistakes    = (uint)mistakes,
+            UserID      = userData.ID
+        };
+    }
 
     public void RoomCompleted()
     {
@@ -32,8 +38,10 @@ public class RoomSettings : ScriptableObject
             openedDoors.OpenDoorByIndex(door.RoomID);
         }
 
-        onRoomCompleted.Invoke();
+        onRoomCompleted.Invoke();        
 
+        userData.AddSession(sessionInfo);
+        
         sceneLoader.LoadScene("Entrance Hall");
     }
 }

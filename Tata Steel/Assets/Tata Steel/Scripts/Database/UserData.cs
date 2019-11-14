@@ -14,6 +14,8 @@ public class UserData : ScriptableObject
     [SerializeField] private List<SessionInfo> sessions = new List<SessionInfo>();
     [SerializeField] private List<LevelInfo> highscores = new List<LevelInfo>();
 
+    public int SessionsAmount { get => sessions.Count; }
+
     private DataTable userTable = new DataTable();
     private DataTable sessionTable = new DataTable();
 
@@ -46,23 +48,23 @@ public class UserData : ScriptableObject
 
                     if (relevantSessions[j].Mistakes < highscore.LowestMistakes)
                         highscore.LowestMistakes = relevantSessions[j].Mistakes;
+                }
 
-                    bool highscoreExists = false;
+                bool highscoreExists = false;
 
-                    for (int k = 0; k < highscores.Count; k++)
+                for (int j = 0; j < highscores.Count; j++)
+                {
+                    if (highscores[j].LevelID == i)
                     {
-                        if (highscores[k].LevelID == i)
-                        {
-                            highscores[k] = highscore;
-                            highscoreExists = true;
-                            break;
-                        }
+                        highscores[j] = highscore;
+                        highscoreExists = true;
+                        break;
                     }
+                }
 
-                    if (!highscoreExists)
-                    {
-                        highscores.Add(highscore);
-                    }
+                if (!highscoreExists)
+                {
+                    highscores.Add(highscore);
                 }
             }
         }

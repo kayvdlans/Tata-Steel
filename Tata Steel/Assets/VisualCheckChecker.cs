@@ -28,8 +28,8 @@ public class VisualCheckChecker : MonoBehaviour
         {
             if (hit.collider.tag == ToLookAt)
             {
-                Debug.Log(hit.collider.name);
                 LookingAt = hit.collider.name;
+                Debug.Log(LookingAt);
             }
         }
 

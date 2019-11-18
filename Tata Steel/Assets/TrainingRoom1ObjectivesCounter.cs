@@ -20,16 +20,16 @@ public class TrainingRoom1ObjectivesCounter : MonoBehaviour
 
     void Update()
     {
-        if (VisualCheck.LookingAt == "Drainvalve")
+        if (VisualCheck.LookingAt == "Drainvalve" && objectivesDis.objectives[5].isActive)
         {
             objectivesDis.objectives[5].AddCurrent();
         }
 
-        if (VisualCheck.LookingAt == "MainFlask")
+        if (VisualCheck.LookingAt == "MainFlask" && objectivesDis.objectives[3].isActive)
         {
             objectivesDis.objectives[3].AddCurrent();
         }
-        if (VisualCheck.LookingAt == "PressureMechanism")
+        if (VisualCheck.LookingAt == "PressureMechanism" && objectivesDis.objectives[4].isActive)
         {
             objectivesDis.objectives[4].AddCurrent();
         }

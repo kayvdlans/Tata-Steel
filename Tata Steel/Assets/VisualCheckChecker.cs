@@ -13,12 +13,12 @@ public class VisualCheckChecker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_selection != null)
+        /*if (_selection != null)
           {
             var selectionRenderer = _selection.GetComponent<Renderer>();
             selectionRenderer.material = defaultMaterial;
             _selection = null;
-        }
+        }*/
 
 
         Ray ray = Camera.main.ScreenPointToRay(new Vector2(Screen.height / 2, Screen.width / 2));

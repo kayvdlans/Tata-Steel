@@ -4299,6 +4299,11 @@ PrefabInstance:
       propertyPath: m_NavMeshLayer
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 3928f83ec2156e24eb5be9f639dae8f6,
+        type: 3}
+      propertyPath: m_TagString
+      value: LookAt
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 3928f83ec2156e24eb5be9f639dae8f6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6178,8 +6183,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c990107ce6b886140ab01cd651faf2e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultMaterial: {fileID: 0}
+  defaultMaterial: {fileID: 2100000, guid: b4afc491699753c4eaef05893620bace, type: 2}
   ToLookAt: LookAt
+  LookingAt: 
 --- !u!4 &2085078581
 Transform:
   m_ObjectHideFlags: 0

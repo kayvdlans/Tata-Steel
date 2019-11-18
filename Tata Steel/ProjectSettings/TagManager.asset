@@ -9,6 +9,9 @@ TagManager:
   - PlayerController
   - SelectionMaterial
   - LookAt
+  - Flask
+  - Aftapsluiter
+  - Stoomafsluiters
   layers:
   - Default
   - TransparentFX

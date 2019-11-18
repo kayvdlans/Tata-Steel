@@ -10,9 +10,9 @@ public class TrainingRoom1ObjectivesCounter : MonoBehaviour
     // Update is called once per frame
     private void Start()
     {
-        flask.tag = "LookAt";
-        stoomafsluiters.tag = "LookAt";
-        aftapsluiter.tag = "LookAt";
+        flask.tag = "Flask";
+        stoomafsluiters.tag = "Stoomafsluiters";
+        aftapsluiter.tag = "Aftapsluiter";
     }
 
     void Update()

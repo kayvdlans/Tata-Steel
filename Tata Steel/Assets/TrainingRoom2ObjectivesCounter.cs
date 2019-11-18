@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TrainingRoom2ObjectivesCounter : MonoBehaviour
 {
-    public PCScreen pc;
+    public InternePompButton inter;
     public ObjectiveDispencer objectivesDis;
     // Start is called before the first frame update
     void Start()
@@ -15,10 +15,10 @@ public class TrainingRoom2ObjectivesCounter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (pc.venti && objectivesDis.objectives[0].isActive)
+        if (inter.inter && objectivesDis.objectives[0].isActive)
             objectivesDis.objectives[0].AddCurrent();
 
-        if (pc.voedi && objectivesDis.objectives[2].isActive)
+        if (inter.inter && objectivesDis.objectives[2].isActive)
             objectivesDis.objectives[2].AddCurrent();
     }
 }

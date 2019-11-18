@@ -5455,7 +5455,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3081835904f5c2f428a67103dd4c6f95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pc: {fileID: 2114182735}
+  inter: {fileID: 0}
   objectivesDis: {fileID: 1100779810}
 --- !u!1001 &1878873746
 PrefabInstance:
@@ -6574,15 +6574,3 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 35
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2114182735 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2114182735, guid: 3d4b4de2d34eb0546a75af48df1dcc56,
-    type: 3}
-  m_PrefabInstance: {fileID: 1441638838}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc8d37a1a07b46e488f81e7567ee3a54, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

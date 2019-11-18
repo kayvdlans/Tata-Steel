@@ -243,6 +243,7 @@ GameObject:
   - component: {fileID: 1659250520}
   - component: {fileID: 1659250519}
   - component: {fileID: 1659250518}
+  - component: {fileID: 1441638845}
   m_Layer: 0
   m_Name: VentiButton
   m_TagString: Untagged
@@ -360,6 +361,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!65 &1441638845
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1659250516}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 250.27498, y: 198.72054, z: 1}
+  m_Center: {x: 0.43440202, y: -2.9699972, z: -0.00001928857}
 --- !u!1 &1804016245
 GameObject:
   m_ObjectHideFlags: 0
@@ -372,6 +386,8 @@ GameObject:
   - component: {fileID: 1804016249}
   - component: {fileID: 1804016248}
   - component: {fileID: 1804016247}
+  - component: {fileID: 1441638843}
+  - component: {fileID: 1441638842}
   m_Layer: 0
   m_Name: InterButton
   m_TagString: Untagged
@@ -489,6 +505,32 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!65 &1441638843
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1804016245}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 256.63815, y: 209.88812, z: 1}
+  m_Center: {x: -0.98295707, y: 2.8333237, z: 0.00004353697}
+--- !u!114 &1441638842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1804016245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 144d96f6619f24e48af91555831a8b3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inter: 0
 --- !u!1 &2082332230
 GameObject:
   m_ObjectHideFlags: 0
@@ -501,6 +543,7 @@ GameObject:
   - component: {fileID: 2082332234}
   - component: {fileID: 2082332233}
   - component: {fileID: 2082332232}
+  - component: {fileID: 1441638844}
   m_Layer: 0
   m_Name: VoediButton
   m_TagString: Untagged
@@ -618,6 +661,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!65 &1441638844
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2082332230}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 246.01123, y: 197.67027, z: 1}
+  m_Center: {x: 0.3577792, y: -0.5160997, z: 0.000029816396}
 --- !u!1 &2114182730
 GameObject:
   m_ObjectHideFlags: 0
@@ -646,7 +702,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2114182730}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: -0.0000000067361}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 0.0037464888, y: 0.007787653, z: 0.013014727}
   m_Children:
   - {fileID: 1659250517}
@@ -657,7 +713,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -0.00689, y: -0.000099994}
+  m_AnchoredPosition: {x: -0.00511, y: -0.0001}
   m_SizeDelta: {x: 25, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &2114182734

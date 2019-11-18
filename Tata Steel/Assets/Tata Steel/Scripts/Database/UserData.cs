@@ -16,12 +16,42 @@ public class UserData : ScriptableObject
     public UserInfo User { get => user; }
     public List<SessionInfo> Sessions { get => sessions; }
     public List<LevelInfo> Highscores { get => highscores; }
+    public UnityAction OnSessionAdded { get; set; }
     public UnityAction OnUpdateHighscores { get; set; }
+    public UnityAction OnUpdateUserData { get; set; }
     public uint ID { get; private set; }
     public int SessionsAmount { get => sessions.Count; }
 
     private DataTable userTable = new DataTable();
     private DataTable sessionTable = new DataTable();
+
+    public void UpdateUserData()
+    {
+        user.ID                 = ID;
+        user.TotalTime          = 0;
+        user.TotalPoints        = 0;
+        user.TotalMistakes      = 0;
+        user.TotalAttempts      = (uint)sessions.Count;
+        user.TrainingFinished   = false;
+
+        foreach (SessionInfo session in sessions)
+        {
+            if (session.LevelID != 0)
+            {
+                user.TotalTime      += session.Time;
+                user.TotalPoints    += session.Points;
+                user.TotalMistakes  += session.Mistakes;
+            }
+            else
+            {
+                user.TrainingFinished   = true;
+                user.TotalAttempts      --;
+            }
+        }
+
+        if (OnUpdateUserData != null)
+            OnUpdateUserData.Invoke();
+    }
 
     public void UpdateHighscores()
     {
@@ -88,11 +118,16 @@ public class UserData : ScriptableObject
 
         sessions.Add(session);
         await DatabaseConnection.DBSessionInsertQuery(session);
+
+        UpdateUserData();
     }
 
     public async void InitializeUser(uint id)
     {
         ID = id;
+
+        userTable.Clear();
+        sessionTable.Clear();
 
         await DatabaseConnection.DBReadQuery("user", ID, userTable);
 
@@ -133,7 +168,10 @@ public class UserData : ScriptableObject
             });
         }
 
+        Debug.Log(sessions[0].Time);
+
         highscores.Clear();
         UpdateHighscores();
+        UpdateUserData();
     }
 }

@@ -37,9 +37,6 @@ public class Water : MonoBehaviour
             {
                 U0[i, j] = baseLevel;
                 O[i, j] = Instantiate(columnPrefab, this.transform).transform;
-                WaterPositionReference pRef = O[i, j].GetComponent<WaterPositionReference>();
-                pRef.X = i;
-                pRef.Y = j;
                 UpdateObject(i, j);
             }
         }

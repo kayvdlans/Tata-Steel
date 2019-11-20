@@ -735,6 +735,47 @@ MeshRenderer:
     type: 3}
   m_PrefabInstance: {fileID: 323127136}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &154978386
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 154978387}
+  m_Layer: 0
+  m_Name: Highscore Canvasses
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &154978387
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 154978386}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 450172129}
+  - {fileID: 5006512736565606081}
+  - {fileID: 835923947}
+  - {fileID: 1574845409}
+  - {fileID: 1877271614}
+  - {fileID: 572406887}
+  - {fileID: 739648679}
+  - {fileID: 1729091694}
+  - {fileID: 829808132}
+  - {fileID: 836820509}
+  - {fileID: 1906707158}
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &165058171 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9101430577481724397, guid: b91d0ae44b6bef4419c9d5001377594f,
@@ -783,6 +824,26 @@ MeshRenderer:
     type: 3}
   m_PrefabInstance: {fileID: 429338747}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &309593249 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6597958921523574872, guid: 24677abdc47b5e44a893be9f6e4afb9b,
+    type: 3}
+  m_PrefabInstance: {fileID: 6597958923091117269}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &309593250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 309593249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd74b23f925429a4689478889bc775ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  user: {fileID: 11400000, guid: e1a0fcf29eb9543418379789f5616a2c, type: 2}
+  id: 1
 --- !u!1001 &323127136
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1063,6 +1124,91 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 39d0e2f3a134c3e4bb7055aded8c1434, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b91d0ae44b6bef4419c9d5001377594f, type: 3}
+--- !u!1001 &450172128
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 154978387}
+    m_Modifications:
+    - target: {fileID: 7902645717922970107, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_Name
+      value: TOTAL SCORES
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.482
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.91
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.931
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 22c3a177e6de38446b940da8ee0a26cd, type: 3}
+--- !u!4 &450172129 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 450172128}
+  m_PrefabAsset: {fileID: 0}
 --- !u!23 &460998467 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 7087200961041043365, guid: b91d0ae44b6bef4419c9d5001377594f,
@@ -1235,6 +1381,97 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 39d0e2f3a134c3e4bb7055aded8c1434, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b91d0ae44b6bef4419c9d5001377594f, type: 3}
+--- !u!1001 &572406886
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 154978387}
+    m_Modifications:
+    - target: {fileID: 7902645717922970107, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_Name
+      value: Highscore - Training Room 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.102
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.981
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.082
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3582602348246779810, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_Name
+      value: HighscoreCanvas - Training Room 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3582602348246779815, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1642471410}
+    - target: {fileID: 2200636784668132359, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: roomSettings
+      value: 
+      objectReference: {fileID: 11400000, guid: d5c834c57213ffd4fa12db830d2edb16,
+        type: 2}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 22c3a177e6de38446b940da8ee0a26cd, type: 3}
+--- !u!4 &572406887 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 572406886}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &572597479
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1581,36 +1818,6 @@ MeshRenderer:
     type: 3}
   m_PrefabInstance: {fileID: 852236845}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &702217835
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 702217836}
-  m_Layer: 0
-  m_Name: CleaningStuff
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &702217836
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 702217835}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 15
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1684,7 +1891,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 8.085e-42, y: 6e-44, z: 0, w: 1.3e-44}
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -1744,6 +1951,97 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: b91d0ae44b6bef4419c9d5001377594f,
     type: 3}
   m_PrefabInstance: {fileID: 1001547401}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &739648678
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 154978387}
+    m_Modifications:
+    - target: {fileID: 7902645717922970107, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_Name
+      value: Highscore - Second Exam
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.899
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.981
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.082
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3582602348246779810, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_Name
+      value: HighscoreCanvas - Second Exam
+      objectReference: {fileID: 0}
+    - target: {fileID: 3582602348246779815, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1642471410}
+    - target: {fileID: 2200636784668132359, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: roomSettings
+      value: 
+      objectReference: {fileID: 11400000, guid: 7029d151c6f62b34ca0188800c82116a,
+        type: 2}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 22c3a177e6de38446b940da8ee0a26cd, type: 3}
+--- !u!4 &739648679 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 739648678}
   m_PrefabAsset: {fileID: 0}
 --- !u!23 &739896842 stripped
 MeshRenderer:
@@ -1868,11 +2166,284 @@ MeshRenderer:
     type: 3}
   m_PrefabInstance: {fileID: 36179554}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &829808131
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 154978387}
+    m_Modifications:
+    - target: {fileID: 7902645717922970107, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_Name
+      value: Highscore - Training Room 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.431
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.981
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.082
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3582602348246779810, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_Name
+      value: HighscoreCanvas - Training Room 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3582602348246779815, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1642471410}
+    - target: {fileID: 2200636784668132359, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: roomSettings
+      value: 
+      objectReference: {fileID: 11400000, guid: 951d0e6b89dd64341bb5bf1887a6942c,
+        type: 2}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 22c3a177e6de38446b940da8ee0a26cd, type: 3}
+--- !u!4 &829808132 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 829808131}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &833090059 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9101430577481724397, guid: b91d0ae44b6bef4419c9d5001377594f,
     type: 3}
   m_PrefabInstance: {fileID: 2090549102}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &835923946
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 154978387}
+    m_Modifications:
+    - target: {fileID: 7902645717922970107, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_Name
+      value: Highscore - Training Room 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.999
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.0193658
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.81
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3582602348246779810, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_Name
+      value: HighscoreCanvas - Training Room 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3582602348246779815, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1642471410}
+    - target: {fileID: 2200636784668132359, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: roomSettings
+      value: 
+      objectReference: {fileID: 11400000, guid: 914de1b52abcffe4db5623f8bcbafdc6,
+        type: 2}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 22c3a177e6de38446b940da8ee0a26cd, type: 3}
+--- !u!4 &835923947 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 835923946}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &836820508
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 154978387}
+    m_Modifications:
+    - target: {fileID: 7902645717922970107, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_Name
+      value: Highscore - Third Exam
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.237
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.981
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.827
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3582602348246779810, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_Name
+      value: HighscoreCanvas - Third Exam
+      objectReference: {fileID: 0}
+    - target: {fileID: 3582602348246779815, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1642471410}
+    - target: {fileID: 2200636784668132359, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: roomSettings
+      value: 
+      objectReference: {fileID: 11400000, guid: 312643529c6984446b89f06f0ed867d3,
+        type: 2}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 22c3a177e6de38446b940da8ee0a26cd, type: 3}
+--- !u!4 &836820509 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 836820508}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &838832612
 GameObject:
@@ -3467,6 +4038,97 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!1001 &1574845408
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 154978387}
+    m_Modifications:
+    - target: {fileID: 7902645717922970107, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_Name
+      value: Highscore - First Exam
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.094
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.0193658
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.082
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3582602348246779810, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_Name
+      value: HighscoreCanvas - First Exam
+      objectReference: {fileID: 0}
+    - target: {fileID: 3582602348246779815, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1642471410}
+    - target: {fileID: 2200636784668132359, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: roomSettings
+      value: 
+      objectReference: {fileID: 11400000, guid: 07b6d57d90f78fc4796883ce6899c7bb,
+        type: 2}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 22c3a177e6de38446b940da8ee0a26cd, type: 3}
+--- !u!4 &1574845409 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 1574845408}
+  m_PrefabAsset: {fileID: 0}
 --- !u!23 &1594682874 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: -6283877591383234665, guid: b91d0ae44b6bef4419c9d5001377594f,
@@ -3484,6 +4146,12 @@ MeshRenderer:
   m_CorrespondingSourceObject: {fileID: -3701727588016112575, guid: b91d0ae44b6bef4419c9d5001377594f,
     type: 3}
   m_PrefabInstance: {fileID: 61981451}
+  m_PrefabAsset: {fileID: 0}
+--- !u!20 &1642471410 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 7605513857608774483, guid: 463f6d1e0fb02804c8515495c8354507,
+    type: 3}
+  m_PrefabInstance: {fileID: 3752727063239114931}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1646528793
 GameObject:
@@ -3617,6 +4285,97 @@ MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 7087200961041043365, guid: b91d0ae44b6bef4419c9d5001377594f,
     type: 3}
   m_PrefabInstance: {fileID: 1001547401}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1729091693
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 154978387}
+    m_Modifications:
+    - target: {fileID: 7902645717922970107, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_Name
+      value: Highscore - Training Room 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.654
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.981
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.082
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3582602348246779810, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_Name
+      value: HighscoreCanvas - Training Room 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3582602348246779815, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1642471410}
+    - target: {fileID: 2200636784668132359, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: roomSettings
+      value: 
+      objectReference: {fileID: 11400000, guid: 80cbdf5d97ff2c941a7e39d9442140d7,
+        type: 2}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 22c3a177e6de38446b940da8ee0a26cd, type: 3}
+--- !u!4 &1729091694 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 1729091693}
   m_PrefabAsset: {fileID: 0}
 --- !u!23 &1744293579 stripped
 MeshRenderer:
@@ -4073,6 +4832,97 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!1001 &1877271613
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 154978387}
+    m_Modifications:
+    - target: {fileID: 7902645717922970107, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_Name
+      value: Highscore - Training Room 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.0193658
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.082
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3582602348246779810, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_Name
+      value: HighscoreCanvas - Training Room 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3582602348246779815, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1642471410}
+    - target: {fileID: 2200636784668132359, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: roomSettings
+      value: 
+      objectReference: {fileID: 11400000, guid: 34ef190af5fd7cd47a889935c804aaf3,
+        type: 2}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 22c3a177e6de38446b940da8ee0a26cd, type: 3}
+--- !u!4 &1877271614 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 1877271613}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1890281264
 GameObject:
   m_ObjectHideFlags: 0
@@ -4282,6 +5132,97 @@ MonoBehaviour:
   - {fileID: 20870481}
   selectionMaterial: {fileID: 0}
   continueOutOfRange: 0
+--- !u!1001 &1906707157
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 154978387}
+    m_Modifications:
+    - target: {fileID: 7902645717922970107, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_Name
+      value: 'Highscore - Final Exam '
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.237
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.981
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.333
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3582602348246779810, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_Name
+      value: HighscoreCanvas - Final Exam
+      objectReference: {fileID: 0}
+    - target: {fileID: 3582602348246779815, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1642471410}
+    - target: {fileID: 2200636784668132359, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: roomSettings
+      value: 
+      objectReference: {fileID: 11400000, guid: 9a5d86dcac301d54694a7ad0f5cc07dd,
+        type: 2}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 22c3a177e6de38446b940da8ee0a26cd, type: 3}
+--- !u!4 &1906707158 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 1906707157}
+  m_PrefabAsset: {fileID: 0}
 --- !u!23 &1929277684 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: -6283877591383234665, guid: b91d0ae44b6bef4419c9d5001377594f,
@@ -4565,6 +5506,80 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 429338747}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2200636784963992873
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 154978387}
+    m_Modifications:
+    - target: {fileID: 7902645717922970107, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_Name
+      value: Highscore - Training Room 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.999
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.0193658
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.271
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3582602348246779815, guid: 22c3a177e6de38446b940da8ee0a26cd,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1642471410}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 22c3a177e6de38446b940da8ee0a26cd, type: 3}
 --- !u!1001 &3752727063239114931
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4634,6 +5649,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 463f6d1e0fb02804c8515495c8354507, type: 3}
+--- !u!4 &5006512736565606081 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 2200636784963992873}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6513518816439549042
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4770,11 +5791,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6597958921563121197, guid: 24677abdc47b5e44a893be9f6e4afb9b,
-        type: 3}
-      propertyPath: go
-      value: 
-      objectReference: {fileID: 1795512127}
     - target: {fileID: 3552994501150319778, guid: 24677abdc47b5e44a893be9f6e4afb9b,
         type: 3}
       propertyPath: gearCollider
@@ -4790,5 +5806,10 @@ PrefabInstance:
       propertyPath: gearCollider
       value: 
       objectReference: {fileID: 125959237}
+    - target: {fileID: 6597958921563121197, guid: 24677abdc47b5e44a893be9f6e4afb9b,
+        type: 3}
+      propertyPath: go
+      value: 
+      objectReference: {fileID: 1795512127}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24677abdc47b5e44a893be9f6e4afb9b, type: 3}

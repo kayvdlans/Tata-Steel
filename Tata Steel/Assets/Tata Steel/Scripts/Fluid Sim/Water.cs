@@ -9,15 +9,16 @@ public class Water : MonoBehaviour
     [SerializeField] private float waveSpeed;
     [SerializeField] private float columnSize = 1f;
     [SerializeField] private float scaling = 0.5f;
-    [SerializeField] private float splashForce = 5f;
-    [SerializeField] private int splashCount = 10;
     [SerializeField] private float maxSlope = 2f;
     [SerializeField] private float baseLevel = 5f;
     [SerializeField] private float updateInterval = 0.05f;
 
-    [SerializeField] private GameObject columnPrefab;
+    [Space]
+    [SerializeField] private float splashForce = 5f;
+    [SerializeField] private int splashCount = 10;
+    [SerializeField] private float splashingInterval = 1f;
     
-    private Transform[,] O;
+    private Renderer[,] O;
     private float[,] U0;
     private float[,] U1;
     private float[,] V;
@@ -27,21 +28,75 @@ public class Water : MonoBehaviour
     private float timeLastChecked = 0;
     private List<GameObject> collisionObjects = new List<GameObject>();
 
-    private void Start()
+    private Mesh mesh;
+    private Vector3[] vertices;
+    private int[] triangles;
+
+    private void GenerateMesh()
     {
-        O = new Transform[size.x, size.y];
-        U0 = new float[size.x, size.y];
-        for (int i = 0; i < size.x; i++)
+        GetComponent<MeshFilter>().mesh = mesh = new Mesh(); 
+        mesh.name = "Water_Mesh";
+
+        vertices = new Vector3[size.x * size.y];
+        for (int i = 0, y = 0; y < size.y; y++)
         {
-            for (int j = 0; j < size.y; j++)
+            for (int x = 0; x < size.x; x++, i++)
             {
-                U0[i, j] = baseLevel;
-                O[i, j] = Instantiate(columnPrefab, this.transform).transform;
-                UpdateObject(i, j);
+                float z = x >= 0 && x < size.x && y >= 0 && y < size.y ? U0[x, y] : 0;
+                vertices[i] = new Vector3(x , z, y);
+            }
+        }
+       
+        mesh.vertices = vertices;
+
+        triangles = new int[(size.x - 1) * (size.y - 1) * 6];
+        for (int ti = 0, vi = 0, y = 0; y < size.y - 1; y++, vi++)
+        {
+            for (int x = 0; x < size.x - 1; x++, ti += 6, vi++)
+            {
+                triangles[ti] = vi;
+                triangles[ti + 3] = triangles[ti + 2] = vi + 1;
+                triangles[ti + 4] = triangles[ti + 1] = vi + (size.x -1) + 1;
+                triangles[ti + 5] = vi + (size.x-1) + 2;
             }
         }
 
-        U0[size.x / 2, size.y / 2] = splashForce;
+        mesh.triangles = triangles;
+        mesh.RecalculateNormals();
+    }
+
+    private void UpdateMesh()
+    {
+        for (int i = 0, y = 0; y < size.y; y++)
+        {
+            for (int x = 0; x < size.x; x++, i++)
+            {
+                float z = x >= 0 && x < size.x && y >= 0 && y < size.y ? U0[x, y] : 0;
+                vertices[i] = new Vector3(x, z, y);
+            }
+        }
+
+        mesh.vertices = vertices;
+        mesh.RecalculateNormals();
+    }
+
+
+    private IEnumerator Splash(float time)
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(time);
+
+            U0[Random.Range(0, size.x - 1), Random.Range(0, size.y - 1)] = splashForce;
+        }
+    }
+
+    private void Start()
+    {
+        O = new Renderer[size.x, size.y];
+        U0 = new float[size.x, size.y];
+
+        GenerateMesh();
 
         V = new float[size.x, size.y];
         R0 = new float[size.x, size.y];
@@ -50,8 +105,8 @@ public class Water : MonoBehaviour
 
         timeLastChecked = Time.time;
         collisionObjects.AddRange(GameObject.FindGameObjectsWithTag("WaterCollisionObjects"));
-        
         StartCoroutine(DoSimulation(updateInterval));
+        StartCoroutine(Splash(splashingInterval));
     }
 
     private void Update()
@@ -71,6 +126,7 @@ public class Water : MonoBehaviour
         {
             SimulationStep(Time.time - timeLastChecked);
             timeLastChecked = Time.time;
+            UpdateMesh();
 
             yield return new WaitForSeconds(time);
         }
@@ -89,8 +145,8 @@ public class Water : MonoBehaviour
 
     private void UpdateObject(int i, int j)
     {
-        O[i, j].localPosition = new Vector3(i * (columnSize / 2), U0[i, j] / 2, j * (columnSize / 2));
-        O[i, j].localScale = new Vector3(columnSize, U0[i, j], columnSize);        
+        O[i, j].transform.localPosition = new Vector3(i * (columnSize / 2), U0[i, j] / 2, j * (columnSize / 2));
+        O[i, j].transform.localScale = new Vector3(columnSize, U0[i, j], columnSize);        
     }
 
     private float ComputeForce(int i, int j, float c, float h)
@@ -100,10 +156,10 @@ public class Water : MonoBehaviour
 
     private void ComputeCollisionCoefficient(int i, int j, GameObject t)
     {
-        Bounds B0 = O[i, j].GetComponent<Renderer>().bounds;
+        Bounds B0 = O[i, j].bounds;
         Bounds B1 = t.GetComponent<Renderer>().bounds;
 
-        R0[i, j] = B1.Intersects(B0) ? B1.min.y - B0.max.y : 0; 
+        R0[i, j] = B1.Intersects(B0) ? B1.min.y - B0.max.y : R0[i, j]; 
     }
 
     private bool AdjacentCellContainsObject(int i, int j)
@@ -130,18 +186,29 @@ public class Water : MonoBehaviour
             {
                 U0[i, j] = U1[i, j];
                 
-                if (U0[i, j] < 5.0f) 
-                    U0[i, j] = 5.0f; 
-                
+                if (U0[i, j] < baseLevel) 
+                    U0[i, j] = baseLevel;
+
+                float prevR = R0[i, j];
+                R0[i, j] = 0;
                 for (int k = 0; k < collisionObjects.Count; k++)
-                    ComputeCollisionCoefficient(i, j, collisionObjects[k]);
+                    //ComputeCollisionCoefficient(i, j, collisionObjects[k]);
+
+               // U0[i, j]+= R0[i, j];
 
                 if (!AdjacentCellContainsObject(i, j))
+                {
                     ClampHeight(i, j, columnSize);
-
-                U0[i, j] += R0[i, j];
+                    if (U0[i, j] < baseLevel)
+                        U0[i, j] = baseLevel;
+                }
+                else
+                {
+                    if (U0[i, j] < 0.01f)
+                        U0[i, j] = 0.01f;
+                }
                 
-                UpdateObject(i, j);
+                //UpdateObject(i, j);
             }
         }
     }

@@ -67,29 +67,8 @@ public class Water : MonoBehaviour
             for (int x = 1; x < size.x; x++)
                 vertices[v++] = new Vector3(x, 0, z);
 
-
-        /*for (int i = 0, y = 0; y < size.y; y++)
-        {
-            for (int x = 0; x < size.x; x++, i++)
-            {
-                float z = x >= 0 && x < size.x && y >= 0 && y < size.y ? U0[x, y] : 0;
-                vertices[i] = new Vector3(x , z, y);
-            }
-        }*/
-
         mesh.vertices = vertices;
 
-        /*triangles = new int[(size.x - 1) * (size.y - 1) * 6];
-        for (int ti = 0, vi = 0, y = 0; y < size.y - 1; y++, vi++)
-        {
-            for (int x = 0; x < size.x - 1; x++, ti += 6, vi++)
-            {
-                triangles[ti] = vi;
-                triangles[ti + 3] = triangles[ti + 2] = vi + 1;
-                triangles[ti + 4] = triangles[ti + 1] = vi + (size.x -1) + 1;
-                triangles[ti + 5] = vi + (size.x-1) + 2;
-            }
-        }*/
         int quads = (size.x * baseLevel + size.x * size.y + baseLevel * size.y) * 2;
         int[] triangles = new int[quads * 6 + 6];
         int ring = (size.x + size.y) * 2;

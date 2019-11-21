@@ -26,21 +26,39 @@ public class FlipSwitch : MonoBehaviour
 
     public void Flip()
     {
-        UpdateValue(!CurrentlyTurnedOn);
-        pc.SetActive(!pc.activeSelf);
-        if (!CurrentlyTurnedOn)
+        if (pc == null)
         {
-            AudioSource audioSource = GetComponent<AudioSource>();
-            audioSource.pitch = Random.Range(0.8f, 1.5f);
-            audioSource.Play();
+            UpdateValue(!CurrentlyTurnedOn);
+            /*if (!CurrentlyTurnedOn)
+            {
+                AudioSource audioSource = GetComponent<AudioSource>();
+                audioSource.pitch = Random.Range(0.8f, 1.5f);
+                audioSource.Play();
+            }
+            if (CurrentlyTurnedOn)
+            {
+                AudioSource audioSource = GetComponent<AudioSource>();
+                audioSource.pitch = Random.Range(0.8f, 1.5f);
+                audioSource.Pause();
+            }*/
         }
-        if(CurrentlyTurnedOn)
+        else
         {
-            AudioSource audioSource = GetComponent<AudioSource>();
-            audioSource.pitch = Random.Range(0.8f, 1.5f);
-            audioSource.Pause();
+            UpdateValue(!CurrentlyTurnedOn);
+            pc.SetActive(!pc.activeSelf);
+            /*if (!CurrentlyTurnedOn)
+            {
+                AudioSource audioSource = GetComponent<AudioSource>();
+                audioSource.pitch = Random.Range(0.8f, 1.5f);
+                audioSource.Play();
+            }
+            if (CurrentlyTurnedOn)
+            {
+                AudioSource audioSource = GetComponent<AudioSource>();
+                audioSource.pitch = Random.Range(0.8f, 1.5f);
+                audioSource.Pause();
+            }*/
         }
-
     }
 
     private void UpdateValue(bool on)

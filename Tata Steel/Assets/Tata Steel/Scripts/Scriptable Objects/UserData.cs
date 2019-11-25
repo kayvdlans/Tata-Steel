@@ -121,6 +121,7 @@ public class UserData : ScriptableObject
         sessions.Add(session);
         await DatabaseConnection.DBSessionInsertQuery(session);
 
+        UpdateHighscores();
         UpdateUserData();
     }
 

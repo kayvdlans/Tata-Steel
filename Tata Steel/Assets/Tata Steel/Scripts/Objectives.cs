@@ -13,8 +13,6 @@ public class Objectives
     public float requiredAmount;
     public float currentAmount;
 
-
-
     public bool IsReached()
     {
         return (currentAmount >= requiredAmount);

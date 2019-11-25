@@ -11,6 +11,21 @@ public class PushSessionInfo : MonoBehaviour
     [Space]
     [SerializeField][Range(0, 1)] private float passingRatio;
 
+    private int totalMistakes = 0;
+
+    private void Start()
+    {
+        foreach (Mistake mistake in FindObjectsOfType<Mistake>())
+        {
+            mistake.AddListener(IncrementMistakeCount);
+        }
+    }
+
+    private void IncrementMistakeCount()
+    {
+        totalMistakes++;
+    }
+
     //Get all points
     //Get all mistakes
 
@@ -24,15 +39,8 @@ public class PushSessionInfo : MonoBehaviour
         int maxPoints = objectives.MaxPoints;
         int points = objectives.Points;
        
-        /*
-        List<Mistake> mistakes = new List<Mistakes>();
-        for (int i = 0; i < mistakes.Count; i++)
-        {
-            points -= mistakes.Points; //do this realtime instead? so it already gets changed in the objective dispenser
-        }
-         */
         bool passed = (float)points / maxPoints > passingRatio;
-        int mistakes = 0;
-        roomSettings.SetSessionInfo(time, points, mistakes/*.Count*/, passed);
+
+        roomSettings.SetSessionInfo(time, points, totalMistakes, passed);
     }
 }

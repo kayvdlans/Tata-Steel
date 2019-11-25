@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -21,6 +22,9 @@ public class Mistake : MonoBehaviour
 
     private void Start()
     {
+        if (!objectives)
+            throw new NullReferenceException();
+
         AddListener(UpdatePoints);
     }
 

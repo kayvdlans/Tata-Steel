@@ -32,8 +32,9 @@ public class InteractionGrab : Interaction
         }
     }
 
-    protected override void OnInteractionStart()
+    public override void OnInteractionStart()
     {
+        Debug.Log("Fuck");
         base.OnInteractionStart();
 
         rb.isKinematic = makeKinematicOnGrab;
@@ -57,7 +58,7 @@ public class InteractionGrab : Interaction
 
     }
 
-    protected override void OnInteractionEnd()
+    public override void OnInteractionEnd()
     {
         transform.SetParent(initialParent);
 

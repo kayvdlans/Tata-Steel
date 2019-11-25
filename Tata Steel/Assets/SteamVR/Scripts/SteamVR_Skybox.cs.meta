@@ -1,10 +1,15 @@
 fileFormatVersion: 2
 guid: 13a43e992568b8e48b4bd489b9d96f40
-timeCreated: 1544852189
-licenseType: Store
 MonoImporter:
+  externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - front: {fileID: 2800000, guid: 200a36575873a1d40baa790e18dafe5d, type: 3}
+  - back: {fileID: 2800000, guid: 5c06354455999f94ea26114e261dde6d, type: 3}
+  - left: {fileID: 2800000, guid: 005a6f54cbe838a4da12e1f293c45f9b, type: 3}
+  - right: {fileID: 2800000, guid: 549ff69cefce9de4b9bca905c53fdafb, type: 3}
+  - top: {fileID: 2800000, guid: 8d0e7207f02ad9e478bd26aad37a4b1a, type: 3}
+  - bottom: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

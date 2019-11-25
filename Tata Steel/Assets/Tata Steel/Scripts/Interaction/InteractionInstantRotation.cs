@@ -41,7 +41,7 @@ public class InteractionInstantRotation : Interaction
         }
     }
 
-    protected override void OnInteractionStart()
+    public override void OnInteractionStart()
     {
         base.OnInteractionStart();
 

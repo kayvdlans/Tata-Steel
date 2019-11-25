@@ -451,12 +451,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1530427701}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &125959237 stripped
-BoxCollider:
-  m_CorrespondingSourceObject: {fileID: 125959237, guid: 463f6d1e0fb02804c8515495c8354507,
-    type: 3}
-  m_PrefabInstance: {fileID: 3752727063239114931}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &136373604
 GameObject:
   m_ObjectHideFlags: 0
@@ -5647,6 +5641,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7605513856658098805, guid: 463f6d1e0fb02804c8515495c8354507,
+        type: 3}
+      propertyPath: Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7605513858317882520, guid: 463f6d1e0fb02804c8515495c8354507,
+        type: 3}
+      propertyPath: resetTrackerOnLoad
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 463f6d1e0fb02804c8515495c8354507, type: 3}
 --- !u!4 &5006512736565606081 stripped
@@ -5795,17 +5799,17 @@ PrefabInstance:
         type: 3}
       propertyPath: gearCollider
       value: 
-      objectReference: {fileID: 125959237}
+      objectReference: {fileID: 0}
     - target: {fileID: 5972028639952320237, guid: 24677abdc47b5e44a893be9f6e4afb9b,
         type: 3}
       propertyPath: gearCollider
       value: 
-      objectReference: {fileID: 125959237}
+      objectReference: {fileID: 0}
     - target: {fileID: 1731986983348683806, guid: 24677abdc47b5e44a893be9f6e4afb9b,
         type: 3}
       propertyPath: gearCollider
       value: 
-      objectReference: {fileID: 125959237}
+      objectReference: {fileID: 0}
     - target: {fileID: 6597958921563121197, guid: 24677abdc47b5e44a893be9f6e4afb9b,
         type: 3}
       propertyPath: go

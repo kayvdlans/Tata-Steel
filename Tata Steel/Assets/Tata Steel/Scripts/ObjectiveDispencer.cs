@@ -11,9 +11,10 @@ public class ObjectiveDispencer : MonoBehaviour
     public List<Text> progressText = new List<Text>();
     public List<Text> doneText = new List<Text>();
     public Text score;
-    int reward;
-    int maxReward;
     public int doorIndex;
+
+    public int Points { get; private set; }
+    public int MaxPoints { get; private set; }
 
     private void Start()
     {
@@ -22,7 +23,7 @@ public class ObjectiveDispencer : MonoBehaviour
 
         for (int i = 0; i < objectives.Count; i++)
         {
-            maxReward += objectives[i].reward;
+            MaxPoints += objectives[i].reward;
         }
     }
 
@@ -35,7 +36,7 @@ public class ObjectiveDispencer : MonoBehaviour
             objectives[i].IsReached();
         }
         if(score!=null)
-        score.text = "behaalde score: " + reward.ToString() + "/" + maxReward;
+        score.text = "behaalde score: " + Points.ToString() + "/" + MaxPoints;
     }
 
     public void OpenMenu()
@@ -59,7 +60,7 @@ public class ObjectiveDispencer : MonoBehaviour
             if (objectives[i].IsReached() && objectives[i].isActive) {
                 if(doneText.Count > 0)
                 doneText[i].text = "Af: Ja";
-                reward += objectives[i].reward;
+                Points += objectives[i].reward;
                 objectives[i].isActive = false;
                 Debug.Log("Check" + i);
             }

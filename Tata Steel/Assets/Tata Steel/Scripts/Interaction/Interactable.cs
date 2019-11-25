@@ -60,7 +60,6 @@ public class Interactable : MonoBehaviour
     private List<string> buttonNames;
     private OVRInput.RawButton lastInput = OVRInput.RawButton.None;
 
-
     public bool CanInteract { get; set; } = false;
 
     public bool IsInteracting { get; private set; }
@@ -116,7 +115,7 @@ public class Interactable : MonoBehaviour
             for (int i = lastIndex; i < b.Length; i++)
             {
                 last += b[i];
-            }
+            }   
             buttonNames.Add(last);
         }
 

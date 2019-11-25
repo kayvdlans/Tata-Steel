@@ -14,6 +14,7 @@ public class LevelHighscoreInterface : MonoBehaviour
 
     private void Start()
     {
+        UpdateUIElements();
         userData.OnUpdateHighscores += UpdateUIElements;
     }
 

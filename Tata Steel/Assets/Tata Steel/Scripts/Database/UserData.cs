@@ -25,7 +25,7 @@ public class UserData : ScriptableObject
     private DataTable userTable = new DataTable();
     private DataTable sessionTable = new DataTable();
 
-    public void UpdateUserData()
+    public async void UpdateUserData()
     {
         user.ID                 = ID;
         user.TotalTime          = 0;
@@ -51,6 +51,8 @@ public class UserData : ScriptableObject
 
         if (OnUpdateUserData != null)
             OnUpdateUserData.Invoke();
+
+        await DatabaseConnection.DBUserUpdateQuery(user);
     }
 
     public void UpdateHighscores()
@@ -167,8 +169,6 @@ public class UserData : ScriptableObject
                 UserID      = (uint)row["user_id"]
             });
         }
-
-        Debug.Log(sessions[0].Time);
 
         highscores.Clear();
         UpdateHighscores();

@@ -6,7 +6,7 @@ using MySql.Data.MySqlClient;
 public static class DatabaseConnection 
 {
     //TODO: UPDATE THIS STRING ONCE THE DATABASE GOES ONLINE. 
-    private const string CONN_STRING = @"Server=127.0.0.1;Database=tatasteeldb;User=root;Password=WeLoveTataSteel;CharSet=utf8";
+    private const string CONN_STRING = @"Server=127.0.0.1;Database=tatasteeldb;User=root;Password=WeLoveTataSteel-1;CharSet=utf8";
 
     private static async Task ExecuteCommand(string command, MySqlConnection connection)
     {

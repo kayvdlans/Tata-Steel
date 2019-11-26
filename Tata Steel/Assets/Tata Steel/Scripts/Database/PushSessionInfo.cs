@@ -34,6 +34,13 @@ public class PushSessionInfo : MonoBehaviour
     /// </summary>
     public void SetSessionInfo()
     {
+        Door door = GetComponent<Door>();
+        TutorialDoors tutorialDoor = GetComponent<TutorialDoors>();
+
+        //make sure it only sets the session info if the door is opened.
+        if (!door && !tutorialDoor || door && !door.Opened || tutorialDoor && !tutorialDoor.Opened)
+            return;
+
         float time = Time.timeSinceLevelLoad;
 
         int maxPoints = objectives.MaxPoints;

@@ -195,8 +195,9 @@ MonoBehaviour:
   onEndInteraction:
     m_PersistentCalls:
       m_Calls: []
-  renderers: []
-  selectionMaterial: {fileID: 0}
+  renderers:
+  - {fileID: 100064154}
+  selectionMaterial: {fileID: 2100000, guid: 84c2baf35777e5941a92737515e8a58e, type: 2}
   continueOutOfRange: 0
 --- !u!114 &85895772
 MonoBehaviour:
@@ -413,6 +414,24 @@ PrefabInstance:
     - {fileID: 1781258630, guid: 95a41565ef07d004990ffe5641bfbedc, type: 3}
     - {fileID: 1781258633, guid: 95a41565ef07d004990ffe5641bfbedc, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 95a41565ef07d004990ffe5641bfbedc, type: 3}
+--- !u!23 &100064152 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 6753716571741915717, guid: 95a41565ef07d004990ffe5641bfbedc,
+    type: 3}
+  m_PrefabInstance: {fileID: 100064151}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &100064153 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 6753716570641030589, guid: 95a41565ef07d004990ffe5641bfbedc,
+    type: 3}
+  m_PrefabInstance: {fileID: 100064151}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &100064154 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 6753716569953333735, guid: 95a41565ef07d004990ffe5641bfbedc,
+    type: 3}
+  m_PrefabInstance: {fileID: 100064151}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &122170703
 GameObject:
   m_ObjectHideFlags: 0
@@ -691,8 +710,9 @@ MonoBehaviour:
   onEndInteraction:
     m_PersistentCalls:
       m_Calls: []
-  renderers: []
-  selectionMaterial: {fileID: 0}
+  renderers:
+  - {fileID: 100064153}
+  selectionMaterial: {fileID: 2100000, guid: 84c2baf35777e5941a92737515e8a58e, type: 2}
   continueOutOfRange: 0
 --- !u!114 &187850311
 MonoBehaviour:
@@ -3894,8 +3914,9 @@ MonoBehaviour:
   onEndInteraction:
     m_PersistentCalls:
       m_Calls: []
-  renderers: []
-  selectionMaterial: {fileID: 0}
+  renderers:
+  - {fileID: 100064152}
+  selectionMaterial: {fileID: 2100000, guid: 84c2baf35777e5941a92737515e8a58e, type: 2}
   continueOutOfRange: 0
 --- !u!114 &2107289335
 MonoBehaviour:

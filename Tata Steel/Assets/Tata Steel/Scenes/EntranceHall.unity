@@ -818,26 +818,6 @@ MeshRenderer:
     type: 3}
   m_PrefabInstance: {fileID: 429338747}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &309593249 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6597958921523574872, guid: 24677abdc47b5e44a893be9f6e4afb9b,
-    type: 3}
-  m_PrefabInstance: {fileID: 6597958923091117269}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &309593250
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 309593249}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd74b23f925429a4689478889bc775ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  user: {fileID: 11400000, guid: e1a0fcf29eb9543418379789f5616a2c, type: 2}
-  id: 1
 --- !u!1001 &323127136
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1583,6 +1563,10 @@ MonoBehaviour:
   buttonToPress: 335544320
   handMode: 0
   interactionType: 0
+  onTouch:
+    m_PersistentCalls:
+      m_Calls: []
+  fireTouchEventContinuesly: 0
   onStartInteraction:
     m_PersistentCalls:
       m_Calls:
@@ -1800,7 +1784,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 9.2e-44, y: 1.9921e-41, z: 0, w: 4.3282325e+29}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -2435,6 +2419,10 @@ MonoBehaviour:
   buttonToPress: 335544320
   handMode: 0
   interactionType: 0
+  onTouch:
+    m_PersistentCalls:
+      m_Calls: []
+  fireTouchEventContinuesly: 0
   onStartInteraction:
     m_PersistentCalls:
       m_Calls:
@@ -2665,6 +2653,10 @@ MonoBehaviour:
   buttonToPress: 335544320
   handMode: 0
   interactionType: 0
+  onTouch:
+    m_PersistentCalls:
+      m_Calls: []
+  fireTouchEventContinuesly: 0
   onStartInteraction:
     m_PersistentCalls:
       m_Calls:
@@ -2944,6 +2936,10 @@ MonoBehaviour:
   buttonToPress: 335544320
   handMode: 0
   interactionType: 0
+  onTouch:
+    m_PersistentCalls:
+      m_Calls: []
+  fireTouchEventContinuesly: 0
   onStartInteraction:
     m_PersistentCalls:
       m_Calls:
@@ -3420,6 +3416,10 @@ MonoBehaviour:
   buttonToPress: 335544320
   handMode: 0
   interactionType: 0
+  onTouch:
+    m_PersistentCalls:
+      m_Calls: []
+  fireTouchEventContinuesly: 0
   onStartInteraction:
     m_PersistentCalls:
       m_Calls:
@@ -3801,6 +3801,10 @@ MonoBehaviour:
   buttonToPress: 335544320
   handMode: 0
   interactionType: 0
+  onTouch:
+    m_PersistentCalls:
+      m_Calls: []
+  fireTouchEventContinuesly: 0
   onStartInteraction:
     m_PersistentCalls:
       m_Calls:
@@ -4228,6 +4232,10 @@ MonoBehaviour:
   buttonToPress: 1007618827
   handMode: 0
   interactionType: 0
+  onTouch:
+    m_PersistentCalls:
+      m_Calls: []
+  fireTouchEventContinuesly: 0
   onStartInteraction:
     m_PersistentCalls:
       m_Calls:
@@ -4695,6 +4703,10 @@ MonoBehaviour:
   buttonToPress: 335544320
   handMode: 0
   interactionType: 0
+  onTouch:
+    m_PersistentCalls:
+      m_Calls: []
+  fireTouchEventContinuesly: 0
   onStartInteraction:
     m_PersistentCalls:
       m_Calls:
@@ -5094,6 +5106,10 @@ MonoBehaviour:
   buttonToPress: 335544320
   handMode: 0
   interactionType: 0
+  onTouch:
+    m_PersistentCalls:
+      m_Calls: []
+  fireTouchEventContinuesly: 0
   onStartInteraction:
     m_PersistentCalls:
       m_Calls:
@@ -5653,6 +5669,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 463f6d1e0fb02804c8515495c8354507, type: 3}
+--- !u!143 &3752727063239114932 stripped
+CharacterController:
+  m_CorrespondingSourceObject: {fileID: 7605513858158756698, guid: 463f6d1e0fb02804c8515495c8354507,
+    type: 3}
+  m_PrefabInstance: {fileID: 3752727063239114931}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5006512736565606081 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6624953046480292840, guid: 22c3a177e6de38446b940da8ee0a26cd,
@@ -5799,17 +5821,17 @@ PrefabInstance:
         type: 3}
       propertyPath: gearCollider
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 3752727063239114932}
     - target: {fileID: 5972028639952320237, guid: 24677abdc47b5e44a893be9f6e4afb9b,
         type: 3}
       propertyPath: gearCollider
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 3752727063239114932}
     - target: {fileID: 1731986983348683806, guid: 24677abdc47b5e44a893be9f6e4afb9b,
         type: 3}
       propertyPath: gearCollider
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 3752727063239114932}
     - target: {fileID: 6597958921563121197, guid: 24677abdc47b5e44a893be9f6e4afb9b,
         type: 3}
       propertyPath: go

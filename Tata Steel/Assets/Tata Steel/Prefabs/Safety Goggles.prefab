@@ -79,7 +79,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonToPress: 335544320
+  handMode: 0
   interactionType: 1
+  onTouch:
+    m_PersistentCalls:
+      m_Calls: []
+  fireTouchEventContinuesly: 0
   onStartInteraction:
     m_PersistentCalls:
       m_Calls:
@@ -111,11 +116,11 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  continueOutOfRange: 0
-  outlineMaterial: {fileID: 2100000, guid: 72bbc9b4c7f17b845a7c325593461a63, type: 2}
   renderers:
   - {fileID: 8656483655752608760}
   - {fileID: 2116485449907658313}
+  selectionMaterial: {fileID: 2100000, guid: 72bbc9b4c7f17b845a7c325593461a63, type: 2}
+  continueOutOfRange: 0
 --- !u!114 &3505979490317469609
 MonoBehaviour:
   m_ObjectHideFlags: 0

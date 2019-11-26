@@ -7,6 +7,7 @@ public class TrainingRoom1ObjectivesCounter : MonoBehaviour
     public GameObject flask;
     public GameObject stoomafsluiters;
     public GameObject aftapsluiter;
+    public GameObject stroom;
     public VisualCheckChecker VisualCheck;
     public ObjectiveDispencer objectivesDis;
     public string LookingAt;
@@ -20,6 +21,8 @@ public class TrainingRoom1ObjectivesCounter : MonoBehaviour
 
     void Update()
     {
+
+
         if (VisualCheck.LookingAt == "Drainvalve" && objectivesDis.objectives[5].isActive)
         {
             objectivesDis.objectives[5].AddCurrent();
@@ -33,6 +36,12 @@ public class TrainingRoom1ObjectivesCounter : MonoBehaviour
         {
             objectivesDis.objectives[4].AddCurrent();
         }
+        if (stroom.GetComponent<FlipSwitch>().CurrentlyTurnedOn && objectivesDis.objectives[2].isActive)
+        {
+            objectivesDis.objectives[2].AddCurrent();
+        }
     }
+
+    
 }
 

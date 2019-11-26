@@ -34,7 +34,6 @@ public class InteractionGrab : Interaction
 
     public override void OnInteractionStart()
     {
-        Debug.Log("Fuck");
         base.OnInteractionStart();
 
         rb.isKinematic = makeKinematicOnGrab;

@@ -62,7 +62,6 @@ public class ObjectiveDispencer : MonoBehaviour
                 doneText[i].text = "Af: Ja";
                 Points += objectives[i].reward;
                 objectives[i].isActive = false;
-                Debug.Log("Check" + i);
             }
             else if (objectives[i].IsReached() == false && objectives[i].isActive)
             {                

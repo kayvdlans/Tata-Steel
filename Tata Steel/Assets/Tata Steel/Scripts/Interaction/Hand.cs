@@ -54,9 +54,6 @@ public class Hand : MonoBehaviour
             if (Interactables.Count == 0)
                 closestInteractable = null;
 
-            Debug.Log("H " + Controller.ToString() + ", " + IsInteracting);
-            //Debug.Log()
-
             float closestDistance = float.MaxValue;
 
             if (Interactables.Count > 0 && !IsInteracting)

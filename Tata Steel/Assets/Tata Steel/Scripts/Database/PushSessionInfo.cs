@@ -26,9 +26,6 @@ public class PushSessionInfo : MonoBehaviour
         totalMistakes++;
     }
 
-    //Get all points
-    //Get all mistakes
-
     /// <summary>
     /// Call this method in the OnStartInteraction (of the door script).
     /// </summary>

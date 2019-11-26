@@ -102,6 +102,10 @@ public class Interactable : MonoBehaviour
         {
             buttonNames = new List<string>();
             char[] b = buttonToPress.ToString().ToCharArray();
+
+            if (b.Length == 0)
+                return false;
+
             int lastIndex = 0;
 
             for (int i = 0; i < b.Length; i++)

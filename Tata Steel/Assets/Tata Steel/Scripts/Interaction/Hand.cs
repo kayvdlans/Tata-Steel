@@ -28,8 +28,8 @@ public class Hand : MonoBehaviour
         c = gameObject.AddComponent<BoxCollider>();
         c.isTrigger = true;
 
-        (c as BoxCollider).center = new Vector3(0, 0, 0);
-        (c as BoxCollider).size = new Vector3(0.2f, 0.2f, 0.2f);
+        (c as BoxCollider).center = new Vector3(0, 0, 0.025f);
+        (c as BoxCollider).size = new Vector3(0.1f, 0.1f, 0.1f);
 
         StartCoroutine(CheckForClosestInteractable(kInteractableCheckTime));
         StartCoroutine(FindOtherHand(0.1f));
@@ -53,6 +53,9 @@ public class Hand : MonoBehaviour
         {
             if (Interactables.Count == 0)
                 closestInteractable = null;
+
+            Debug.Log("H " + Controller.ToString() + ", " + IsInteracting);
+            //Debug.Log()
 
             float closestDistance = float.MaxValue;
 
@@ -86,15 +89,17 @@ public class Hand : MonoBehaviour
     {
         Interactable interactable = other.GetComponent<Interactable>();
 
-        if (interactable != null &&
-            !Interactables.Contains(interactable))
-        { 
-            interactable.CanInteract = false;
-            interactable.ClosestHand = this;
-            interactable.Controller = Controller;
+        if (interactable == null)
+            return;
 
-            Interactables.Add(interactable);
-        }
+        if (Interactables.Contains(interactable))
+            Interactables.Remove(interactable);
+
+        interactable.CanInteract = false;
+        interactable.ClosestHand = this;
+        interactable.Controller = Controller;
+
+        Interactables.Add(interactable);
     }
 
     private void OnTriggerExit(Collider other)
@@ -110,6 +115,8 @@ public class Hand : MonoBehaviour
                 interactable.ClosestHand = null;
                 interactable.Controller = OVRInput.Controller.None;
             }
+
+            IsInteracting = false;
 
             Interactables.Remove(interactable);
         }

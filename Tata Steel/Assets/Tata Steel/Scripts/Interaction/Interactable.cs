@@ -45,12 +45,20 @@ public class Interactable : MonoBehaviour
         Any = ~None
     }
 
+    [Header("Interaction Mode")]
     [SerializeField] private SharedInputButton buttonToPress;
     [SerializeField] private HandMode handMode;
     [SerializeField] private InteractionType interactionType;
+    [Space]
+    [Header("Events")]
+    [SerializeField] private UnityEvent onTouch;
+    [SerializeField] private bool fireTouchEventContinuesly;
+    [Space]
     [SerializeField] private UnityEvent onStartInteraction;
     [SerializeField] private UnityEvent whileInteracting;
     [SerializeField] private UnityEvent onEndInteraction;
+    [Space]
+    [Header("Selection Material")]
     [SerializeField] private List<Renderer> renderers;
     [SerializeField] private Material selectionMaterial;
     [SerializeField] private bool continueOutOfRange;
@@ -59,6 +67,8 @@ public class Interactable : MonoBehaviour
     private int materialState = 0; //0 for not interacting, 1 for interacting
     private List<string> buttonNames;
     private OVRInput.RawButton lastInput = OVRInput.RawButton.None;
+    private bool isTouching = false;
+
 
     public bool CanInteract { get; set; } = false;
 
@@ -203,6 +213,12 @@ public class Interactable : MonoBehaviour
         {
             if (CanInteract)
             {
+                if (!isTouching || fireTouchEventContinuesly)
+                {
+                    isTouching = true;
+                    onTouch.Invoke();
+                }
+
                 if (InputValid())
                 {
                     if (!IsInteracting)
@@ -238,13 +254,18 @@ public class Interactable : MonoBehaviour
                 }
                  
                 if (!continueOutOfRange || lastInput != OVRInput.RawButton.None && !OVRInput.Get(lastInput))
-                {
+                { 
+                    isTouching = false;
                     IsInteracting = false;
 
                     if (ClosestHand)
                         ClosestHand.IsInteracting = false;
                     onEndInteraction.Invoke();
                 }
+            }
+            else
+            {
+                isTouching = false;
             }
         }
     }

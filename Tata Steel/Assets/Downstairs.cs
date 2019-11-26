@@ -5,6 +5,7 @@ using UnityEngine;
 public class Downstairs : MonoBehaviour
 {
     GameObject player;
+    public Vector3 teleLocate;
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -13,7 +14,7 @@ public class Downstairs : MonoBehaviour
     {
         CharacterController c = player.GetComponent<CharacterController>();
         c.enabled = false;
-        player.transform.position = new Vector3(4.278f, 0.435f, 0.36f);
+        player.transform.position = teleLocate;
         c.enabled = true;
     }
 }

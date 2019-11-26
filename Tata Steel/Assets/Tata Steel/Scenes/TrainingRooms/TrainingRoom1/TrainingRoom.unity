@@ -135,7 +135,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 85895768}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.0034000012, y: 0.00038042275, z: 0.0034000017}
@@ -168,7 +168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60c7fd26c8338c447b754fa35fefb408, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonToPress: 0
+  buttonToPress: 335544320
   handMode: 0
   interactionType: 0
   onTouch:
@@ -212,25 +212,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationAmount: 5
   axis: 0
---- !u!1 &94384180 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6513518814621475158, guid: d89735309f49a3543b5692a5413a6570,
-    type: 3}
-  m_PrefabInstance: {fileID: 725040490}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &94384181
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 94384180}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af4fde01cf0a432468311a973ad9f2f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  doors: {fileID: 11400000, guid: 73e16e94645243d4297ce67b1fe60061, type: 2}
 --- !u!1001 &100064151
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -683,7 +664,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60c7fd26c8338c447b754fa35fefb408, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonToPress: 0
+  buttonToPress: 335544320
   handMode: 0
   interactionType: 0
   onTouch:
@@ -1315,17 +1296,17 @@ PrefabInstance:
     - target: {fileID: 7605513858158756699, guid: 463f6d1e0fb02804c8515495c8354507,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.911
+      value: -1.359
       objectReference: {fileID: 0}
     - target: {fileID: 7605513858158756699, guid: 463f6d1e0fb02804c8515495c8354507,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.578
+      value: 1.83
       objectReference: {fileID: 0}
     - target: {fileID: 7605513858158756699, guid: 463f6d1e0fb02804c8515495c8354507,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.987
+      value: -0.748
       objectReference: {fileID: 0}
     - target: {fileID: 7605513858158756699, guid: 463f6d1e0fb02804c8515495c8354507,
         type: 3}
@@ -1575,21 +1556,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6513518814621475156, guid: d89735309f49a3543b5692a5413a6570,
+    - target: {fileID: 8345552447928984934, guid: d89735309f49a3543b5692a5413a6570,
         type: 3}
-      propertyPath: sceneName
-      value: EntranceHall
-      objectReference: {fileID: 0}
-    - target: {fileID: 6513518814621475156, guid: d89735309f49a3543b5692a5413a6570,
-        type: 3}
-      propertyPath: openedDoors
+      propertyPath: objectives
       value: 
-      objectReference: {fileID: 11400000, guid: 73e16e94645243d4297ce67b1fe60061,
-        type: 2}
-    - target: {fileID: 1053482678, guid: d89735309f49a3543b5692a5413a6570, type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 0
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1055474230}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d89735309f49a3543b5692a5413a6570, type: 3}
 --- !u!1001 &825922603
@@ -2047,7 +2018,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76f7767cd285eda48a77ce3716cf4cc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  teleLocate: {x: -1.53, y: 0.363, z: -2.099}
+  teleLocate: {x: -1.359, y: 1.83, z: -0.748}
 --- !u!114 &881944701 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5013372988115100190, guid: 92c3948b096c9ad43be10a9cf91fce31,
@@ -3896,7 +3867,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60c7fd26c8338c447b754fa35fefb408, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonToPress: 0
+  buttonToPress: 335544320
   handMode: 0
   interactionType: 0
   onTouch:
@@ -3952,6 +3923,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ObjectiveTV
       objectReference: {fileID: 0}
+    - target: {fileID: 1055474230, guid: 81eb2ebd891653a409e7ca2e791420a5, type: 3}
+      propertyPath: openedDoors
+      value: 
+      objectReference: {fileID: 11400000, guid: 32646fc291627334ebc81b811d90750e,
+        type: 2}
     - target: {fileID: 8630522700231890781, guid: 81eb2ebd891653a409e7ca2e791420a5,
         type: 3}
       propertyPath: m_LocalPosition.x

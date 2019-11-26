@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 6513518814621475157}
   - component: {fileID: 6513518814621475162}
   - component: {fileID: 1053482678}
+  - component: {fileID: 94384181}
+  - component: {fileID: 8345552447928984934}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -69,6 +71,10 @@ MonoBehaviour:
   buttonToPress: 335544320
   handMode: 0
   interactionType: 0
+  onTouch:
+    m_PersistentCalls:
+      m_Calls: []
+  fireTouchEventContinuesly: 0
   onStartInteraction:
     m_PersistentCalls:
       m_Calls:
@@ -207,6 +213,34 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &94384181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6513518814621475158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af4fde01cf0a432468311a973ad9f2f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doors: {fileID: 11400000, guid: 73e16e94645243d4297ce67b1fe60061, type: 2}
+--- !u!114 &8345552447928984934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6513518814621475158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 376ff550852d44648bcaf5f352b1f6df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomSettings: {fileID: 11400000, guid: 5b9cdc9160916f44189ba5a4fcb477f4, type: 2}
+  objectives: {fileID: 0}
+  passingRatio: 0.6
 --- !u!1001 &6513518815134438376
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -218,6 +252,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: w
+      objectReference: {fileID: 0}
+    - target: {fileID: 9101430577481724397, guid: b91d0ae44b6bef4419c9d5001377594f,
+        type: 3}
+      propertyPath: m_Name
+      value: i0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: b91d0ae44b6bef4419c9d5001377594f,
         type: 3}
@@ -294,11 +333,6 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 84c2baf35777e5941a92737515e8a58e, type: 2}
-    - target: {fileID: 9101430577481724397, guid: b91d0ae44b6bef4419c9d5001377594f,
-        type: 3}
-      propertyPath: m_Name
-      value: i0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b91d0ae44b6bef4419c9d5001377594f, type: 3}
 --- !u!4 &2242262738618349810 stripped

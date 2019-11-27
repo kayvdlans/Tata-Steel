@@ -6,6 +6,10 @@ public class Ventilator : MonoBehaviour
 {
     // Start is called before the first frame update
     ObjectiveDispencer obj;
+    InternalPump IntPump;
+    
+
+
     public void ButtonPressVentilator()
     {
         

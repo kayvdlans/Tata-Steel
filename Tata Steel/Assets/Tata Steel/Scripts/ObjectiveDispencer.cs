@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class ObjectiveDispencer : MonoBehaviour
@@ -15,6 +16,7 @@ public class ObjectiveDispencer : MonoBehaviour
 
     public int Points { get; private set; }
     public int MaxPoints { get; private set; }
+    public UnityAction<int> OnObjectiveDone { get; set; }
 
     private void Start()
     {
@@ -60,6 +62,10 @@ public class ObjectiveDispencer : MonoBehaviour
             if (objectives[i].IsReached() && objectives[i].isActive) {
                 if(doneText.Count > 0)
                 doneText[i].text = "Af: Ja";
+
+                if (OnObjectiveDone != null)
+                    OnObjectiveDone.Invoke(i);
+
                 Points += objectives[i].reward;
                 objectives[i].isActive = false;
             }

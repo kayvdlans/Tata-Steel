@@ -58,6 +58,7 @@ public class ObjectiveUICopy : MonoBehaviour
             }
         }
 
-        score.text = "behaalde score: " + oD.Points + "/" + oD.MaxPoints;
+        if (score != null)
+            score.text = "behaalde score: " + oD.Points + "/" + oD.MaxPoints;
     }
 }

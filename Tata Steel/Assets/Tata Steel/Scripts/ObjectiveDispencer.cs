@@ -6,13 +6,12 @@ using UnityEngine.UI;
 
 public class ObjectiveDispencer : MonoBehaviour
 {
-    [SerializeField] private OpenedDoors openedDoors = null;
     public List<Objectives> objectives = new List<Objectives>();
     public List<Text> objectiveText = new List<Text>();
     public List<Text> progressText = new List<Text>();
     public List<Text> doneText = new List<Text>();
     public Text score;
-    public int doorIndex;
+    public Door door;
 
     public int Points { get; private set; }
     public int MaxPoints { get; private set; }
@@ -20,7 +19,6 @@ public class ObjectiveDispencer : MonoBehaviour
 
     private void Start()
     {
-        openedDoors.ResetOpenedDoors(false);
         OpenMenu();
 
         for (int i = 0; i < objectives.Count; i++)
@@ -77,10 +75,11 @@ public class ObjectiveDispencer : MonoBehaviour
             }
          
         }
-            if (newBool)
-            {
-                openedDoors.OpenDoorByIndex(doorIndex);
-            }
+
+        if (newBool)
+        {
+            door.Opened = true;
+        }
         
     }
 }

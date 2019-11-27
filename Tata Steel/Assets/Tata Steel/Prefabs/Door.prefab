@@ -56,6 +56,8 @@ MonoBehaviour:
   matObject: {fileID: 2606014329329574405}
   openDoor: {fileID: 8300000, guid: c787a0d1f9b1b5547a0321d675e28911, type: 3}
   audioSource: {fileID: 1053482678}
+  trainingRoomDoor: 1
+  nextRoom: {fileID: 11400000, guid: 914de1b52abcffe4db5623f8bcbafdc6, type: 2}
 --- !u!114 &6513518814621475157
 MonoBehaviour:
   m_ObjectHideFlags: 0

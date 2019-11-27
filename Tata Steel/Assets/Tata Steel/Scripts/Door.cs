@@ -4,6 +4,7 @@ public class Door : MonoBehaviour
 {
     [SerializeField] private OpenedDoors openedDoors = null;
     [SerializeField] private RoomSettings room;
+
     public RoomSettings Room { get { return room; } }
 
     [SerializeField] private Material matClosed = null;
@@ -12,6 +13,11 @@ public class Door : MonoBehaviour
 
     [SerializeField] private AudioClip openDoor = null;
     [SerializeField] AudioSource audioSource;
+
+    [Header("TRAINING ROOM & EXAM ONLY")]
+    [SerializeField] private bool trainingRoomDoor;
+    [Tooltip("Only gets used if training room door is true")]
+    [SerializeField] private RoomSettings nextRoom;
 
     private Renderer mat = null;
     private bool opened = false;
@@ -27,13 +33,20 @@ public class Door : MonoBehaviour
 
     private void Start()
     {
-        Opened = openedDoors.IsAdded(room.RoomID);
+        Opened = false;
+        if (!trainingRoomDoor)
+        {
+            Opened = openedDoors.IsAdded(room.RoomID);
+        }
         audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
     {
-        Opened = openedDoors.IsAdded(room.RoomID);
+        if (!trainingRoomDoor)
+        {
+            Opened = openedDoors.IsAdded(room.RoomID);
+        }
     }
 
     private void UpdateMaterial()
@@ -49,7 +62,14 @@ public class Door : MonoBehaviour
         if (opened)
         {
             audioSource.PlayOneShot(openDoor, 0.7F);
-            sceneLoader.LoadScene(room);
+
+            if (trainingRoomDoor)
+            {
+                room.RoomCompleted();
+                sceneLoader.LoadScene(nextRoom);
+            }
+            else
+                sceneLoader.LoadScene(room);
         }
         else
         {

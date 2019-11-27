@@ -5,10 +5,12 @@ using UnityEngine;
 public class TrainingRoom2ObjectivesCounter : MonoBehaviour
 { 
     public ObjectiveDispencer objectivesDis;
+    public GameObject Valve;
+    FlipSwitch flip;
     // Start is called before the first frame update
     void Start()
     {
-        
+         flip = Valve.GetComponent("FlipSwitch") as FlipSwitch;
     }
 
     // Update is called once per frame
@@ -44,17 +46,31 @@ public class TrainingRoom2ObjectivesCounter : MonoBehaviour
 
     public void Vulafsluiter()
     {
-        if(objectivesDis.objectives[4].isActive)
+        if(objectivesDis.objectives[3].isActive)
         {
-            objectivesDis.objectives[4].AddCurrent();
+            objectivesDis.objectives[3].AddCurrent();
         }
     }
 
     public void Afsluiters()
     {
-        if(objectivesDis.objectives[5].isActive)
+        if(objectivesDis.objectives[4].isActive)
+        {
+            objectivesDis.objectives[4].AddCurrent();
+        }
+    }
+    public void HoofdKolfAan()
+    {
+        if (objectivesDis.objectives[5].isActive && !flip.CurrentlyTurnedOn)
         {
             objectivesDis.objectives[5].AddCurrent();
+        }
+    }
+    public void HoofdKolfUit()
+    {
+        if (objectivesDis.objectives[6].isActive && flip.CurrentlyTurnedOn)
+        {
+            objectivesDis.objectives[6].AddCurrent();
         }
     }
 }

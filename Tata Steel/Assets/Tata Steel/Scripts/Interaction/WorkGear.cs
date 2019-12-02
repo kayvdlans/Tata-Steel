@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class WorkGear : MonoBehaviour
 {
@@ -11,7 +9,7 @@ public class WorkGear : MonoBehaviour
     {
         if (other.Equals(gearCollider))
         {
-            requirements.PickUp(GetComponent<Interactable>());
+            requirements.PickUp(GetComponent<CustomInteraction>());
         }
     }
 }

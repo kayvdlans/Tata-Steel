@@ -400,7 +400,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3449330851704250796}
   m_Layer: 0
-  m_Name: Steamcloser
+  m_Name: SteamCloser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -413,9 +413,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1838917780925469631}
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -8.944694, y: 27.920296, z: 3.9497015}
-  m_LocalScale: {x: 89.21702, y: 89.21682, z: 89.21702}
+  m_LocalScale: {x: 20, y: 20, z: 20}
   m_Children:
   - {fileID: 5634849370049137279}
   - {fileID: 3180675160245037621}
@@ -1333,7 +1333,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationAmount: 5
-  axis: 0
+  axis: 1
 --- !u!114 &4390164621008237049
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1367,32 +1367,10 @@ MonoBehaviour:
   fireTouchEventContinously: 0
   onStartInteraction:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4390164621008237048}
-        m_MethodName: OnInteractionStart
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   onEndInteraction:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4390164621008237048}
-        m_MethodName: OnInteractionEnd
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   whileInteracting:
     m_PersistentCalls:
       m_Calls: []

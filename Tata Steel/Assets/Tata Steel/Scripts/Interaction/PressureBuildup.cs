@@ -12,9 +12,7 @@ public class PressureBuildup : MonoBehaviour
 
     [Space]
     [SerializeField] private Vector2 bounds;
-    private float currentValue;
-
-    private Interactable valveInteractable;    
+    private float currentValue;  
 
     public float CurrentValue { get => currentValue; }
     public float AngleToLock { get => angleToLock; }
@@ -22,16 +20,12 @@ public class PressureBuildup : MonoBehaviour
     private void Awake()
     {
         valve.Buildup = this;
-        valveInteractable = valve.GetComponent<Interactable>();
     }
 
     private void Update()
-    {
-        if (valveInteractable.IsInteracting)
-        {
-            float v = MathHelper.ConfineToBounds(valve.CurrentAngle / angleToOpen, new Vector2(0, 1));
-            currentValue = MathHelper.GetValueBetweenBoundsFromNormalizedValue(v, bounds);
-            meter.UpdateAngle(MathHelper.NormalizeValueBetweenBounds(currentValue, bounds));
-        }
+{
+        float v = MathHelper.ConfineToBounds(valve.CurrentAngle / angleToOpen, new Vector2(0, 1));
+        currentValue = MathHelper.GetValueBetweenBoundsFromNormalizedValue(v, bounds);
+        meter.UpdateAngle(MathHelper.NormalizeValueBetweenBounds(currentValue, bounds));
     }
 }

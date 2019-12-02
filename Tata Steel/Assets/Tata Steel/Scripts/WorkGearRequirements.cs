@@ -12,7 +12,7 @@ public class WorkGearRequirements : MonoBehaviour
     private RoomSettings roomToOpen;
 
     [SerializeField]
-    private List<Interactable> workgear;
+    private List<CustomInteraction> workgear;
 
     private void Awake()
     {
@@ -20,7 +20,7 @@ public class WorkGearRequirements : MonoBehaviour
             openedDoors.ResetOpenedDoors(false);
     }
 
-    public void PickUp(Interactable gear)
+    public void PickUp(CustomInteraction gear)
     {
         workgear.Remove(gear);
 

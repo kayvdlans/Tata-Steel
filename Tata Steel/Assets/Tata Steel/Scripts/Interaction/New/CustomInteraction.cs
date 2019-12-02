@@ -1,11 +1,9 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using Valve.VR;
 using Valve.VR.InteractionSystem;
 
-[RequireComponent(typeof(Valve.VR.InteractionSystem.Interactable))]
+[RequireComponent(typeof(Interactable))]
 public class CustomInteraction : MonoBehaviour
 {
     public enum InteractionType
@@ -16,7 +14,7 @@ public class CustomInteraction : MonoBehaviour
 
     public bool restoreOriginalParent = false;
 
-    public Valve.VR.InteractionSystem.Hand.AttachmentFlags attachmentFlags;
+    public Hand.AttachmentFlags attachmentFlags;
     public GrabTypes action;
     public InteractionType interactionType;
 
@@ -36,8 +34,6 @@ public class CustomInteraction : MonoBehaviour
     protected Vector3 attachPosition;
     protected Quaternion attachRotation;
 
-    private bool firstInput = true;
-
     protected virtual void Awake()
     {
         interactable = GetComponent<Interactable>();
@@ -45,7 +41,7 @@ public class CustomInteraction : MonoBehaviour
 
 
     //-------------------------------------------------
-    protected virtual void OnHandHoverBegin(Valve.VR.InteractionSystem.Hand hand)
+    protected virtual void OnHandHoverBegin(Hand hand)
     {
         bool showHint = false;
         GrabTypes bestGrabType = hand.GetGrabStarting(action);
@@ -66,14 +62,14 @@ public class CustomInteraction : MonoBehaviour
 
 
     //-------------------------------------------------
-    protected virtual void OnHandHoverEnd(Valve.VR.InteractionSystem.Hand hand)
+    protected virtual void OnHandHoverEnd(Hand hand)
     {
         hand.HideGrabHint();
     }
 
 
     //-------------------------------------------------
-    protected virtual void HandHoverUpdate(Valve.VR.InteractionSystem.Hand hand)
+    protected virtual void HandHoverUpdate(Hand hand)
     {
         GrabTypes startingGrabType = hand.GetGrabStarting(action);
 
@@ -93,7 +89,7 @@ public class CustomInteraction : MonoBehaviour
     }
 
     //-------------------------------------------------
-    protected virtual void OnAttachedToHand(Valve.VR.InteractionSystem.Hand hand)
+    protected virtual void OnAttachedToHand(Hand hand)
     {
         attached = true;
 
@@ -106,17 +102,15 @@ public class CustomInteraction : MonoBehaviour
 
 
     //-------------------------------------------------
-    protected virtual void OnDetachedFromHand(Valve.VR.InteractionSystem.Hand hand)
+    protected virtual void OnDetachedFromHand(Hand hand)
     {
         attached = false;
 
         hand.HoverUnlock(null);
-
-        firstInput = true;
     }
 
     //-------------------------------------------------
-    protected virtual void HandAttachedUpdate(Valve.VR.InteractionSystem.Hand hand)
+    protected virtual void HandAttachedUpdate(Hand hand)
     {
         if (hand.IsGrabEnding(this.gameObject))
         {
@@ -145,7 +139,7 @@ public class CustomInteraction : MonoBehaviour
 
 
     //-------------------------------------------------
-    protected virtual IEnumerator LateDetach(Valve.VR.InteractionSystem.Hand hand)
+    protected virtual IEnumerator LateDetach(Hand hand)
     {
         yield return new WaitForEndOfFrame();
 
@@ -154,14 +148,14 @@ public class CustomInteraction : MonoBehaviour
 
 
     //-------------------------------------------------
-    protected virtual void OnHandFocusAcquired(Valve.VR.InteractionSystem.Hand hand)
+    protected virtual void OnHandFocusAcquired(Hand hand)
     {
         gameObject.SetActive(true);
     }
 
 
     //-------------------------------------------------
-    protected virtual void OnHandFocusLost(Valve.VR.InteractionSystem.Hand hand)
+    protected virtual void OnHandFocusLost(Hand hand)
     {
         gameObject.SetActive(false);
     }

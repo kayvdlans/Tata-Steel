@@ -2,120 +2,123 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Hand : MonoBehaviour
+namespace Deprecated
 {
-    private const float kInteractableCheckTime = 0.2f;
-
-    public OVRInput.Controller Controller { get; private set; }
-    public bool IsInteracting { get; set; }
-    public List<Interactable> Interactables { get; private set; } = new List<Interactable>();
-
-    private Hand otherHand = null;
-    private Interactable closestInteractable = null;
-
-    private void Start ()
+    public class Hand : MonoBehaviour
     {
-        bool left = GetComponent<OvrAvatarHand>().isLeftHand;
-        
-        Controller = left ? OVRInput.Controller.LTouch : OVRInput.Controller.RTouch;
+        private const float kInteractableCheckTime = 0.2f;
 
-        Rigidbody rb = gameObject.AddComponent<Rigidbody>();
-        rb.useGravity = false;
+        public OVRInput.Controller Controller { get; private set; }
+        public bool IsInteracting { get; set; }
+        public List<Interactable> Interactables { get; private set; } = new List<Interactable>();
 
-        Collider c = GetComponent<Collider>();
-        if (c) Destroy(c);
+        private Hand otherHand = null;
+        private Interactable closestInteractable = null;
 
-        c = gameObject.AddComponent<BoxCollider>();
-        c.isTrigger = true;
-
-        (c as BoxCollider).center = new Vector3(0, 0, 0.025f);
-        (c as BoxCollider).size = new Vector3(0.1f, 0.1f, 0.1f);
-
-        StartCoroutine(CheckForClosestInteractable(kInteractableCheckTime));
-        StartCoroutine(FindOtherHand(0.1f));
-    }
-
-    private IEnumerator FindOtherHand(float waitTime)
-    {
-        while (otherHand == null)
+        private void Start()
         {
-            yield return new WaitForSeconds(waitTime);
-            Hand[] hands = FindObjectsOfType<Hand>();
+            bool left = GetComponent<OvrAvatarHand>().isLeftHand;
 
-            if (hands.Length > 1)
-                otherHand = hands[0] == this ? hands[1] : hands[0];
+            Controller = left ? OVRInput.Controller.LTouch : OVRInput.Controller.RTouch;
+
+            Rigidbody rb = gameObject.AddComponent<Rigidbody>();
+            rb.useGravity = false;
+
+            Collider c = GetComponent<Collider>();
+            if (c) Destroy(c);
+
+            c = gameObject.AddComponent<BoxCollider>();
+            c.isTrigger = true;
+
+            (c as BoxCollider).center = new Vector3(0, 0, 0.025f);
+            (c as BoxCollider).size = new Vector3(0.1f, 0.1f, 0.1f);
+
+            StartCoroutine(CheckForClosestInteractable(kInteractableCheckTime));
+            StartCoroutine(FindOtherHand(0.1f));
         }
-    }
 
-    private IEnumerator CheckForClosestInteractable(float waitTime)
-    {
-        while (true)
+        private IEnumerator FindOtherHand(float waitTime)
         {
-            if (Interactables.Count == 0)
-                closestInteractable = null;
-
-            float closestDistance = float.MaxValue;
-
-            if (Interactables.Count > 0 && !IsInteracting)
+            while (otherHand == null)
             {
+                yield return new WaitForSeconds(waitTime);
+                Hand[] hands = FindObjectsOfType<Hand>();
 
-                foreach(Interactable interactable in Interactables)
+                if (hands.Length > 1)
+                    otherHand = hands[0] == this ? hands[1] : hands[0];
+            }
+        }
+
+        private IEnumerator CheckForClosestInteractable(float waitTime)
+        {
+            while (true)
+            {
+                if (Interactables.Count == 0)
+                    closestInteractable = null;
+
+                float closestDistance = float.MaxValue;
+
+                if (Interactables.Count > 0 && !IsInteracting)
                 {
-                    float distance = Vector3.Distance(transform.position, interactable.transform.position);
-                    if (distance < closestDistance)
+
+                    foreach (Interactable interactable in Interactables)
                     {
-                        closestDistance = distance;
-                        closestInteractable = interactable;
+                        float distance = Vector3.Distance(transform.position, interactable.transform.position);
+                        if (distance < closestDistance)
+                        {
+                            closestDistance = distance;
+                            closestInteractable = interactable;
+                        }
                     }
                 }
+
+                if (closestInteractable != null && closestDistance < Vector3.Distance(closestInteractable.transform.position, otherHand.transform.position))
+                {
+
+                    closestInteractable.CanInteract = true;
+                    closestInteractable.ClosestHand = this;
+                    closestInteractable.Controller = Controller;
+                }
+
+                yield return new WaitForSeconds(waitTime);
             }
-
-            if (closestInteractable != null && closestDistance < Vector3.Distance(closestInteractable.transform.position, otherHand.transform.position))
-            {
-
-                closestInteractable.CanInteract = true;
-                closestInteractable.ClosestHand = this;
-                closestInteractable.Controller = Controller;
-            }
-
-            yield return new WaitForSeconds(waitTime);
         }
-    }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        Interactable interactable = other.GetComponent<Interactable>();
-
-        if (interactable == null)
-            return;
-
-        if (Interactables.Contains(interactable))
-            Interactables.Remove(interactable);
-
-        interactable.CanInteract = false;
-        interactable.ClosestHand = this;
-        interactable.Controller = Controller;
-
-        Interactables.Add(interactable);
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        Interactable interactable = other.GetComponent<Interactable>();
-
-        if (interactable != null &&
-            Interactables.Contains(interactable))
+        private void OnTriggerEnter(Collider other)
         {
-            if (!otherHand.Interactables.Contains(interactable))
+            Interactable interactable = other.GetComponent<Interactable>();
+
+            if (interactable == null)
+                return;
+
+            if (Interactables.Contains(interactable))
+                Interactables.Remove(interactable);
+
+            interactable.CanInteract = false;
+            interactable.ClosestHand = this;
+            interactable.Controller = Controller;
+
+            Interactables.Add(interactable);
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            Interactable interactable = other.GetComponent<Interactable>();
+
+            if (interactable != null &&
+                Interactables.Contains(interactable))
             {
-                interactable.CanInteract = false;
-                interactable.ClosestHand = null;
-                interactable.Controller = OVRInput.Controller.None;
+                if (!otherHand.Interactables.Contains(interactable))
+                {
+                    interactable.CanInteract = false;
+                    interactable.ClosestHand = null;
+                    interactable.Controller = OVRInput.Controller.None;
+                }
+
+                IsInteracting = false;
+
+                Interactables.Remove(interactable);
             }
-
-            IsInteracting = false;
-
-            Interactables.Remove(interactable);
         }
     }
 }

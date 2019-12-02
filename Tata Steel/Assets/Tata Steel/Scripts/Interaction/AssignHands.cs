@@ -1,31 +1,33 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class AssignHands : MonoBehaviour
-{
-    [SerializeField] private Transform localAvatar;
-
-    private Transform leftHand = null;
-    private Transform rightHand = null;
-
-    private void Start()
+namespace Deprecated {
+    public class AssignHands : MonoBehaviour
     {
-        StartCoroutine(Initialize(0.5f));
-    }
+        [SerializeField] private Transform localAvatar;
 
-    private IEnumerator Initialize(float waitTime)
-    {
-        while (!leftHand || !rightHand)
+        private Transform leftHand = null;
+        private Transform rightHand = null;
+
+        private void Start()
         {
-            yield return new WaitForSeconds(waitTime);
-
-            leftHand = localAvatar.Find("hand_left");
-            rightHand = localAvatar.Find("hand_right");
+            StartCoroutine(Initialize(0.5f));
         }
 
-        leftHand.gameObject.AddComponent<Hand>();
-        rightHand.gameObject.AddComponent<Hand>();
+        private IEnumerator Initialize(float waitTime)
+        {
+            while (!leftHand || !rightHand)
+            {
+                yield return new WaitForSeconds(waitTime);
 
-        Destroy(this);
+                leftHand = localAvatar.Find("hand_left");
+                rightHand = localAvatar.Find("hand_right");
+            }
+
+            leftHand.gameObject.AddComponent<Hand>();
+            rightHand.gameObject.AddComponent<Hand>();
+
+            Destroy(this);
+        }
     }
 }

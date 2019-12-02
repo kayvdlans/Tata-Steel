@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Valve.VR.InteractionSystem;
 
-public class InteractionInstantRotation : Interaction
+public class InteractionInstantRotation : MonoBehaviour
 {
     [SerializeField]
     [Range(1, 180)]
@@ -20,7 +21,7 @@ public class InteractionInstantRotation : Interaction
     public float CurrentAngle { get; private set; } = 0f;
     public PressureBuildup Buildup { get; set; } = null;
 
-    protected override void Initialize()
+    protected void Start()
     {
         if (Buildup)
             rotationLock = Buildup.AngleToLock;
@@ -41,11 +42,9 @@ public class InteractionInstantRotation : Interaction
         }
     }
 
-    public override void OnInteractionStart()
+    protected void OnAttachedToHand(Hand hand)
     {
-        base.OnInteractionStart();
-
-        Vector3 vDir = (initialAttachPoint.position - transform.position).normalized;
+        Vector3 vDir = (hand.transform.position - transform.position).normalized;
 
         axisDirection = axis == MathHelper.Axis.X ? vDir.z : axis == MathHelper.Axis.Y ? vDir.x : vDir.y;
         Vector3 vRot = axisVector * (axisDirection < 0 ? -rotationAmount : rotationAmount);

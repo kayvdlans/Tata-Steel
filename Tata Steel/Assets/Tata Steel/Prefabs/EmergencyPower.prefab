@@ -87,9 +87,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 347069952538937065}
-  - component: {fileID: 4732085318588352174}
   - component: {fileID: 4732085318588352175}
-  - component: {fileID: 4732085318588352172}
   m_Layer: 0
   m_Name: EmergencyPower
   m_TagString: Untagged
@@ -104,9 +102,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3641815129288176890}
-  m_LocalRotation: {x: -0, y: -0.71127737, z: -0, w: 0.7029115}
+  m_LocalRotation: {x: 0, y: -0.7112781, z: 0, w: 0.7029107}
   m_LocalPosition: {x: 3.150091, y: 1.124, z: 1.0463175}
-  m_LocalScale: {x: 20, y: 20, z: 20}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
   - {fileID: 7294837230218505530}
   - {fileID: 1106536093696690781}
@@ -115,19 +113,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90.678, z: 0}
---- !u!65 &4732085318588352174
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3641815129288176890}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.006443983, y: 0.0063776486, z: 0.001284678}
-  m_Center: {x: -0.000028432158, y: 0.00000442788, z: 0.0073043783}
 --- !u!114 &4732085318588352175
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,43 +127,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   s: {fileID: 2330396537030231351}
   axis: 2
-  offOnRotation: {x: 180, y: 270}
+  offOnRotation: {x: 270, y: 180}
   startOn: 0
---- !u!114 &4732085318588352172
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3641815129288176890}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60c7fd26c8338c447b754fa35fefb408, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonToPress: 2105344
-  interactionType: 0
-  onStartInteraction:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4732085318588352175}
-        m_MethodName: Flip
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onEndInteraction:
-    m_PersistentCalls:
-      m_Calls: []
-  continueOutOfRange: 0
-  outlineMaterial: {fileID: 2100000, guid: 72bbc9b4c7f17b845a7c325593461a63, type: 2}
-  renderers:
-  - {fileID: 1042732599096216329}
+  pc: {fileID: 0}
 --- !u!1 &5878812973379018592
 GameObject:
   m_ObjectHideFlags: 0
@@ -268,6 +219,9 @@ GameObject:
   - component: {fileID: 2330396537030231351}
   - component: {fileID: 5011557906962794237}
   - component: {fileID: 1042732599096216329}
+  - component: {fileID: 741262501}
+  - component: {fileID: 741262498}
+  - component: {fileID: 741262499}
   m_Layer: 0
   m_Name: Switch
   m_TagString: Untagged
@@ -282,13 +236,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6534070795672587213}
-  m_LocalRotation: {x: 0, y: 0, z: 0.99991775, w: 0.01282792}
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
   m_LocalPosition: {x: -5.000882e-19, y: 0, z: 0.00721}
   m_LocalScale: {x: 0.07563069, y: 0.47023875, z: 0.11776497}
   m_Children: []
   m_Father: {fileID: 347069952538937065}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 178.53}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
 --- !u!33 &5011557906962794237
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -335,6 +289,112 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &741262501
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6534070795672587213}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.08490904, y: 0.012739191, z: 0.06334427}
+  m_Center: {x: 0.00062136864, y: -0.00079560187, z: -0.01666862}
+--- !u!114 &741262498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6534070795672587213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3db48eebef59ada48b97a79bd8914428, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  restoreOriginalParent: 0
+  attachmentFlags: 4
+  action: 2
+  interactionType: 0
+  onTouch:
+    m_PersistentCalls:
+      m_Calls: []
+  fireTouchEventContinously: 0
+  onStartInteraction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4732085318588352175}
+        m_MethodName: Flip
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onEndInteraction:
+    m_PersistentCalls:
+      m_Calls: []
+  whileInteracting:
+    m_PersistentCalls:
+      m_Calls: []
+  interactable: {fileID: 0}
+--- !u!114 &741262499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6534070795672587213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b93b6a877adcbf94c89a9d6e0c0e844d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activateActionSetOnAttach:
+    actionSetPath: 
+  hideHandOnAttach: 1
+  hideSkeletonOnAttach: 0
+  hideControllerOnAttach: 1
+  handAnimationOnPickup: 0
+  setRangeOfMotionOnPickup: -1
+  useHandObjectAttachmentPoint: 1
+  attachEaseIn: 0
+  snapAttachEaseInCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  snapAttachEaseInTime: 0.15
+  snapAttachEaseInCompleted: 0
+  skeletonPoser: {fileID: 0}
+  handFollowTransform: 1
+  highlightOnHover: 1
+  hideHighlight: []
+  hoverPriority: 0
 --- !u!1 &8690704445122634686
 GameObject:
   m_ObjectHideFlags: 0

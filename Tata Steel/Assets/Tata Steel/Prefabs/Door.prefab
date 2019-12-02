@@ -10,11 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 6513518814621475159}
   - component: {fileID: 6513518814621475156}
-  - component: {fileID: 6513518814621475157}
+  - component: {fileID: 7762928514547654292}
   - component: {fileID: 6513518814621475162}
   - component: {fileID: 1053482678}
   - component: {fileID: 94384181}
   - component: {fileID: 8345552447928984934}
+  - component: {fileID: 279971885104108357}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -58,7 +59,7 @@ MonoBehaviour:
   audioSource: {fileID: 1053482678}
   trainingRoomDoor: 1
   nextRoom: {fileID: 11400000, guid: 914de1b52abcffe4db5623f8bcbafdc6, type: 2}
---- !u!114 &6513518814621475157
+--- !u!114 &7762928514547654292
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -67,19 +68,31 @@ MonoBehaviour:
   m_GameObject: {fileID: 6513518814621475158}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60c7fd26c8338c447b754fa35fefb408, type: 3}
+  m_Script: {fileID: 11500000, guid: 3db48eebef59ada48b97a79bd8914428, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonToPress: 335544320
-  handMode: 0
+  restoreOriginalParent: 0
+  attachmentFlags: 6
+  action: 2
   interactionType: 0
   onTouch:
     m_PersistentCalls:
       m_Calls: []
-  fireTouchEventContinuesly: 0
+  fireTouchEventContinously: 0
   onStartInteraction:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 8345552447928984934}
+        m_MethodName: SetSessionInfo
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 6513518814621475156}
         m_MethodName: LoadSceneOnDoorInteraction
         m_Mode: 2
@@ -92,19 +105,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  whileInteracting:
-    m_PersistentCalls:
-      m_Calls: []
   onEndInteraction:
     m_PersistentCalls:
       m_Calls: []
-  renderers:
-  - {fileID: 1640568677447266217}
-  - {fileID: 4052783794040724557}
-  - {fileID: 8263969277103174783}
-  - {fileID: 9024257498907628364}
-  selectionMaterial: {fileID: 2100000, guid: 72bbc9b4c7f17b845a7c325593461a63, type: 2}
-  continueOutOfRange: 0
+  whileInteracting:
+    m_PersistentCalls:
+      m_Calls: []
+  interactable: {fileID: 0}
 --- !u!135 &6513518814621475162
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -243,6 +250,58 @@ MonoBehaviour:
   roomSettings: {fileID: 11400000, guid: 5b9cdc9160916f44189ba5a4fcb477f4, type: 2}
   objectives: {fileID: 0}
   passingRatio: 0.6
+--- !u!114 &279971885104108357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6513518814621475158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b93b6a877adcbf94c89a9d6e0c0e844d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activateActionSetOnAttach:
+    actionSetPath: 
+  hideHandOnAttach: 1
+  hideSkeletonOnAttach: 0
+  hideControllerOnAttach: 1
+  handAnimationOnPickup: 0
+  setRangeOfMotionOnPickup: -1
+  useHandObjectAttachmentPoint: 1
+  attachEaseIn: 0
+  snapAttachEaseInCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  snapAttachEaseInTime: 0.15
+  snapAttachEaseInCompleted: 0
+  skeletonPoser: {fileID: 0}
+  handFollowTransform: 1
+  highlightOnHover: 1
+  hideHighlight: []
+  hoverPriority: 0
 --- !u!1001 &6513518815134438376
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -346,30 +405,6 @@ Transform:
 --- !u!1 &2606014329329574405 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9101430577481724397, guid: b91d0ae44b6bef4419c9d5001377594f,
-    type: 3}
-  m_PrefabInstance: {fileID: 6513518815134438376}
-  m_PrefabAsset: {fileID: 0}
---- !u!23 &1640568677447266217 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: -3701727588016112575, guid: b91d0ae44b6bef4419c9d5001377594f,
-    type: 3}
-  m_PrefabInstance: {fileID: 6513518815134438376}
-  m_PrefabAsset: {fileID: 0}
---- !u!23 &4052783794040724557 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 7087200961041043365, guid: b91d0ae44b6bef4419c9d5001377594f,
-    type: 3}
-  m_PrefabInstance: {fileID: 6513518815134438376}
-  m_PrefabAsset: {fileID: 0}
---- !u!23 &8263969277103174783 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: -6283877591383234665, guid: b91d0ae44b6bef4419c9d5001377594f,
-    type: 3}
-  m_PrefabInstance: {fileID: 6513518815134438376}
-  m_PrefabAsset: {fileID: 0}
---- !u!23 &9024257498907628364 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: -6388302488119672668, guid: b91d0ae44b6bef4419c9d5001377594f,
     type: 3}
   m_PrefabInstance: {fileID: 6513518815134438376}
   m_PrefabAsset: {fileID: 0}

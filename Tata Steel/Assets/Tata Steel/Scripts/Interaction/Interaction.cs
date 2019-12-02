@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Interactable), typeof(Rigidbody))]
+[RequireComponent(typeof(CustomInteraction))]
 public abstract class Interaction : MonoBehaviour
 {
     protected Interactable interactable { get; private set; } = null;

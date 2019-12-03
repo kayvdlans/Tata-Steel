@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -7,8 +6,6 @@ using Valve.VR.InteractionSystem;
 
 public class ObjectiveDispenser : MonoBehaviour
 {
-    
-
     [SerializeField] private Door door;
     [SerializeField] private List<Objective> objectives = new List<Objective>();
 
@@ -83,10 +80,10 @@ public class ObjectiveDispenser : MonoBehaviour
 
     private void Update()
     {
+        //Debug Only
         if (Input.GetKeyDown(KeyCode.F) && CurrentObjective != null)
             CurrentObjective.CurrentAmount++;
     }
-
 
     private void Start()
     {

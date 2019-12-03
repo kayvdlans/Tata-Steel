@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Data;
 using MySql.Data.MySqlClient;
+using System;
 
 public static class DatabaseConnection 
 {
@@ -71,6 +71,24 @@ public static class DatabaseConnection
         await conn.OpenAsync();
         await ExecuteCommand(command, conn);
         conn.Close();
+    }
+
+    //get this to work somehow >> socketexception >> try on pc and see if problem persists
+    public static async Task<int> GetSessionCount()
+    {
+        string command = "SELECT COUNT(*) FROM session";
+
+        MySqlConnection conn = new MySqlConnection(CONN_STRING);
+        await conn.OpenAsync();
+        
+        MySqlCommand cmd = new MySqlCommand(command, conn);;
+
+        int count = (int)await cmd.ExecuteScalarAsync();
+
+        cmd.Dispose();
+        conn.Close();
+
+        return count;
     }
 
     public static async Task DBSessionInsertQuery(SessionInfo session)

@@ -18,7 +18,8 @@ namespace Valve.VR.InteractionSystem
 		public enum TeleportPointType
 		{
 			MoveToLocation,
-			SwitchToNewScene
+			SwitchToNewScene,
+            Custom
 		};
 
 		//Public variables
@@ -36,6 +37,7 @@ namespace Valve.VR.InteractionSystem
 		private MeshRenderer markerMesh;
 		private MeshRenderer switchSceneIcon;
 		private MeshRenderer moveLocationIcon;
+        private MeshRenderer customIcon;
 		private MeshRenderer lockedIcon;
 		private MeshRenderer pointIcon;
 		private Transform lookAtJointTransform;
@@ -181,6 +183,13 @@ namespace Valve.VR.InteractionSystem
 
 							animation.clip = animation.GetClip( switchSceneAnimation );
 						}
+                        break;
+                    case TeleportPointType.Custom:
+                        {
+                            pointIcon = customIcon;
+
+                            animation.clip = animation.GetClip(moveLocationAnimation);
+                        }
 						break;
 				}
 			}
@@ -241,6 +250,7 @@ namespace Valve.VR.InteractionSystem
 			moveLocationIcon = transform.Find( "teleport_marker_lookat_joint/teleport_marker_icons/move_location_icon" ).GetComponent<MeshRenderer>();
 			lockedIcon = transform.Find( "teleport_marker_lookat_joint/teleport_marker_icons/locked_icon" ).GetComponent<MeshRenderer>();
 			lookAtJointTransform = transform.Find( "teleport_marker_lookat_joint" );
+            customIcon = transform.Find("teleport_marker_lookat_joint/teleport_marker_icons/custom_icon").GetComponent<MeshRenderer>();
 
 			titleText = transform.Find( "teleport_marker_lookat_joint/teleport_marker_canvas/teleport_marker_canvas_text" ).GetComponent<Text>();
 
@@ -297,14 +307,23 @@ namespace Valve.VR.InteractionSystem
 						{
 							moveLocationIcon.gameObject.SetActive( true );
 							switchSceneIcon.gameObject.SetActive( false );
+                            customIcon.gameObject.SetActive(false);
 						}
 						break;
 					case TeleportPointType.SwitchToNewScene:
 						{
 							moveLocationIcon.gameObject.SetActive( false );
 							switchSceneIcon.gameObject.SetActive( true );
+                            customIcon.gameObject.SetActive(false);
 						}
 						break;
+                    case TeleportPointType.Custom:
+                        {
+                            moveLocationIcon.gameObject.SetActive(false);
+                            switchSceneIcon.gameObject.SetActive(false);
+                            customIcon.gameObject.SetActive(true);
+                        }
+                        break;
 				}
 			}
 

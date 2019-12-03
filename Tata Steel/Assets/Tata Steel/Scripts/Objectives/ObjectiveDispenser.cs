@@ -70,8 +70,6 @@ public class ObjectiveDispenser : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F) && CurrentObjective != null)
             CurrentObjective.CurrentAmount++;
-
-        Debug.Log(door.Opened);
     }
 
 

@@ -7,19 +7,13 @@ using Valve.VR.InteractionSystem;
 
 public class ObjectiveDispenser : MonoBehaviour
 {
-    public enum IndicatorType
-    {
-        Color,
-        Number,
-        Arrow,
-        IKEA
-    }
+    
 
     [SerializeField] private Door door;
     [SerializeField] private List<Objective> objectives = new List<Objective>();
 
     [Header("Teleport Points")]
-    [SerializeField] private IndicatorType indicatorType;
+    [SerializeField] private TeleportPoint.IndicatorType indicatorType;
     [SerializeField] private Material active;
     [SerializeField] private Material inactive;
 
@@ -61,8 +55,29 @@ public class ObjectiveDispenser : MonoBehaviour
             isCurrentObjective = CurrentObjective.TeleportPoint.Equals(point);
         }
 
+        switch (indicatorType)
+        {
+            case TeleportPoint.IndicatorType.Color:
+                point.teleportType = TeleportPoint.TeleportPointType.None;
+                break;
+            case TeleportPoint.IndicatorType.Arrow:
+                point.teleportType = TeleportPoint.TeleportPointType.MoveToLocation;
+                point.onlyShowIconIfActive = true;
+                break;
+            case TeleportPoint.IndicatorType.Number:
+                point.teleportType = TeleportPoint.TeleportPointType.Custom;
+                point.onlyShowIconIfActive = false;
+                break;
+            case TeleportPoint.IndicatorType.IKEA:
+                point.teleportType = TeleportPoint.TeleportPointType.None;
+                break;
+        }
+
+        point.indicatorType = indicatorType;
         point.active = isCurrentObjective;
-        point.titleVisibleColor = isCurrentObjective ? active.GetColor("_TintColor") : inactive.GetColor("_TintColor");
+        point.titleVisibleColor = isCurrentObjective ? 
+            active.GetColor("_TintColor") : 
+            inactive.GetColor("_TintColor");
         point.UpdateVisuals();
     }
 

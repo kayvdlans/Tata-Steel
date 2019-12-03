@@ -532,7 +532,8 @@ MonoBehaviour:
   titleHighlightedColor: {r: 0.45280647, g: 0.9191189, b: 0.45602244, a: 0.5}
   titleLockedColor: {r: 0.7867738, g: 0.5544188, b: 0.1388565, a: 0.5}
   playerSpawnPoint: 0
-  active: 0
+  active: 1
+  onlyShowIconIfActive: 0
 --- !u!1 &4438042596529655214
 GameObject:
   m_ObjectHideFlags: 0

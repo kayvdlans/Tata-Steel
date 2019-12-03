@@ -1,7 +1,11 @@
 ﻿using UnityEngine;
+using Valve.VR.InteractionSystem;
 
 public class Door : MonoBehaviour
 {
+    [SerializeField] private TeleportPoint teleportPoint;
+    public TeleportPoint TeleportPoint { get => teleportPoint; }
+
     [SerializeField] private OpenedDoors openedDoors = null;
     [SerializeField] private RoomSettings room;
 

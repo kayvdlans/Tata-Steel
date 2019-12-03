@@ -107,8 +107,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0.7071068, w: 0}
   m_LocalPosition: {x: 0, y: -0.001, z: 0.012}
   m_LocalScale: {x: 0.07300527, y: 0.1849942, z: 0.040202525}
-  m_Children:
-  - {fileID: 5698555630234339284}
+  m_Children: []
   m_Father: {fileID: 4099814549613719792}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 180}
@@ -212,17 +211,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5698555630234339287}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: -0.46366}
-  m_LocalScale: {x: 1, y: 0.72496, z: 1}
+  m_LocalRotation: {x: 0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.011999914}
+  m_LocalScale: {x: 0.07300535, y: 0.029145228, z: 0.18499441}
   m_Children:
   - {fileID: 5698555629779146881}
-  m_Father: {fileID: 5698555630030828566}
-  m_RootOrder: 0
+  m_Father: {fileID: 4099814549613719792}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -0.000006905, y: -0.000000071733}
+  m_AnchoredPosition: {x: 0, y: -0.019640304}
   m_SizeDelta: {x: 10, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &5698555630234339291
@@ -295,7 +294,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 368059813f5085449b5bd251ee323fc2,
         type: 3}
       propertyPath: m_Name
-      value: ObjectiveTV Copy
+      value: ObjectiveTVCopy
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 368059813f5085449b5bd251ee323fc2,
         type: 3}

@@ -87,7 +87,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 11450312, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
+    - target: {fileID: 11401046, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
       propertyPath: hoverUpdateInterval
       value: 0.2
       objectReference: {fileID: 0}
@@ -99,7 +99,7 @@ PrefabInstance:
       propertyPath: showDebugInteractables
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 11401046, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
+    - target: {fileID: 11450312, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
       propertyPath: hoverUpdateInterval
       value: 0.2
       objectReference: {fileID: 0}
@@ -166,6 +166,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11445746, guid: 7a135b1a2cb9c8f488d4dd00c55ab283, type: 3}
+      propertyPath: pointActiveVisibleMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 310b8b01f31c53b4d9ab2a9fda2bb251, type: 2}
+    - target: {fileID: 11445746, guid: 7a135b1a2cb9c8f488d4dd00c55ab283, type: 3}
+      propertyPath: pointInactiveVisibleMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: a1105752f8fe040428380861b9b2f31c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a135b1a2cb9c8f488d4dd00c55ab283, type: 3}
 --- !u!4 &2785012924815565736 stripped

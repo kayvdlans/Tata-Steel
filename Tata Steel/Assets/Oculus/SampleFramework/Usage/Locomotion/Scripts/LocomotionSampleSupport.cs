@@ -210,7 +210,7 @@ public class LocomotionSampleSupport : MonoBehaviour
         lc.PlayerController.FixedSpeedSteps = 1;
         lc.PlayerController.RotationEitherThumbstick = true;
         TeleportController.EnableRotation(true, false, false, true);
-        ActivateHandlers<TeleportInputHandlerAvatarTouch, TeleportAimHandlerLaser, TeleportTargetHandlerNode, TeleportOrientationHandlerThumbstick, TeleportTransitionBlink>();
+        ActivateHandlers<TeleportInputHandlerAvatarTouch, TeleportAimHandlerLaser, Deprecated.TeleportTargetHandlerNode, TeleportOrientationHandlerThumbstick, TeleportTransitionBlink>();
         var input = TeleportController.GetComponent<TeleportInputHandlerAvatarTouch>();
         input.AimingController = OVRInput.Controller.RTouch;
         //var input = TeleportController.GetComponent<TeleportAimHandlerLaser>();

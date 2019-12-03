@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: TeleportPointVisible
+  m_Name: TeleportPointInactiveVisible
   m_Shader: {fileID: 4800000, guid: 787d7485aa6482341a9f55fa37fb84f1, type: 3}
   m_ShaderKeywords: _ALPHAPREMULTIPLY_ON
   m_LightmapFlags: 5
@@ -75,4 +75,4 @@ Material:
     m_Colors:
     - _Color: {r: 0.6603774, g: 0.6603774, b: 0.6603774, a: 0.49803922}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _TintColor: {r: 0.13884604, g: 0.6527148, b: 0.7867677, a: 0.5}
+    - _TintColor: {r: 0.376958, g: 0.39960867, b: 0.4056604, a: 0.5}

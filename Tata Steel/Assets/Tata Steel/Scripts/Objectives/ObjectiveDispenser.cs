@@ -40,10 +40,16 @@ public class ObjectiveDispenser : MonoBehaviour
     public int MaxPoints { get; private set; }
     public UnityAction<int> OnObjectiveDone { get; set; }
 
-    private void UpdateTeleportVisuals(TeleportPoint point)
+    private void UpdateTeleportVisuals(int index, TeleportPoint point)
     {
+        if (point == null)
+        {
+            return;
+        }
+
         bool isCurrentObjective = false;
-        if (door.TeleportPoint.Equals(point))
+        bool isDoor = door.TeleportPoint.Equals(point);
+        if (isDoor)
         {
             isCurrentObjective = CurrentObjective == null;
         }
@@ -56,25 +62,26 @@ public class ObjectiveDispenser : MonoBehaviour
         {
             case TeleportPoint.IndicatorType.Color:
                 point.teleportType = TeleportPoint.TeleportPointType.None;
+                point.title = $"";
                 break;
             case TeleportPoint.IndicatorType.Arrow:
                 point.teleportType = TeleportPoint.TeleportPointType.MoveToLocation;
+                point.title = $"";
                 point.onlyShowIconIfActive = true;
                 break;
             case TeleportPoint.IndicatorType.Number:
-                point.teleportType = TeleportPoint.TeleportPointType.Custom;
-                point.onlyShowIconIfActive = false;
+                point.teleportType = TeleportPoint.TeleportPointType.None;
+                point.title = $"{index + 1}";
+                point.titleVisibleColor = active.GetColor("_TintColor");
                 break;
             case TeleportPoint.IndicatorType.IKEA:
                 point.teleportType = TeleportPoint.TeleportPointType.None;
+                point.title = $"";
                 break;
         }
 
         point.indicatorType = indicatorType;
         point.active = isCurrentObjective;
-        point.titleVisibleColor = isCurrentObjective ? 
-            active.GetColor("_TintColor") : 
-            inactive.GetColor("_TintColor");
         point.UpdateVisuals();
     }
 
@@ -95,10 +102,10 @@ public class ObjectiveDispenser : MonoBehaviour
             MaxPoints += objectives[i].Reward;
             objectives[i].Done = false;
             objectives[i].OnUpdateCurrent += UpdateMenu;
-            UpdateTeleportVisuals(objectives[i].TeleportPoint);
+            UpdateTeleportVisuals(i, objectives[i].TeleportPoint);
         }
 
-        UpdateTeleportVisuals(door.TeleportPoint);
+        UpdateTeleportVisuals(objectives.Count, door.TeleportPoint);
 
         ShowMenu();
     }
@@ -142,10 +149,10 @@ public class ObjectiveDispenser : MonoBehaviour
 
         for (int i = 0; i < objectives.Count; i++)
         {
-            UpdateTeleportVisuals(objectives[i].TeleportPoint);
+            UpdateTeleportVisuals(i, objectives[i].TeleportPoint);
         }
 
-        UpdateTeleportVisuals(door.TeleportPoint);
+        UpdateTeleportVisuals(objectives.Count, door.TeleportPoint);
         ShowMenu();
 
         door.Opened = CurrentObjective == null;

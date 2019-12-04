@@ -194,7 +194,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4438042596529417430}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.06623936, y: 0.405312, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4438042596529751942}
@@ -318,7 +318,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 1.137}
+  m_AnchoredPosition: {x: 0, y: 0.519}
   m_SizeDelta: {x: 900, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &4438042596549800350
@@ -534,6 +534,7 @@ MonoBehaviour:
   playerSpawnPoint: 0
   active: 1
   onlyShowIconIfActive: 0
+  indicatorType: 0
 --- !u!1 &4438042596529655214
 GameObject:
   m_ObjectHideFlags: 0
@@ -599,11 +600,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 150
+    m_FontSize: 300
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 150
+    m_MinSize: 0
+    m_MaxSize: 300
     m_Alignment: 7
     m_AlignByGeometry: 0
     m_RichText: 1

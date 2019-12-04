@@ -354,6 +354,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4438042596529724712, guid: d76fc416f1173964aaf67b925c19f66f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d76fc416f1173964aaf67b925c19f66f, type: 3}
 --- !u!4 &426150580 stripped
@@ -449,7 +454,7 @@ MonoBehaviour:
     reward: 55
     requiredAmount: 4
     teleportPoint: {fileID: 2081608446}
-  indicatorType: 0
+  indicatorType: 1
   active: {fileID: 2100000, guid: 310b8b01f31c53b4d9ab2a9fda2bb251, type: 2}
   inactive: {fileID: 2100000, guid: a1105752f8fe040428380861b9b2f31c, type: 2}
   description: {fileID: 252257694}
@@ -683,6 +688,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4438042596529724712, guid: d76fc416f1173964aaf67b925c19f66f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d76fc416f1173964aaf67b925c19f66f, type: 3}
 --- !u!4 &1402457402 stripped
@@ -786,6 +796,11 @@ PrefabInstance:
     - target: {fileID: 4438042596529730384, guid: d76fc416f1173964aaf67b925c19f66f,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4438042596529724712, guid: d76fc416f1173964aaf67b925c19f66f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

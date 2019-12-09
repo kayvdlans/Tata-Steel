@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class ScatterObjects : MonoBehaviour
 {
@@ -29,8 +30,25 @@ public class ScatterObjects : MonoBehaviour
         StartCoroutine(ScatterObject(timeBetweenScattering));
     }
 
+    private void ShuffleObjects(List<GameObject> objects)
+    {
+        System.Random random = new System.Random();
+
+        int n = objects.Count;
+        while (n > 1)
+        {
+            n--;
+            int k = random.Next(n + 1);
+            GameObject value = objects[k];
+            objects[k] = objects[n];
+            objects[n] = value;
+        }
+    }
+
     private IEnumerator ScatterObject(float time)
     {
+        ShuffleObjects(objects);
+
         foreach (GameObject ob in objects)
         {
             yield return new WaitForSeconds(time);
@@ -53,6 +71,7 @@ public class ScatterObjects : MonoBehaviour
         float distance;
         while ((distance = (destination - ob.transform.position).magnitude) > objectMoveTreshold)
         {
+            //ratio is used to smooth the move speed based on the distance to the destination
             float ratio = (distance + objectMoveTreshold) / originalDistance;
 
             ob.transform.position = Vector3.MoveTowards(ob.transform.position, destination, speed * ratio);

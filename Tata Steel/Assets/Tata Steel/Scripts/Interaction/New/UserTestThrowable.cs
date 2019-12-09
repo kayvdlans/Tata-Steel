@@ -2,6 +2,8 @@
 
 public class UserTestThrowable : Throwable
 {
+    public ObjectDroppingArea LinkedArea { get; set; }
+
     private ObjectInteractionState interactionState;
 
     private bool canInteract;

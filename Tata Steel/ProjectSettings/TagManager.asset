@@ -12,6 +12,7 @@ TagManager:
   - Flask
   - Aftapsluiter
   - Stoomafsluiters
+  - UserTestObject
   layers:
   - Default
   - TransparentFX

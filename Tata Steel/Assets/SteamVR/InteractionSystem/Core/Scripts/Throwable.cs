@@ -40,8 +40,6 @@ namespace Valve.VR.InteractionSystem
         [Tooltip( "When detaching the object, should it return to its original parent?" )]
 		public bool restoreOriginalParent = false;
 
-
-
 		protected VelocityEstimator velocityEstimator;
         protected bool attached = false;
         protected float attachTime;

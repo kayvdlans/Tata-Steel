@@ -17,7 +17,7 @@ public class UserTestTimer : MonoBehaviour
         interactionState = FindObjectOfType<ObjectInteractionState>();
         interactionState.OnUpdateState += CheckState;
 
-       // timeText.gameObject.SetActive(false);
+        timeText.gameObject.SetActive(false);
     }
 
     private void CheckState(ObjectInteractionState.State state)
@@ -31,19 +31,19 @@ public class UserTestTimer : MonoBehaviour
 
     private IEnumerator WaitForGrabbableState()
     {
-        //timeText.gameObject.SetActive(true);
+        timeText.gameObject.SetActive(true);
 
         float timeLeft = timeUntilScatter;
 
         while (timeLeft > 0) 
         {
             timeLeft -= Time.deltaTime;
-        //    timeText.text = timeLeft.ToString();
+            timeText.text = ((int) timeLeft).ToString();
 
             yield return new WaitForEndOfFrame();
         }
 
-        //timeText.gameObject.SetActive(false);
+        timeText.gameObject.SetActive(false);
 
         OnTimerFinished?.Invoke();
     }

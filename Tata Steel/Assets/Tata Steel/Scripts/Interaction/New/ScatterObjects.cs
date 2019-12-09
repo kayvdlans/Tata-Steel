@@ -5,7 +5,6 @@ using System.Linq;
 
 public class ScatterObjects : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> objects;
     [Header("Scatter Preparation")]
     [SerializeField] private Collider scatterArea;
     [SerializeField] private float timeBetweenScattering;
@@ -14,11 +13,13 @@ public class ScatterObjects : MonoBehaviour
     [SerializeField] [Range(0.01f, 1f)] private float objectMoveTreshold;
     [SerializeField] [Range(0.01f, 1f)] private float objectMoveSpeed;
 
+    private List<GameObject> objects = new List<GameObject>();
     private UserTestTimer timer;
     private ObjectInteractionState interactionState;
 
     private void Start()
     {
+        objects.AddRange(GameObject.FindGameObjectsWithTag("UserTestObject"));
         interactionState = FindObjectOfType<ObjectInteractionState>();
         timer = FindObjectOfType<UserTestTimer>();
         timer.OnTimerFinished += Scatter;
@@ -66,6 +67,7 @@ public class ScatterObjects : MonoBehaviour
     {
         Rigidbody r = ob.GetComponent<Rigidbody>();
         r.useGravity = false;
+        r.isKinematic = true;
 
         float originalDistance = (destination - ob.transform.position).magnitude;
         float distance;
@@ -80,6 +82,7 @@ public class ScatterObjects : MonoBehaviour
         }
 
         r.useGravity = true;
+        r.isKinematic = false;
     }
 
     private void OnDrawGizmos()

@@ -18,6 +18,7 @@ public class UserTestTimer : MonoBehaviour
         interactionState.OnUpdateState += CheckState;
 
         timeText.gameObject.SetActive(false);
+        StartCoroutine(WaitForGrabbableState());
     }
 
     private void CheckState(ObjectInteractionState.State state)

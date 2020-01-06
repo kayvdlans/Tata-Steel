@@ -134,17 +134,17 @@ namespace Deprecated
             }
         }
 
-        public override void OnInteractionStart()
+        public override void OnAttachedToHand(Valve.VR.InteractionSystem.Hand hand)
         {
-            base.OnInteractionStart();
+            base.OnAttachedToHand(hand);
 
             if (lockRotationOnInteractionEnd)
                 rb.constraints = RigidbodyConstraints.FreezePosition | rotationConstraints;
         }
 
-        public override void OnInteractionEnd()
+        public override void OnDetachedFromHand(Valve.VR.InteractionSystem.Hand hand)
         {
-            base.OnInteractionEnd();
+            base.OnDetachedFromHand(hand);
 
             if (lockRotationOnInteractionEnd)
                 rb.constraints = RigidbodyConstraints.FreezeAll;

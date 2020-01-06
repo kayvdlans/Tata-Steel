@@ -34,7 +34,7 @@ namespace Deprecated
             }
         }
 
-        public override void OnInteractionStart()
+        /*public override void OnInteractionStart()
         {
             base.OnInteractionStart();
 
@@ -79,6 +79,6 @@ namespace Deprecated
             //TODO: calculate velocity yourself instead of OVR, since it doesn't work too well.
             rb.velocity = trackingSpace.orientation * OVRInput.GetLocalControllerVelocity(interactable.Controller);
             rb.angularVelocity = trackingSpace.orientation * OVRInput.GetLocalControllerAngularVelocity(interactable.Controller) * Mathf.Deg2Rad;
-        }
+        }*/
     }
 }

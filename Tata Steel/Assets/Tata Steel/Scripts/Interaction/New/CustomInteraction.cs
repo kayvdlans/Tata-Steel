@@ -51,6 +51,7 @@ public class CustomInteraction : MonoBehaviour
         if (bestGrabType != GrabTypes.None)
         {
             hand.AttachObject(gameObject, bestGrabType, attachmentFlags);
+            Debug.LogError("wow");
             onStartInteraction.Invoke();
         }
 
@@ -78,8 +79,9 @@ public class CustomInteraction : MonoBehaviour
         if (startingGrabType != GrabTypes.None)
         {
             hand.AttachObject(gameObject, startingGrabType, attachmentFlags);
-            onStartInteraction.Invoke();
+
             interactionStarted?.Invoke(hand);
+            onStartInteraction.Invoke();
         }
 
         if (startingGrabType != GrabTypes.None)
@@ -109,6 +111,8 @@ public class CustomInteraction : MonoBehaviour
     {
         attached = false;
 
+        onEndInteraction.Invoke();
+
         hand.HoverUnlock(null);
     }
 
@@ -118,7 +122,7 @@ public class CustomInteraction : MonoBehaviour
         if (hand.IsGrabEnding(this.gameObject))
         {
             hand.DetachObject(gameObject, restoreOriginalParent);
-            onEndInteraction.Invoke();
+            Debug.LogError("ok dud");
             // Uncomment to detach ourselves late in the frame.
             // This is so that any vehicles the player is attached to
             // have a chance to finish updating themselves.

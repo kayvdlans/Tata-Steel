@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using Valve.VR.InteractionSystem;
 
 public class RotateValve : MonoBehaviour
@@ -13,6 +11,7 @@ public class RotateValve : MonoBehaviour
     private bool isInteracting = false;
 
     [SerializeField] private MathHelper.Axis rotationAxis;
+    [SerializeField] [Range(0, 180)] private float detachAngle = 45;
     [SerializeField] private bool lockRotationOnInteractionEnd;
     [SerializeField] private uint rotationLock = 0;
     [SerializeField] private float maxAngularVelocity = 1f;
@@ -57,6 +56,16 @@ public class RotateValve : MonoBehaviour
         {
             Vector3 dir = (hand.transform.position - initialAttachPoint.position).normalized;
 
+            float dist = Mathf.Abs(
+                Vector3.Angle(hand.transform.position, transform.position) * Mathf.Rad2Deg -
+                Vector3.Angle(initialAttachPoint.position, transform.position) * Mathf.Rad2Deg);
+            
+            if (dist > detachAngle)
+            {
+                hand.DetachObject(gameObject, customInteraction.restoreOriginalParent);
+                return;
+            }
+
             rb.AddForceAtPosition(dir, initialAttachPoint.position, ForceMode.VelocityChange);
         }
 
@@ -64,7 +73,7 @@ public class RotateValve : MonoBehaviour
                 ? rb.angularVelocity.x : rotationAxis == MathHelper.Axis.Y
                 ? rb.angularVelocity.y : rb.angularVelocity.z;
         float angularVelocity = inverseAngularVelocity ? -aV : aV;
-       // LockRotation(angularVelocity);
+        //LockRotation(angularVelocity);
 
         currentAngle = Quaternion.Angle(initialRotation, transform.localRotation);
 
@@ -81,6 +90,28 @@ public class RotateValve : MonoBehaviour
         //Calculate the actual angle based on half rotations and the current angle.
         ActualAngle = halfRotations * 180 + (backwards ? (180 - currentAngle) : currentAngle);
         previousAngle = currentAngle;
+    }
+
+    private void LockRotation(float angularVelocity)
+    {
+        //If you're trying to rotate counter-clockwise while the angle is already at 0, 
+        //it will keep resetting to prevent you from rotating it any further.
+        if (angularVelocity < -0.01f && ActualAngle <= 0)
+        {
+            rb.angularVelocity = Vector3.zero;
+            ActualAngle = 0;
+            halfRotations = 0;
+            transform.localRotation = initialRotation;
+        }
+
+        //Same like previous, but the other way around.
+        if (angularVelocity > 0.01f && ActualAngle >= (360 * rotationLock))
+        {
+            rb.angularVelocity = Vector3.zero;
+            ActualAngle = (360 * rotationLock);
+            halfRotations = (int)rotationLock * 2;
+            transform.localRotation = Quaternion.Euler(360 * rotationLock, 0, 0);
+        }
     }
 
     private void UpdateHalfRotations()
@@ -123,6 +154,9 @@ public class RotateValve : MonoBehaviour
             initialAttachPoint.parent = transform;
         }
 
+        if (lockRotationOnInteractionEnd)
+            rb.constraints = RigidbodyConstraints.FreezePosition | rotationConstraints;
+
         isInteracting = true;
     }
 
@@ -132,6 +166,9 @@ public class RotateValve : MonoBehaviour
         {
             Destroy(initialAttachPoint.gameObject);
         }
+
+        if (lockRotationOnInteractionEnd)
+            rb.constraints = RigidbodyConstraints.FreezeAll;
 
         isInteracting = false;
     }

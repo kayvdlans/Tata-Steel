@@ -8,6 +8,11 @@ public class RotateValve : MonoBehaviour
     private Hand hand;
     private Transform initialAttachPoint;
 
+    [Header("Angular Velocity")]
+    //Also used for haptic feedback as 1 - value
+    [SerializeField] private AnimationCurve normalizedMaxAngularVelocity;
+    [SerializeField] [Range(0.1f, 10f)] private float angularVelocityMultiplier;
+    [Space]
     private bool isInteracting = false;
 
     [SerializeField] private MathHelper.Axis rotationAxis;
@@ -27,6 +32,7 @@ public class RotateValve : MonoBehaviour
     private Quaternion initialRotation;
 
     public float ActualAngle { get; private set; } = 0;
+    public float MaxAngle { get => rotationLock * 360; }
 
     private void Start()
     {
@@ -52,6 +58,9 @@ public class RotateValve : MonoBehaviour
 
     private void FixedUpdate()
     {
+        rb.maxAngularVelocity = 
+            normalizedMaxAngularVelocity.Evaluate((ActualAngle / MaxAngle)) * angularVelocityMultiplier;
+
         if (isInteracting)
         {
             Vector3 dir = (hand.transform.position - initialAttachPoint.position).normalized;

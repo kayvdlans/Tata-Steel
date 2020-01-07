@@ -26,6 +26,8 @@ public class CustomInteraction : MonoBehaviour
     public UnityEvent onEndInteraction;
     public UnityEvent whileInteracting;
 
+    public UnityAction<Hand> interactionStarted;
+
     [HideInInspector]
     public Interactable interactable;
 
@@ -77,6 +79,7 @@ public class CustomInteraction : MonoBehaviour
         {
             hand.AttachObject(gameObject, startingGrabType, attachmentFlags);
             onStartInteraction.Invoke();
+            interactionStarted?.Invoke(hand);
         }
 
         if (startingGrabType != GrabTypes.None)

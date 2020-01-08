@@ -2,6 +2,7 @@
 using UnityEngine;
 using Valve.VR.InteractionSystem;
 
+[RequireComponent(typeof(CustomInteraction), typeof(Rigidbody))]
 public class RotateValve : MonoBehaviour
 {
     private Rigidbody rb;
@@ -11,13 +12,18 @@ public class RotateValve : MonoBehaviour
     private Transform previousAttachPoint;
     private bool isInteracting = false;
 
+    [Header("Haptic Feedback")]
+    [SerializeField] private bool continousHapticFeedback = false;
+    [SerializeField] [Range(0, 320)] private float feedbackFrequency;
+    [SerializeField] private bool variableAmplitude;
+    [SerializeField] [Range(0, 1)] private float minimumAmplitude;
+    [SerializeField] [Range(0, 1)] private float feedbackAmplitude;
+
     [Header("Angular Velocity")]
     //Also used for haptic feedback as 1 - value
     [SerializeField] private AnimationCurve normalizedMaxAngularVelocity;
     [SerializeField] [Range(0.1f, 10f)] private float angularVelocityMultiplier;
     [SerializeField] private bool inverseAngularVelocity = true;
-
-    [Space]
 
     [Header("Rotation")]
     [SerializeField] [Range(0, 180)] private float detachAngle = 45;
@@ -40,18 +46,17 @@ public class RotateValve : MonoBehaviour
     public float MaxAngle { get => rotationLock * 360; }
 
     public float AngularVelocity { get; private set; }
-
-    private float MaxAngularVelocity { get => normalizedMaxAngularVelocity.Evaluate((ActualAngle / MaxAngle) * angularVelocityMultiplier); }
+    private float NormalizedMaxAngularVelocity { get => normalizedMaxAngularVelocity.Evaluate(ActualAngle / MaxAngle); }
+    private float MaxAngularVelocity { get => NormalizedMaxAngularVelocity * angularVelocityMultiplier; }
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+
         customInteraction = GetComponent<CustomInteraction>();
-
-        customInteraction.onStartInteraction.AddListener(CreateAttachPoint);
-        customInteraction.onEndInteraction.AddListener(DestroyAttachPoint);
-
-        customInteraction.interactionStarted += AssignHand;
+        customInteraction.OnStartInteraction_Hand += AssignHand;
+        customInteraction.OnStartInteraction += CreateAttachPoint;
+        customInteraction.OnEndInteraction += DestroyAttachPoint;       
 
         rb.maxAngularVelocity = MaxAngularVelocity;
 
@@ -85,6 +90,12 @@ public class RotateValve : MonoBehaviour
 
             rb.AddForceAtPosition(dir, initialAttachPoint.position, ForceMode.VelocityChange);
 
+            if (continousHapticFeedback)
+            {
+                float amp = 1 - NormalizedMaxAngularVelocity;
+                hand.TriggerHapticPulse(1f / 60f, feedbackFrequency, variableAmplitude ? (amp > minimumAmplitude ? amp : minimumAmplitude) : feedbackAmplitude); 
+            }
+
             float aV = rotationAxis == MathHelper.Axis.X
                 ? rb.angularVelocity.x : rotationAxis == MathHelper.Axis.Y
                 ? rb.angularVelocity.y : rb.angularVelocity.z;
@@ -101,8 +112,6 @@ public class RotateValve : MonoBehaviour
         ActualAngle = halfRotations * 180 + (backwards ?
             (180 - currentAngle) :
             currentAngle);
-
-        Debug.LogError(ActualAngle);
     }
 
     private void LockRotation(float aV)
@@ -116,6 +125,7 @@ public class RotateValve : MonoBehaviour
             ActualAngle = 0;
             halfRotations = 0;
             transform.localRotation = initialRotation;
+            hand.TriggerHapticPulse(1f / 60f, feedbackFrequency, feedbackAmplitude);
         }
 
         //Same like previous, but the other way around.
@@ -126,13 +136,26 @@ public class RotateValve : MonoBehaviour
             ActualAngle = MaxAngle;
             halfRotations = (int)rotationLock * 2;
             transform.localRotation = Quaternion.Euler(0, MaxAngle, 0);
+            hand.TriggerHapticPulse(1f / 60f, feedbackFrequency, feedbackAmplitude);
         }
     }
 
     private void UpdateHalfRotations()
     {
         clockwise = AngularVelocity >= 0;
-        if (AngularVelocity != 0)
+
+        if (ActualAngle > MaxAngle)
+        {
+            ActualAngle = MaxAngle;
+            return;
+        }
+        else if (ActualAngle < 0)
+        {
+            ActualAngle = 0;
+            return;
+        }
+
+        if (AngularVelocity != 0 && halfRotationPossible)
         {
             if (clockwise && !backwards && previousAngle > currentAngle)
             {

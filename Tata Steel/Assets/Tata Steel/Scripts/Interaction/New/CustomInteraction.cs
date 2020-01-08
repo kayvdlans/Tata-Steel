@@ -18,15 +18,14 @@ public class CustomInteraction : MonoBehaviour
     public GrabTypes action;
     public InteractionType interactionType;
 
-    [Header("Touch Events")]
-    public UnityEvent onTouch;
+    public UnityAction OnTouch;
     public bool fireTouchEventContinously;
     [Space]
-    public UnityEvent onStartInteraction;
-    public UnityEvent onEndInteraction;
-    public UnityEvent whileInteracting;
+    public UnityAction OnStartInteraction;
+    public UnityAction OnEndInteraction;
+    public UnityAction WhileInteracting;
 
-    public UnityAction<Hand> interactionStarted;
+    public UnityAction<Hand> OnStartInteraction_Hand;
 
     [HideInInspector]
     public Interactable interactable;
@@ -52,7 +51,7 @@ public class CustomInteraction : MonoBehaviour
         {
             hand.AttachObject(gameObject, bestGrabType, attachmentFlags);
             Debug.LogError("wow");
-            onStartInteraction.Invoke();
+            OnStartInteraction?.Invoke();
         }
 
         if (showHint)
@@ -60,7 +59,7 @@ public class CustomInteraction : MonoBehaviour
             hand.ShowGrabHint();
         }
 
-        onTouch.Invoke();
+        OnTouch?.Invoke();
     }
 
 
@@ -80,8 +79,8 @@ public class CustomInteraction : MonoBehaviour
         {
             hand.AttachObject(gameObject, startingGrabType, attachmentFlags);
 
-            interactionStarted?.Invoke(hand);
-            onStartInteraction.Invoke();
+            OnStartInteraction_Hand?.Invoke(hand);
+            OnStartInteraction?.Invoke();
         }
 
         if (startingGrabType != GrabTypes.None)
@@ -90,7 +89,7 @@ public class CustomInteraction : MonoBehaviour
         }
 
         if (fireTouchEventContinously)
-            onTouch.Invoke();
+            OnTouch?.Invoke();
     }
 
     //-------------------------------------------------
@@ -111,7 +110,7 @@ public class CustomInteraction : MonoBehaviour
     {
         attached = false;
 
-        onEndInteraction.Invoke();
+        OnEndInteraction?.Invoke();
 
         hand.HoverUnlock(null);
     }
@@ -134,12 +133,11 @@ public class CustomInteraction : MonoBehaviour
         if (interactionType == InteractionType.OnPress)
         {
             hand.DetachObject(gameObject, restoreOriginalParent);
-            onEndInteraction.Invoke();
         }
 
         if (interactionType == InteractionType.OnHold)
         {
-            whileInteracting.Invoke();
+            WhileInteracting?.Invoke();
         }
     }
 

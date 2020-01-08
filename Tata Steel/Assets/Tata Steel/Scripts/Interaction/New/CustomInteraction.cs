@@ -122,7 +122,6 @@ public class CustomInteraction : MonoBehaviour
         if (hand.IsGrabEnding(this.gameObject))
         {
             hand.DetachObject(gameObject, restoreOriginalParent);
-            Debug.LogError("ok dud");
             // Uncomment to detach ourselves late in the frame.
             // This is so that any vehicles the player is attached to
             // have a chance to finish updating themselves.

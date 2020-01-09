@@ -1136,7 +1136,7 @@ MonoBehaviour:
   continousHapticFeedback: 1
   feedbackFrequency: 50
   variableAmplitude: 1
-  minimumAmplitude: 0.05
+  minimumAmplitude: 0.2
   feedbackAmplitude: 1
   normalizedMaxAngularVelocity:
     serializedVersion: 2
@@ -4949,11 +4949,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 986588103676304909}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: b505d21e104d3c74dbed9941610569c5,
-        type: 3}
-      propertyPath: m_Name
-      value: Valve (4)
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: b505d21e104d3c74dbed9941610569c5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5009,6 +5004,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: b505d21e104d3c74dbed9941610569c5,
+        type: 3}
+      propertyPath: m_Name
+      value: Valve (4)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b505d21e104d3c74dbed9941610569c5, type: 3}
 --- !u!4 &5946487763822333799 stripped
@@ -5024,11 +5024,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 986588103676304909}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: b505d21e104d3c74dbed9941610569c5,
-        type: 3}
-      propertyPath: m_Name
-      value: Valve (2)
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: b505d21e104d3c74dbed9941610569c5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5083,6 +5078,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: b505d21e104d3c74dbed9941610569c5,
+        type: 3}
+      propertyPath: m_Name
+      value: Valve (2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b505d21e104d3c74dbed9941610569c5, type: 3}
@@ -5180,11 +5180,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 986588103676304909}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: b505d21e104d3c74dbed9941610569c5,
-        type: 3}
-      propertyPath: m_Name
-      value: Valve (3)
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: b505d21e104d3c74dbed9941610569c5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5240,6 +5235,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: b505d21e104d3c74dbed9941610569c5,
+        type: 3}
+      propertyPath: m_Name
+      value: Valve (3)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b505d21e104d3c74dbed9941610569c5, type: 3}
 --- !u!4 &1012353518095593349 stripped
@@ -5255,11 +5255,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 986588103676304909}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: b505d21e104d3c74dbed9941610569c5,
-        type: 3}
-      propertyPath: m_Name
-      value: Valve (1)
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: b505d21e104d3c74dbed9941610569c5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5314,6 +5309,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: b505d21e104d3c74dbed9941610569c5,
+        type: 3}
+      propertyPath: m_Name
+      value: Valve (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b505d21e104d3c74dbed9941610569c5, type: 3}

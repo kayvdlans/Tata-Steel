@@ -5,6 +5,13 @@ using Valve.VR.InteractionSystem;
 [RequireComponent(typeof(CustomInteraction), typeof(Rigidbody))]
 public class RotateValve : MonoBehaviour
 {
+    private enum HapticProcessing
+    {
+        Constant,
+        GraphBased,
+        OneMinusVelocity
+    }
+
     private Rigidbody rb;
     private CustomInteraction customInteraction;
     private Hand hand;
@@ -13,9 +20,10 @@ public class RotateValve : MonoBehaviour
     private bool isInteracting = false;
 
     [Header("Haptic Feedback")]
-    [SerializeField] private bool continousHapticFeedback = false;
+    [SerializeField] private bool continuousHapticFeedback = false;
     [SerializeField] [Range(0, 320)] private float feedbackFrequency;
-    [SerializeField] private bool variableAmplitude;
+    [SerializeField] private HapticProcessing processingType;
+    [SerializeField] private AnimationCurve amplitudeGraph;
     [SerializeField] [Range(0, 1)] private float minimumAmplitude;
     [SerializeField] [Range(0, 1)] private float feedbackAmplitude;
 
@@ -44,9 +52,10 @@ public class RotateValve : MonoBehaviour
 
     public float ActualAngle { get; private set; } = 0;
     public float MaxAngle { get => rotationLock * 360; }
+    public float AngleRatio { get => ActualAngle / MaxAngle; }
 
-    public float AngularVelocity { get; private set; }
-    private float NormalizedMaxAngularVelocity { get => normalizedMaxAngularVelocity.Evaluate(ActualAngle / MaxAngle); }
+    private float AngularVelocity { get; set; }
+    private float NormalizedMaxAngularVelocity { get => normalizedMaxAngularVelocity.Evaluate(AngleRatio); }
     private float MaxAngularVelocity { get => NormalizedMaxAngularVelocity * angularVelocityMultiplier; }
 
     private void Start()
@@ -81,7 +90,7 @@ public class RotateValve : MonoBehaviour
             float dist = Mathf.Abs(
                 Vector3.Angle(hand.transform.position, transform.position) * Mathf.Rad2Deg -
                 Vector3.Angle(initialAttachPoint.position, transform.position) * Mathf.Rad2Deg);
-            
+
             if (dist > detachAngle)
             {
                 hand.DetachObject(gameObject, customInteraction.restoreOriginalParent);
@@ -90,10 +99,15 @@ public class RotateValve : MonoBehaviour
 
             rb.AddForceAtPosition(dir, initialAttachPoint.position, ForceMode.VelocityChange);
 
-            if (continousHapticFeedback)
+            if (continuousHapticFeedback)
             {
-                float amp = 1 - NormalizedMaxAngularVelocity;
-                hand.TriggerHapticPulse(1f / 60f, feedbackFrequency, variableAmplitude ? (amp > minimumAmplitude ? amp : minimumAmplitude) : feedbackAmplitude); 
+                float amp = 
+                    processingType == HapticProcessing.Constant ? feedbackAmplitude :
+                    processingType == HapticProcessing.GraphBased ? amplitudeGraph.Evaluate(AngleRatio) :
+                    processingType == HapticProcessing.OneMinusVelocity ? 1 - NormalizedMaxAngularVelocity : 
+                    0f;
+
+                hand.TriggerHapticPulse(1f / 60f, feedbackFrequency, amp > minimumAmplitude ? amp : minimumAmplitude);
             }
 
             float aV = rotationAxis == MathHelper.Axis.X
@@ -125,7 +139,7 @@ public class RotateValve : MonoBehaviour
             ActualAngle = 0;
             halfRotations = 0;
             transform.localRotation = initialRotation;
-            hand.TriggerHapticPulse(1f / 60f, feedbackFrequency, feedbackAmplitude);
+            hand.TriggerHapticPulse(1f / 60f, feedbackFrequency, 1f);
         }
 
         //Same like previous, but the other way around.
@@ -136,7 +150,7 @@ public class RotateValve : MonoBehaviour
             ActualAngle = MaxAngle;
             halfRotations = (int)rotationLock * 2;
             transform.localRotation = Quaternion.Euler(0, MaxAngle, 0);
-            hand.TriggerHapticPulse(1f / 60f, feedbackFrequency, feedbackAmplitude);
+            hand.TriggerHapticPulse(1f / 60f, feedbackFrequency, 1f);
         }
     }
 

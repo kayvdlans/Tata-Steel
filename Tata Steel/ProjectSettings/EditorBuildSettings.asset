@@ -6,12 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Tata Steel/Scenes/EntranceHall.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
-    path: Assets/Tata Steel/Scenes/TrainingRooms/TrainingRoom1/TrainingRoom.unity
-    guid: 583a1ae64fd734a46922d2f2e703c419
-  - enabled: 1
-    path: Assets/Tata Steel/Scenes/TrainingRooms/TrainingRoom2/TrainingRoom2.unity
-    guid: 693561f89f3c2684ab88b4f6aeab5e9c
+    path: Assets/Tata Steel/Scenes/UserTestWeird.unity
+    guid: f03b1dea7f0a8cc499f49bbaa5bad2c2
   m_configObjects: {}

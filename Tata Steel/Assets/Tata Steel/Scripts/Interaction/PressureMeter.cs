@@ -2,6 +2,7 @@
 
 public class PressureMeter : MonoBehaviour
 {
+    [SerializeField] private Transform pointer;
     [SerializeField] private RotateValve valve;
     [SerializeField] private Vector2 angleMinMax;
     [SerializeField] private Vector2 offsetMinMax;
@@ -23,7 +24,7 @@ public class PressureMeter : MonoBehaviour
 
     private void FixedUpdate()
     {
-        currentAngle = MathHelper.GetValueBetweenBoundsFromNormalizedValue(valve.AngleRatio, angleMinMax);
+        currentAngle = MathHelper.GetValueBetweenBoundsFromNormalizedValue(1 - valve.AngleRatio, angleMinMax);
 
         currentOffset += Random.Range(offsetPerTickMinMax.x, offsetPerTickMinMax.y);
         currentOffset = MathHelper.ConfineToBounds(currentOffset, offsetMinMax);
@@ -31,7 +32,7 @@ public class PressureMeter : MonoBehaviour
         combinedAngle = currentAngle == angleMinMax.x ? currentAngle : currentAngle + currentOffset;
         combinedAngle = MathHelper.ConfineToBounds(combinedAngle, angleMinMax);
 
-        transform.localRotation = Quaternion.Euler(0, -90, combinedAngle);
+        pointer.transform.localRotation = Quaternion.Euler(0, 90, combinedAngle);
     }
 
     //Deprecated

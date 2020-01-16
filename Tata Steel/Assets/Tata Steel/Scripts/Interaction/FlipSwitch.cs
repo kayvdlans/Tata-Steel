@@ -6,70 +6,41 @@ using System.Collections;
 /// </summary>
 public class FlipSwitch : MonoBehaviour
 {
-    [SerializeField] private Transform s;
     [SerializeField] private MathHelper.Axis axis;
     [SerializeField] private Vector2 offOnRotation;
     [SerializeField] private bool startOn;
+    [SerializeField] private GameObject objectToActivate;
 
+    private CustomInteraction customInteraction;
     private Vector3 originalEulers = Vector3.zero;
     private float currentAngle = 0;
 
-    public GameObject pc;
+    
     public bool CurrentlyTurnedOn { get; private set; } = false;
 
     private void Start()
     {
-        originalEulers = s.localEulerAngles;
+        customInteraction = GetComponent<CustomInteraction>();
+        customInteraction.OnStartInteraction += Flip;
+
+        originalEulers = transform.localEulerAngles;
         UpdateValue(startOn);
     }
 
     public void Flip()
     {
-        if (pc == null)
-        {
-            UpdateValue(!CurrentlyTurnedOn);
-            /*if (!CurrentlyTurnedOn)
-            {
-                AudioSource audioSource = GetComponent<AudioSource>();
-                audioSource.pitch = Random.Range(0.8f, 1.5f);
-                audioSource.Play();
-            }
-            if (CurrentlyTurnedOn)
-            {
-                AudioSource audioSource = GetComponent<AudioSource>();
-                audioSource.pitch = Random.Range(0.8f, 1.5f);
-                audioSource.Pause();
-            }*/
-        }
-        else
-        {
-            UpdateValue(!CurrentlyTurnedOn);
-            pc.SetActive(!pc.activeSelf);
-            /*if (!CurrentlyTurnedOn)
-            {
-                AudioSource audioSource = GetComponent<AudioSource>();
-                audioSource.pitch = Random.Range(0.8f, 1.5f);
-                audioSource.Play();
-            }
-            if (CurrentlyTurnedOn)
-            {
-                AudioSource audioSource = GetComponent<AudioSource>();
-                audioSource.pitch = Random.Range(0.8f, 1.5f);
-                audioSource.Pause();
-            }*/
-        }
+        UpdateValue(!CurrentlyTurnedOn);
+        objectToActivate.SetActive(objectToActivate != null && !objectToActivate.activeSelf);
     }
 
     private void UpdateValue(bool on)
     {
         CurrentlyTurnedOn = on;
+        currentAngle = on? offOnRotation.y : offOnRotation.x;
 
-    
-    currentAngle = on? offOnRotation.y : offOnRotation.x;
-
-    s.localEulerAngles = new Vector3(
-        (int) axis == 0 ? currentAngle : originalEulers.x,
-        (int) axis == 1 ? currentAngle : originalEulers.y,
-        (int) axis == 2 ? currentAngle : originalEulers.z);
-}
+        transform.localEulerAngles = new Vector3(
+            (int) axis == 0 ? currentAngle : originalEulers.x,
+            (int) axis == 1 ? currentAngle : originalEulers.y,
+            (int) axis == 2 ? currentAngle : originalEulers.z);
+    }
 }

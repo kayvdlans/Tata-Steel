@@ -87,7 +87,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 347069952538937065}
-  - component: {fileID: 4732085318588352175}
   m_Layer: 0
   m_Name: EmergencyPower
   m_TagString: Untagged
@@ -113,23 +112,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90.678, z: 0}
---- !u!114 &4732085318588352175
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3641815129288176890}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad79ff4eab5cebe4d9deee545e923dcd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  s: {fileID: 2330396537030231351}
-  axis: 2
-  offOnRotation: {x: 270, y: 180}
-  startOn: 0
-  pc: {fileID: 0}
 --- !u!1 &5878812973379018592
 GameObject:
   m_ObjectHideFlags: 0
@@ -187,7 +169,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 6034957751646507721, guid: b1257953b0ab36949beb626af6e2a225, type: 3}
+  - {fileID: 2100000, guid: 1ff08f157d11a654fb49d3d14c4b28cd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -222,6 +204,7 @@ GameObject:
   - component: {fileID: 741262501}
   - component: {fileID: 741262498}
   - component: {fileID: 741262499}
+  - component: {fileID: 4028624600886447987}
   m_Layer: 0
   m_Name: Switch
   m_TagString: Untagged
@@ -318,30 +301,7 @@ MonoBehaviour:
   attachmentFlags: 4
   action: 2
   interactionType: 0
-  onTouch:
-    m_PersistentCalls:
-      m_Calls: []
   fireTouchEventContinously: 0
-  onStartInteraction:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4732085318588352175}
-        m_MethodName: Flip
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onEndInteraction:
-    m_PersistentCalls:
-      m_Calls: []
-  whileInteracting:
-    m_PersistentCalls:
-      m_Calls: []
   interactable: {fileID: 0}
 --- !u!114 &741262499
 MonoBehaviour:
@@ -395,6 +355,22 @@ MonoBehaviour:
   highlightOnHover: 1
   hideHighlight: []
   hoverPriority: 0
+--- !u!114 &4028624600886447987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6534070795672587213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad79ff4eab5cebe4d9deee545e923dcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  axis: 2
+  offOnRotation: {x: 270, y: 180}
+  startOn: 0
+  objectToActivate: {fileID: 0}
 --- !u!1 &8690704445122634686
 GameObject:
   m_ObjectHideFlags: 0
